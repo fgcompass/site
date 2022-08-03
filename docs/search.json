@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "publication.html",
+    "href": "publication.html",
+    "title": "Publications",
+    "section": "",
+    "text": "Mazzardo, O., Fontana, F. E., Furtado Jr, O., & Gallagher, J. D. (2018). The relationship of movement skills with habitual and organized physical activity in seven and eight-year-old children. Pensar a Prática, 21(1). https://doi.org/10.5216/rpp.v21i1.42360\nFurtado Jr, O., & Gallagher, J. D. (2012). The reliability of classification decisions for the Furtado-Gallagher Computerized Observational Movement Pattern Assessment System—FG-COMPASS. Research Quarterly for Exercise and Sport, 83(3), 383–390. https://doi.org/10.1080/02701367.2012.10599872"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "FG-COMPASS",
@@ -14,39 +21,11 @@
     "text": "Testing Protocols\n\nEnglish\nPortuguese (coming soon)\n\nDecision Trees\n\nEnglish\n\n\n\n\nReuseCC BY-NC-ND 4.0"
   },
   {
-    "objectID": "publications.html",
-    "href": "publications.html",
-    "title": "Publications",
+    "objectID": "furtado.html",
+    "href": "furtado.html",
+    "title": "Ovande Furtado JR",
     "section": "",
-    "text": "Mazzardo, O., Fontana, F. E., Furtado Jr, O., & Gallagher, J. D. (2018). The relationship of movement skills with habitual and organized physical activity in seven and eight-year-old children. Pensar a Prática, 21(1). https://doi.org/10.5216/rpp.v21i1.42360\nFurtado Jr, O., & Gallagher, J. D. (2012). The reliability of classification decisions for the Furtado-Gallagher Computerized Observational Movement Pattern Assessment System—FG-COMPASS. Research Quarterly for Exercise and Sport, 83(3), 383–390. https://doi.org/10.1080/02701367.2012.10599872"
-  },
-  {
-    "objectID": "developers.html",
-    "href": "developers.html",
-    "title": "Finley Malloc",
-    "section": "",
-    "text": "Finley Malloc is the Chief Data Scientist at Wengo Analytics. When not innovating on data platforms, Finley enjoys spending time unicycling and playing with her pet iguana."
-  },
-  {
-    "objectID": "developers.html#education",
-    "href": "developers.html#education",
-    "title": "Finley Malloc",
-    "section": "Education",
-    "text": "Education\nUniversity of California, San Diego | San Diego, CA PhD in Mathematics | Sep 2011 - June 2015\nMacalester College | St. Paul MA B.A in Economics | Sep 2007 - June 2011"
-  },
-  {
-    "objectID": "developers.html#experience",
-    "href": "developers.html#experience",
-    "title": "Finley Malloc",
-    "section": "Experience",
-    "text": "Experience\nWengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Spet 2012 - April 2018"
-  },
-  {
-    "objectID": "publication.html",
-    "href": "publication.html",
-    "title": "Publications",
-    "section": "",
-    "text": "Mazzardo, O., Fontana, F. E., Furtado Jr, O., & Gallagher, J. D. (2018). The relationship of movement skills with habitual and organized physical activity in seven and eight-year-old children. Pensar a Prática, 21(1). https://doi.org/10.5216/rpp.v21i1.42360\nFurtado Jr, O., & Gallagher, J. D. (2012). The reliability of classification decisions for the Furtado-Gallagher Computerized Observational Movement Pattern Assessment System—FG-COMPASS. Research Quarterly for Exercise and Sport, 83(3), 383–390. https://doi.org/10.1080/02701367.2012.10599872"
+    "text": "Education\nPh.D. in Motor Behavior, 2009 - University of Pittsburgh\nM.S. in Motor Behavior, 2004 - University of Pittsburgh\nB.A. in Physical Education K-12, 1998 - Federal University of Parana - Brazil\n\n\nExperience\nAssociate Professor Cal State Northridge Aug 2013 – Present Northridge, CA Teaches motor behavior and statistics courses.\nAssociate Professor Eastern Illinois University Aug 2007 – Jun 2013 Charleston, IL Taught motor behavior and statistics courses.\nPhysical Educator Teacher K-12 Falk Lab School Aug 2006 – Jun 2007 Pittsburgh, PA Taught motor skill development for children K-12.\nKinder Kinetics Movement Program Co-Director University of Pittsburgh Aug 2006 – Jun 2007 Pittsburgh, PA"
   },
   {
     "objectID": "gallagher.html",
@@ -68,12 +47,5 @@
     "title": "Jere D. Gallagher",
     "section": "Experience",
     "text": "Experience\nUniversity of Pittsburgh | Associate Dean - School of Education\nSouthern Illinois University | Assistant Professor"
-  },
-  {
-    "objectID": "furtado.html",
-    "href": "furtado.html",
-    "title": "Ovande Furtado JR",
-    "section": "",
-    "text": "Education\nPh.D. in Motor Behavior, 2009 - University of Pittsburgh\nM.S. in Motor Behavior, 2004 - University of Pittsburgh\nB.A. in Physical Education K-12, 1998 - Federal University of Parana - Brazil\n\n\nExperience\nAssociate Professor Cal State Northridge Aug 2013 – Present Northridge, CA Teaches motor behavior and statistics courses.\nAssociate Professor Eastern Illinois University Aug 2007 – Jun 2013 Charleston, IL Taught motor behavior and statistics courses.\nPhysical Educator Teacher K-12 Falk Lab School Aug 2006 – Jun 2007 Pittsburgh, PA Taught motor skill development for children K-12.\nKinder Kinetics Movement Program Co-Director University of Pittsburgh Aug 2006 – Jun 2007 Pittsburgh, PA"
   }
 ]
