@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "FG-COMPASS"
@@ -20,6 +21,7 @@ execute:
   freeze: auto
 
 editor: visual
+
 
 
 
