@@ -8,9 +8,9 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - publications.qmd
+      - publication.qmd
       - download.qmd
-
+      - developers.qmd
 format:
   html:
     theme: cosmo
@@ -19,7 +19,6 @@ format:
 
 execute:
   freeze: auto
-
 editor: visual
 
 
