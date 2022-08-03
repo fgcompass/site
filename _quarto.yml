@@ -10,7 +10,11 @@ website:
         text: Home
       - publication.qmd
       - download.qmd
-      - developers.qmd
+      - text: "Developers"
+        menu: 
+          - furtado.qmd
+          - gallagher.qmd
+          
 format:
   html:
     theme: cosmo

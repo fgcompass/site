@@ -2,7 +2,7 @@
 title: "FG-COMPASS"
 ---
 
-The Furtado-Gallagher Computerized Movement Pattern Assessment System (FG-COMPASS) is a new tool intended to assess fundamental movement skill proficiency of children 5-10 years old.
+The Furtado-Gallagher Computerized Movement Pattern Assessment System (FG-COMPASS) is a tool intended to assess fundamental movement skill proficiency of children 5-10 years old. It can be used in clinical or educational settings.
 
 The instrument uses a decision-tree approach to assess skill proficiency levels. The framework model is depicted below
 

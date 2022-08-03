@@ -1,0 +1,26 @@
+---
+title: "Jere D. Gallagher"
+about:
+  template: trestles
+  image: images/profile-gallagher.jpg
+  image-width: 12em
+  image-shape: round
+  links:
+    - icon: website
+      text: in memorium
+      href: https://www.legacy.com/us/obituaries/triblive-tribune-review/name/jere-gallagher-obituary?id=8620227
+---
+
+Dr. Jere Dee Gallagher was a highly respected and admired professor and expert on child development. She spent the greater part of her career at the University of Pittsburgh's School of Education where she became the associate dean at Pitt and was instrumental in developing the Kinder Kinetics Program in the Health and Physical Activity Department, a program she directed for more than 25 years and was her life's work.
+
+## Education
+
+Louisiana State University \| PhD in Motor Development
+
+East Carolina University - Greenville \| B.A. and M.S. Health and Physical Education
+
+## Experience
+
+University of Pittsburgh \| Associate Dean - School of Education
+
+Southern Illinois University \| Assistant Professor
