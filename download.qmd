@@ -1,0 +1,16 @@
+---
+title: "Download"
+license: CC BY-NC-ND 4.0
+---
+
+[FG-COMPASS Paper Version](https://fgcompass.com/) © 2022 by [Ovande Furtado JR ](https://github.com/drfurtado)is licensed under [Attribution-NonCommercial-NoDerivatives 4.0 International](http://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1).
+
+**Testing Protocols**
+
+-   [English](static/files/fgcompass-tp-eng.pdf)
+
+-   Portuguese (coming soon)
+
+**Decision Trees**
+
+-   [English](static/files/fgcompass-dt-eng.pdf)

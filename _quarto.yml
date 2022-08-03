@@ -1,0 +1,20 @@
+project:
+  type: website
+
+website:
+  title: "FG-COMPASS"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - publications.qmd
+      - download.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+
