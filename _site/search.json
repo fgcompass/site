@@ -7,11 +7,11 @@
     "text": "The instrument uses a decision-tree approach to assess skill proficiency levels. The framework model is depicted below.\n\n\n\n\n    %%| fig-width: 6.5\n    flowchart LR\n        A[DQ] --> |YES| B[UCQ]\n        B -->|YES| D[Level 4]\n        B -->|NO| E[Level 3]\n        A[DQ] --> |NO| F[LCQ]\n        F -->|YES| G[Level 2]\n        F -->|NO| H[Level 1]\n\n\n\n\n\n\n\n\nWhere,\n\nDQ is the discriminatory question\nUCQ is the upper confirmatory question\nLCQ is the lower confirmatory question\nLevels 1-4 are the resulting proficiency skill levels\n\nThe DQ is intended to discriminate between the two most extreme levels (i.e., levels 1 and 2). The UCQ is intended to confirm the individual is level 4. If it fail to confirm it, then the individual is assessed as level 3. Similarly, the LCQ is intended to confirm that the individual is level 1. if it fails to confirm it, then the individual is assessed as level 2.\nThe framework above was used to create decision-trees for 10 fundamental movement skills (i.e., 5 Locomotor and 5 Manipulative skills). The decision-tree for Overhand Throw is presented below.\n\n\n\n\n    %%| fig-width: 6.5\n    flowchart LR\n        A[Does the trunk rotate to the side \\n of the throw during the \\n preparation action?] --> |YES| B[Is there a long \\n contralateral step forward?]\n        B -->|YES| D[Level 4]\n        B -->|NO| E[Level 3]\n        A[Does the trunk rotate to the side \\n of the throw during the \\n preparation action?] --> |NO| F[Is there a step forward \\n with either foot?]\n        F -->|YES| G[Level 2]\n        F -->|NO| H[Level 1]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLevel 1\n\n\n\n\n\n\n\nLevel 2\n\n\n\n\n\n\n\n\n\nLevel 3\n\n\n\n\n\n\n\nLevel 4"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "download.html",
+    "href": "download.html",
+    "title": "Download",
     "section": "",
-    "text": "1 + 1\n\n[1] 2"
+    "text": "Testing Protocols\n\nEnglish\nPortuguese (coming soon)\n\nDecision Trees\n\nEnglish\n\n\n\n\nReuseCC BY-NC-ND 4.0"
   },
   {
     "objectID": "publications.html",
@@ -19,12 +19,5 @@
     "title": "Publications",
     "section": "",
     "text": "Mazzardo, O., Fontana, F. E., Furtado Jr, O., & Gallagher, J. D. (2018). The relationship of movement skills with habitual and organized physical activity in seven and eight-year-old children. Pensar a Prática, 21(1). https://doi.org/10.5216/rpp.v21i1.42360\nFurtado Jr, O., & Gallagher, J. D. (2012). The reliability of classification decisions for the Furtado-Gallagher Computerized Observational Movement Pattern Assessment System—FG-COMPASS. Research Quarterly for Exercise and Sport, 83(3), 383–390. https://doi.org/10.1080/02701367.2012.10599872"
-  },
-  {
-    "objectID": "download.html",
-    "href": "download.html",
-    "title": "Download",
-    "section": "",
-    "text": "Testing Protocols\n\nEnglish\nPortuguese (coming soon)\n\nDecision Trees\n\nEnglish\n\n\n\n\nReuseCC BY-NC-ND 4.0"
   }
 ]
