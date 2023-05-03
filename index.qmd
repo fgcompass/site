@@ -1,21 +1,16 @@
 ---
-title: "FG-COMPASS"
+title: ""
+format: 
+  html:
+     mermaid:
+        theme: neutral
 ---
 
 The Furtado-Gallagher Computerized Movement Pattern Assessment System (FG-COMPASS) is a tool intended to assess fundamental movement skill proficiency of children 5-10 years old. It can be used in clinical or educational settings.
 
-The instrument uses a decision-tree approach to assess skill proficiency levels. The framework model is depicted below
+The instrument uses a decision-tree approach to assess skill proficiency levels. The framework model is depicted below:
 
-    ```{mermaid}
-    %%| fig-width: 6.5
-    flowchart LR
-        A[DQ] --> |YES| B[UCQ]
-        B -->|YES| D[Level 4]
-        B -->|NO| E[Level 3]
-        A[DQ] --> |NO| F[LCQ]
-        F -->|YES| G[Level 2]
-        F -->|NO| H[Level 1]
-    ```
+![Framework model for the decision trees](images/dt-model.png){#fig-dt-model width="100%"}
 
 Where,
 
@@ -31,16 +26,7 @@ The `DQ` is intended to discriminate between the two most extreme levels (i.e., 
 
 The framework above was used to create decision-trees for 10 fundamental movement skills (i.e., 5 Locomotor and 5 Manipulative skills). The decision-tree for `Overhand Throw` is presented below.
 
-    ```{mermaid}
-    %%| fig-width: 6.5
-    flowchart LR
-        A[Does the trunk rotate to the side \n of the throw during the \n preparation action?] --> |YES| B[Is there a long \n contralateral step forward?]
-        B -->|YES| D[Level 4]
-        B -->|NO| E[Level 3]
-        A[Does the trunk rotate to the side \n of the throw during the \n preparation action?] --> |NO| F[Is there a step forward \n with either foot?]
-        F -->|YES| G[Level 2]
-        F -->|NO| H[Level 1]
-    ```
+![Decision tree for Throwing](images/dt-throw.png){#fig-dt-throw width="100%"}
 
 ::: {layout-ncol="2"}
 ![Level 1](images/ot-l1.png)

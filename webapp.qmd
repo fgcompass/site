@@ -1,0 +1,16 @@
+---
+title: "WebApp"
+link-external-newwindow: true
+---
+
+We are excited to announce the release of the WebApp prototype of our innovative assessment tool, FG-COMPASS! This initial release focuses on one of the ten skills that make up our comprehensive assessment framework: `Overhand Throwing`.
+
+We have been working diligently to develop a web application that offers an intuitive and accurate assessment experience. Today, we are proud to unveil the prototype for `Overhand Throwing`.
+
+We invite you to test the prototype and provide valuable feedback to help us improve and refine the tool.
+
+To try the FG-COMPASS Overhand Throwing prototype, click the link below.
+
+Thank you for your continued support and interest in the FG-COMPASS.
+
+<https://fgcompass.shinyapps.io/throw/>

@@ -3,28 +3,57 @@ project:
   output-dir: docs
 
 website:
-  title: "FG-COMPASS"
-  navbar:
-    left:
+  page-navigation: true
+  title: "Furtado-Gallagher Computerized Observational Movement Assessment System"
+  
+  page-footer:
+    right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    left: "&copy; Copyright FG-COMPASS, 2023"
+          
+  sidebar:
+    logo: "images/logo.png"
+    pinned: true
+    align: center
+    tools: 
+      - icon: github
+        href: https://github.com/fgcompass
+        text: "Manual"
+      - icon: twitter
+        href: https://twitter.com/fgcompass
+        text: "@fgcompass"
+        
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
       - href: index.qmd
         text: Home
-      - publication.qmd
+      - publications.qmd
       - download.qmd
-      - text: "Developers"
-        menu: 
+      - section: Developers
+        contents: 
           - furtado.qmd
           - gallagher.qmd
-          
+        
+    
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme:
+      light: [cosmo, theme.scss] # from https://github.com/sta210-s22/website/blob/main/_quarto.yml
+      dark: [cosmo, theme-dark.scss]
+    code-copy: true
+    code-overflow: wrap
     toc: true
 
-execute:
-  freeze: auto
-editor: visual
 
+filters:
+  - include-files.lua
+  - quarto
+
+execute:
+ freeze: auto
+
+editor: visual
 
 
 

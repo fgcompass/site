@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Throwing Assessment</title>
+  </head>
+  <body>
+    <h1>Throwing Assessment</h1>
+    <form method="POST">
+      <label for="trunk_rotation">Does the trunk rotate to the side of the throw during the preparation action?</label>
+      <select name="trunk_rotation">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br>
+
+      <label for="contralateral_step">Is there a long contralateral step forward?</label>
+      <select name="contralateral_step">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br>
+
+      <label for="step_forward">Is there a step forward with either foot?</label>
+      <select name="step_forward">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br>
+
+      <button type="submit">Assess</button>
+    </form>
+    {% if result %}
+      <h2>Assessment Result: {{ result }}</h2>
+    {% endif %}
+  </body>
+</html>
