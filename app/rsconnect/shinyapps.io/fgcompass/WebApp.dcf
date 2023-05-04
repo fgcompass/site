@@ -1,0 +1,13 @@
+name: WebApp
+title: WebApp
+username:
+account: fgcompass
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9026012
+bundleId: 7172488
+url: https://fgcompass.shinyapps.io/WebApp/
+when: 1683181444.52521
+lastSyncTime: 1683181444.52522
+asMultiple: FALSE
+asStatic: FALSE

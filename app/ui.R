@@ -26,28 +26,28 @@ shinyUI(fluidPage(
   
   titlePanel(
     div(class = "logo-container",
-        tags$a(href = "https://fgcompass", target = "_blank",
+        tags$a(href = "https://fgcompass.com", target = "_blank",
                tags$img(src = "brand_logo.png", height = "auto", width = "100px")
         )
     ),
-    windowTitle = "Throwing Proficiency Assessment"
+    windowTitle = "Skill Assessment"
   ),
   
   fluidRow(
-    column(6,
+    column(12,
            wellPanel(
              tags$h3(textOutput("questionTitle")),
              uiOutput("question"),
              textOutput("result")
            )
-    ),
-    column(6,
-           img(src = "dt-throw.png", height = "auto", width = "100%", alt = "Your Image")
     )
   ),
   
+  
   div(class = "footer",
-      tags$p("Copyright 2023 FG-COMPASS. All rights reserved."),
-      tags$p(tags$a("FG-COMPASS", href = "https://fgcompass.com", target = "_blank"))
+      tags$p(HTML("&copy; Copyright 2023 "),
+             tags$a("FG-COMPASS.", href = "https://fgcompass.com", target = "_blank"),
+             "All rights reserved."),
+      downloadLink("downloadResults", "Download Results")
   )
 ))

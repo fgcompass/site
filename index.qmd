@@ -10,7 +10,7 @@ The Furtado-Gallagher Computerized Movement Pattern Assessment System (FG-COMPAS
 
 The instrument uses a decision-tree approach to assess skill proficiency levels. The framework model is depicted below:
 
-![Framework model for the decision trees](images/dt-model.png){#fig-dt-model width="100%"}
+![Framework model for the decision trees](images/dt-model.png){#fig-dt-model width="550"}
 
 Where,
 
@@ -26,7 +26,7 @@ The `DQ` is intended to discriminate between the two most extreme levels (i.e., 
 
 The framework above was used to create decision-trees for 10 fundamental movement skills (i.e., 5 Locomotor and 5 Manipulative skills). The decision-tree for `Overhand Throw` is presented below.
 
-![Decision tree for Throwing](images/dt-throw.png){#fig-dt-throw width="100%"}
+![Decision tree for Throwing](images/dt-throw.png){#fig-dt-throw width="550"}
 
 ::: {layout-ncol="2"}
 ![Level 1](images/ot-l1.png)
