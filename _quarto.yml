@@ -11,7 +11,7 @@ website:
     left: "&copy; Copyright FG-COMPASS, 2023"
           
   sidebar:
-    logo: "images/logo.png"
+    logo: "images/logo1.png"
     pinned: true
     align: center
     tools: 

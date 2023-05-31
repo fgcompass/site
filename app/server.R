@@ -7,8 +7,8 @@ skill_questions <- list(
     "Did the child fail to step forward?"
   ),
   kick = list(
-    "Did the child take a long stride or leap before ball contact?",
-    "Did the stabilizing leg move forward following ball contact?",
+    "Did the child take a long stride/leap before ball contact?",
+    "Did the placement foot move forward following ball contact?",
     "Did the child fail to step toward the ball?"
   )
 )
@@ -52,38 +52,35 @@ shinyServer(function(input, output, session) {
   })
   
   observeEvent(input$reset, {
-    write.table(data.frame(observer = values$observerName,
-                           location = values$location,
-                           skill = input$skill,
-                           date = values$date,
-                           performer = values$performer,
-                           result = values$result),
-                "results.csv", append = TRUE, sep = ",", col.names = !file.exists("results.csv"),
-                row.names = FALSE, quote = FALSE)
+    if (file.exists("results.csv")) {
+      result_data <- read.csv("results.csv", stringsAsFactors = FALSE)
+    } else {
+      result_data <- data.frame(
+        observer = character(),
+        location = character(),
+        skill = character(),
+        date = character(),
+        performer = character(),
+        result = character(),
+        stringsAsFactors = FALSE
+      )
+    }
+    
+    new_entry <- data.frame(
+      observer = input$observer,
+      location = input$location,
+      skill = input$skill,
+      date = as.character(input$date),
+      performer = input$performer,
+      result = values$result,
+      stringsAsFactors = FALSE
+    )
+    
+    result_data <- rbind(result_data, new_entry)
+    write.csv(result_data, "results.csv", row.names = FALSE)
     
     values$questionNumber <- 0
     values$result <- NULL
-  })
-  
-  output$downloadResults <- downloadHandler(
-    filename = function() {
-      paste("assessment_results-", Sys.Date(), ".csv", sep = "")
-    },
-    content = function(file) {
-      file.copy("results.csv", file)
-    },
-    contentType = "text/csv"
-  )
-  
-  
-  output$questionTitle <- renderText({
-    if (values$questionNumber == 0) {
-      "Observer Information"
-    } else if (values$questionNumber == 4) {
-      "Result"
-    } else {
-      paste("Question", values$questionNumber)
-    }
   })
   
   
@@ -93,18 +90,20 @@ shinyServer(function(input, output, session) {
         selectInput("skill", "Select Skill", choices = c("throw", "kick")),
         textInput("observer", "Observer Name", value = values$observerName),
         textInput("location", "Location", value = values$location),
-        textInput("performer", "Performer Name", value = values$performer),
+        textInput("performer", "Performer Name"),
         dateInput("date", "Date", value = values$date),
         actionButton("submitInfo", "Start Assessment")
       )
     } else if (values$questionNumber == 4) {
       tagList(
-        h4("Skill Level:", values$result),
+        h4("Skill Level:",
+           values$result),
         actionButton("reset", "Assess Another Performer")
       )
     } else {
       skill <- input$skill
-      question_text <- skill_questions[[skill]][values$questionNumber]
+      question_text <- skill_questions[[skill]][values$
+                                                  questionNumber]
       tagList(
         radioButtons(paste0("q", values$questionNumber), question_text, choices = c("YES", "NO"), inline = TRUE),
         actionButton(paste0("submitQ", values$questionNumber), "Submit")
@@ -113,3 +112,54 @@ shinyServer(function(input, output, session) {
   })
   
 })
+
+shinyUI(fluidPage(
+  tags$head(tags$style(HTML("
+    .navbar {
+      background-color: #YOUR_BRAND_COLOR;
+      font-family: 'YOUR_FONT_NAME', sans-serif;
+    }
+    .navbar-brand {
+      padding: 5px;
+    }
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #f8f9fa;
+      padding: 10px 0;
+      text-align: center;
+    }
+  "))),
+  
+  titlePanel(
+    div(class = "logo-container",
+        tags$a(href = "https://fgcompass.com", target = "_blank",
+               tags$img(src = "brand_logo.png", height = "auto", width = "100px")
+        )
+    ),
+    windowTitle = "Skill Assessment"
+  ),
+  
+  fluidRow(
+    column(12,
+           wellPanel(
+             tags$h3(textOutput("questionTitle")),
+             uiOutput("question"),
+             textOutput("result")
+           )
+    )
+  ),
+  
+  div(class = "footer",
+      tags$p(HTML("&copy; Copyright 2023 "),
+             tags$a("FG-COMPASS.", href = "https://fgcompass.com", target = "_blank"),
+             "All rights reserved."),
+      downloadButton("downloadResults", "Download Results")
+  )
+))
