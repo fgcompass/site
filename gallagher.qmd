@@ -1,8 +1,6 @@
 ---
 title: "Jere D. Gallagher"
 sidebar: true
-link-external-icon: true
-link-external-newwindow: true
 ---
 
 [in memorium](https://www.legacy.com/us/obituaries/triblive-tribune-review/name/jere-gallagher-obituary?id=8620227)
