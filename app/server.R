@@ -40,6 +40,7 @@ shinyServer(function(input, output, session) {
       values$result <- "Level 3"
     }
     values$questionNumber <- 4
+    saveResults(values, input)
   })
   
   observeEvent(input$submitQ3, {
@@ -49,9 +50,10 @@ shinyServer(function(input, output, session) {
       values$result <- "Level 1"
     }
     values$questionNumber <- 4
+    saveResults(values, input)
   })
   
-  observeEvent(input$reset, {
+  saveResults <- function(values, input) {
     if (file.exists("results.csv")) {
       result_data <- read.csv("results.csv", stringsAsFactors = FALSE)
     } else {
@@ -67,22 +69,32 @@ shinyServer(function(input, output, session) {
     }
     
     new_entry <- data.frame(
-      observer = input$observer,
-      location = input$location,
+      observer = values$observerName,
+      location = values$location,
       skill = input$skill,
-      date = as.character(input$date),
-      performer = input$performer,
+      date = as.character(values$date),
+      performer = values$performer,
       result = values$result,
       stringsAsFactors = FALSE
     )
     
     result_data <- rbind(result_data, new_entry)
     write.csv(result_data, "results.csv", row.names = FALSE)
-    
+  }
+  
+  output$downloadResults <- downloadHandler(
+    filename = function() {
+      "results.csv"
+    },
+    content = function(file) {
+      file.copy("results.csv", file)
+    }
+  )
+  
+  observeEvent(input$reset, {
     values$questionNumber <- 0
     values$result <- NULL
   })
-  
   
   output$question <- renderUI({
     if (values$questionNumber == 0) {
@@ -102,8 +114,7 @@ shinyServer(function(input, output, session) {
       )
     } else {
       skill <- input$skill
-      question_text <- skill_questions[[skill]][values$
-                                                  questionNumber]
+      question_text <- skill_questions[[skill]][values$questionNumber]
       tagList(
         radioButtons(paste0("q", values$questionNumber), question_text, choices = c("YES", "NO"), inline = TRUE),
         actionButton(paste0("submitQ", values$questionNumber), "Submit")
@@ -112,54 +123,3 @@ shinyServer(function(input, output, session) {
   })
   
 })
-
-shinyUI(fluidPage(
-  tags$head(tags$style(HTML("
-    .navbar {
-      background-color: #YOUR_BRAND_COLOR;
-      font-family: 'YOUR_FONT_NAME', sans-serif;
-    }
-    .navbar-brand {
-      padding: 5px;
-    }
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background-color: #f8f9fa;
-      padding: 10px 0;
-      text-align: center;
-    }
-  "))),
-  
-  titlePanel(
-    div(class = "logo-container",
-        tags$a(href = "https://fgcompass.com", target = "_blank",
-               tags$img(src = "brand_logo.png", height = "auto", width = "100px")
-        )
-    ),
-    windowTitle = "Skill Assessment"
-  ),
-  
-  fluidRow(
-    column(12,
-           wellPanel(
-             tags$h3(textOutput("questionTitle")),
-             uiOutput("question"),
-             textOutput("result")
-           )
-    )
-  ),
-  
-  div(class = "footer",
-      tags$p(HTML("&copy; Copyright 2023 "),
-             tags$a("FG-COMPASS.", href = "https://fgcompass.com", target = "_blank"),
-             "All rights reserved."),
-      downloadButton("downloadResults", "Download Results")
-  )
-))

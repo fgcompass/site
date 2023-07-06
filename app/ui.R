@@ -43,11 +43,10 @@ shinyUI(fluidPage(
     )
   ),
   
-  
   div(class = "footer",
       tags$p(HTML("&copy; Copyright 2023 "),
              tags$a("FG-COMPASS.", href = "https://fgcompass.com", target = "_blank"),
              "All rights reserved."),
-      downloadLink("downloadResults", "Download Results")
+      downloadButton("downloadResults", "Download Results")
   )
 ))
