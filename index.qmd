@@ -29,7 +29,7 @@ Where,
 
 The purpose of DQ is to differentiate between the highest and lowest levels, namely levels 1 and 4. UCQ is designed to verify if an individual is at level 4. If UCQ fails to confirm level 4, then the individual is evaluated as level 3. Similarly, LCQ is meant to confirm if an individual is at level 1. If LCQ fails to confirm level 1, then the individual is evaluated as level 2.
 
-Using the framework mentioned earlier, decision-trees were created for 10 essential movement skills, which include 5 Locomotor and 5 Manipulative skills. Below is an example of the decision-tree for the `Overhand Throw`.
+Using the framework mentioned earlier, decision-trees were created for 10 movement skills, which include 5 Locomotor and 5 Manipulative skills. Below is an example of the decision-tree for the `Overhand Throw`.
 
 ![Decision tree for Throwing](images/fgcompass-dt-man-ot.png){#fig-dt-throw width="750"}
 

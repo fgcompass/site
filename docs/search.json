@@ -1,33 +1,5 @@
 [
   {
-    "objectID": "publication.html",
-    "href": "publication.html",
-    "title": "Publications",
-    "section": "",
-    "text": "Furtado Jr, O., & Gallagher, J. D. (2018). Expert-Rater Agreement and Inter-/Intrarater Reliability for the Furtado–Gallagher Computerized Observational Movement Pattern Assessment System. Perceptual and Motor Skills, 125(3), 423–437. https://doi.org/10.1177/0031512518769205\nMazzardo, O., Fontana, F. E., Furtado Jr, O., & Gallagher, J. D. (2018). The relationship of movement skills with habitual and organized physical activity in seven and eight-year-old children. Pensar a Prática, 21(1). https://doi.org/10.5216/rpp.v21i1.42360\nFurtado Jr, O., & Gallagher, J. D. (2012). The reliability of classification decisions for the Furtado-Gallagher Computerized Observational Movement Pattern Assessment System—FG-COMPASS. Research Quarterly for Exercise and Sport, 83(3), 383–390. https://doi.org/10.1080/02701367.2012.10599872"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Furtado-Gallagher Computerized Observational Movement Assessment System",
-    "section": "",
-    "text": "The Child Observational Movement Pattern Assessment System1 (FG-COMPASS) is an assessment tool designed to evaluate the proficiency of fundamental movement skills in children between the ages of 5 to 10. It can be utilized in both educational and clinical environments.\nThe tool employs a decision-tree strategy to evaluate proficiency levels of skills. The model framework is illustrated below:\nWhere,\nThe purpose of DQ is to differentiate between the highest and lowest levels, namely levels 1 and 4. UCQ is designed to verify if an individual is at level 4. If UCQ fails to confirm level 4, then the individual is evaluated as level 3. Similarly, LCQ is meant to confirm if an individual is at level 1. If LCQ fails to confirm level 1, then the individual is evaluated as level 2.\nUsing the framework mentioned earlier, decision-trees were created for 10 essential movement skills, which include 5 Locomotor and 5 Manipulative skills. Below is an example of the decision-tree for the Overhand Throw."
-  },
-  {
-    "objectID": "download.html",
-    "href": "download.html",
-    "title": "Download",
-    "section": "",
-    "text": "Testing Protocols\n\nEnglish\nPortuguese (coming soon)\n\nDecision Trees\n\nEnglish"
-  },
-  {
-    "objectID": "furtado.html",
-    "href": "furtado.html",
-    "title": "Ovande Furtado JR",
-    "section": "",
-    "text": "Dr. Furtado received a B.A. in Physical Education from the Federal University of Parana, Curitiba, PR - Brazil. He earned his M.S. and Ph.D. degrees in Motor Behavior from the University of Pittsburgh, PA. Dr. Furtado’s line of research focuses on two main areas: (1) validation of observational models in psychomotor assessment instruments and (2) the relationship between motor skill competence, perceived motor competence, physical activity levels, and body composition.\n\nEducation\nPh.D. in Motor Behavior, 2009 - University of Pittsburgh\nM.S. in Motor Behavior, 2004 - University of Pittsburgh\nB.A. in Physical Education K-12, 1998 - Federal University of Parana - Brazil\n\n\nExperience\nAssociate Professor Cal State Northridge Aug 2013 – Present Northridge, CA Teaches motor behavior and statistics courses.\nAssociate Professor Eastern Illinois University Aug 2007 – Jun 2013 Charleston, IL Taught motor behavior and statistics courses.\nPhysical Educator Teacher K-12 Falk Lab School Aug 2006 – Jun 2007 Pittsburgh, PA Taught motor skill development for children K-12.\nKinder Kinetics Movement Program Co-Director University of Pittsburgh Aug 2006 – Jun 2007 Pittsburgh, PA"
-  },
-  {
     "objectID": "gallagher.html",
     "href": "gallagher.html",
     "title": "Jere D. Gallagher",
@@ -56,11 +28,11 @@
     "text": "Mazzardo, O., Weis, B., Sampaio, A. A., Lima, D. F. de, Souza, D. C. de, & Furtado Jr, O. (2023). Association between fundamental motor skill domains and physical fitness components in children aged 5 to 11 years [Manuscript in preparation].\nPerez, L., & Furtado, O., Jr. (2023). Investigating expert vs rater consensus agreement, inter and intra-rater reliability of two fundamental movement skills for the locomotor subscale of the FG-COMPASS [Manuscript in preparation].\nBolin, M., & Furtado, O. (2023). The relationship between BMI and FMS performance in rural children [Manuscript in preparation].\nWoolever, M., Furtado, O., Jr., Barroso, R. A., Romack, J., & Gallagher, J. D. (2023). Collecting concurrent validity, expert-rater agreement, and inter/intra-rater reliability evidence for the FG-COMPASS [Manuscript in preparation].\nFurtado Jr, O., & Gallagher, J. D. (2018). Expert-Rater Agreement and Inter-/Intrarater Reliability for the Furtado–Gallagher Computerized Observational Movement Pattern Assessment System. Perceptual and Motor Skills, 125(3), 423–437. https://doi.org/10.1177/0031512518769205\nMazzardo, O., Fontana, F. E., Furtado Jr, O., & Gallagher, J. D. (2018). The relationship of movement skills with habitual and organized physical activity in seven and eight-year-old children. Pensar a Prática, 21(1). https://doi.org/10.5216/rpp.v21i1.42360\nFurtado Jr, O., & Gallagher, J. D. (2012). The reliability of classification decisions for the Furtado-Gallagher Computerized Observational Movement Pattern Assessment System—FG-COMPASS. Research Quarterly for Exercise and Sport, 83(3), 383–390. https://doi.org/10.1080/02701367.2012.10599872"
   },
   {
-    "objectID": "webapp.html",
-    "href": "webapp.html",
-    "title": "WebApp",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Furtado-Gallagher Computerized Observational Movement Assessment System",
     "section": "",
-    "text": "We are excited to announce the release of the WebApp prototype of our innovative assessment tool, FG-COMPASS! This initial release focuses on one of the ten skills that make up our comprehensive assessment framework: Overhand Throwing.\nWe have been working diligently to develop a web application that offers an intuitive and accurate assessment experience. Today, we are proud to unveil the prototype for Overhand Throwing.\nWe invite you to test the prototype and provide valuable feedback to help us improve and refine the tool.\nTo try the FG-COMPASS Overhand Throwing prototype, click the link below.\nThank you for your continued support and interest in the FG-COMPASS.\nhttps://fgcompass.shinyapps.io/throw/"
+    "text": "The Child Observational Movement Pattern Assessment System1 (FG-COMPASS) is an assessment tool designed to evaluate the proficiency of fundamental movement skills in children between the ages of 5 to 10. It can be utilized in both educational and clinical environments.\nThe tool employs a decision-tree strategy to evaluate proficiency levels of skills. The model framework is illustrated below:\nWhere,\nThe purpose of DQ is to differentiate between the highest and lowest levels, namely levels 1 and 4. UCQ is designed to verify if an individual is at level 4. If UCQ fails to confirm level 4, then the individual is evaluated as level 3. Similarly, LCQ is meant to confirm if an individual is at level 1. If LCQ fails to confirm level 1, then the individual is evaluated as level 2.\nUsing the framework mentioned earlier, decision-trees were created for 10 movement skills, which include 5 Locomotor and 5 Manipulative skills. Below is an example of the decision-tree for the Overhand Throw."
   },
   {
     "objectID": "index.html#footnotes",
@@ -68,5 +40,26 @@
     "title": "Furtado-Gallagher Computerized Observational Movement Assessment System",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nFormally know as “Computerized Observational Movement Pattern Assessment System”.↩︎"
+  },
+  {
+    "objectID": "webapp.html",
+    "href": "webapp.html",
+    "title": "WebApp",
+    "section": "",
+    "text": "We are excited to announce the release of the WebApp prototype of our innovative assessment tool, FG-COMPASS! This initial release focuses on one of the ten skills that make up our comprehensive assessment framework: Overhand Throwing.\nWe have been working diligently to develop a web application that offers an intuitive and accurate assessment experience. Today, we are proud to unveil the prototype for Overhand Throwing.\nWe invite you to test the prototype and provide valuable feedback to help us improve and refine the tool.\nTo try the FG-COMPASS Overhand Throwing prototype, click the link below.\nThank you for your continued support and interest in the FG-COMPASS.\nhttps://fgcompass.shinyapps.io/throw/"
+  },
+  {
+    "objectID": "download.html",
+    "href": "download.html",
+    "title": "Download",
+    "section": "",
+    "text": "Testing Protocols\n\nEnglish\nPortuguese (coming soon)\n\nDecision Trees\n\nEnglish"
+  },
+  {
+    "objectID": "furtado.html",
+    "href": "furtado.html",
+    "title": "Ovande Furtado JR",
+    "section": "",
+    "text": "Dr. Furtado received a B.A. in Physical Education from the Federal University of Parana, Curitiba, PR - Brazil. He earned his M.S. and Ph.D. degrees in Motor Behavior from the University of Pittsburgh, PA. Dr. Furtado’s line of research focuses on two main areas: (1) validation of observational models in psychomotor assessment instruments and (2) the relationship between motor skill competence, perceived motor competence, physical activity levels, and body composition.\n\nEducation\nPh.D. in Motor Behavior, 2009 - University of Pittsburgh\nM.S. in Motor Behavior, 2004 - University of Pittsburgh\nB.A. in Physical Education K-12, 1998 - Federal University of Parana - Brazil\n\n\nExperience\nAssociate Professor Cal State Northridge Aug 2013 – Present Northridge, CA Teaches motor behavior and statistics courses.\nAssociate Professor Eastern Illinois University Aug 2007 – Jun 2013 Charleston, IL Taught motor behavior and statistics courses.\nPhysical Educator Teacher K-12 Falk Lab School Aug 2006 – Jun 2007 Pittsburgh, PA Taught motor skill development for children K-12.\nKinder Kinetics Movement Program Co-Director University of Pittsburgh Aug 2006 – Jun 2007 Pittsburgh, PA"
   }
 ]
