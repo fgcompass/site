@@ -15,7 +15,7 @@ The Child Observational Movement Pattern Assessment System[^1] (FG-COMPASS) is a
 
 The tool employs a decision-tree strategy to evaluate proficiency levels of skills. The model framework is illustrated below:
 
-![Framework model for the decision trees](images/fgcompass-dt-model.png){#fig-dt-model width="750"}
+![Framework model for the decision trees](images/dts/fgcompass-dt-model.png){#fig-dt-model width="750"}
 
 Where,
 
@@ -31,7 +31,7 @@ The purpose of DQ is to differentiate between the highest and lowest levels, nam
 
 Using the framework mentioned earlier, decision-trees were created for 10 movement skills, which include 5 Locomotor and 5 Manipulative skills. Below is an example of the decision-tree for the `Overhand Throw`.
 
-![Decision tree for Throwing](images/fgcompass-dt-man-ot.png){#fig-dt-throw width="750"}
+![Decision tree for Throwing](images/dts/fgcompass-dt-man-ot.png){#fig-dt-throw width="750"}
 
 ::: {layout-ncol="2"}
 ![Level 1](images/ot-l1.png)
