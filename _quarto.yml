@@ -11,7 +11,8 @@ website:
     left: "&copy; Copyright FG-COMPASS, 2023"
           
   sidebar:
-    logo: "images/logo1.png"
+    logo: "images/logos/logo-bk.png"
+    css: logo.css
     pinned: true
     align: center
     tools: 
@@ -39,8 +40,8 @@ website:
 format:
   html:
     theme:
-      light: flatly
-      dark: darkly
+      light: [cosmo, theme.scss] # from https://github.com/sta210-s22/website/blob/main/_quarto.yml
+      dark: [cosmo, theme-dark.scss]
     code-copy: true
     code-overflow: wrap
     toc: true
