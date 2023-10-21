@@ -4,28 +4,43 @@
     "href": "gallagher.html",
     "title": "Jere D. Gallagher",
     "section": "",
-    "text": "in memorium\nThroughout her career, Dr. Jere Dee Gallagher was highly regarded and esteemed as an authority on child development. She dedicated most of her time to the University of Pittsburgh’s School of Education, where she eventually rose to the position of associate dean. During her tenure, she was instrumental in creating the Kinder Kinetics Program in the Health and Physical Activity Department, which she directed for over 25 years and considered her life’s crowning achievement"
+    "text": "in memorium\nThroughout her career, Dr. Jere Dee Gallagher was highly regarded and esteemed as an authority on child development. She dedicated most of her time to the University of Pittsburgh’s School of Education, where she eventually rose to the position of associate dean. During her tenure, she was instrumental in creating the Kinder Kinetics Program in the Health and Physical Activity Department, which she directed for over 25 years and considered her life’s crowning achievement",
+    "crumbs": [
+      "Developers",
+      "Jere D. Gallagher"
+    ]
   },
   {
     "objectID": "gallagher.html#education",
     "href": "gallagher.html#education",
     "title": "Jere D. Gallagher",
     "section": "Education",
-    "text": "Education\nLouisiana State University | PhD in Motor Development\nEast Carolina University - Greenville | B.A. and M.S. Health and Physical Education"
+    "text": "Education\nLouisiana State University | PhD in Motor Development\nEast Carolina University - Greenville | B.A. and M.S. Health and Physical Education",
+    "crumbs": [
+      "Developers",
+      "Jere D. Gallagher"
+    ]
   },
   {
     "objectID": "gallagher.html#experience",
     "href": "gallagher.html#experience",
     "title": "Jere D. Gallagher",
     "section": "Experience",
-    "text": "Experience\nUniversity of Pittsburgh | Associate Dean - School of Education\nSouthern Illinois University | Assistant Professor"
+    "text": "Experience\nUniversity of Pittsburgh | Associate Dean - School of Education\nSouthern Illinois University | Assistant Professor",
+    "crumbs": [
+      "Developers",
+      "Jere D. Gallagher"
+    ]
   },
   {
     "objectID": "publications.html",
     "href": "publications.html",
     "title": "Publications",
     "section": "",
-    "text": "Mazzardo, O., Weis, B., Sampaio, A. A., Lima, D. F. de, Souza, D. C. de, & Furtado Jr, O. (2023). Association between fundamental motor skill domains and physical fitness components in children aged 5 to 11 years [Manuscript in preparation].\nPerez, L., & Furtado, O., Jr. (2023). Investigating expert vs rater consensus agreement, inter and intra-rater reliability of two fundamental movement skills for the locomotor subscale of the FG-COMPASS [Manuscript in preparation].\nBolin, M., & Furtado, O. (2023). The relationship between BMI and FMS performance in rural children [Manuscript in preparation].\nWoolever, M., Furtado, O., Jr., Barroso, R. A., Romack, J., & Gallagher, J. D. (2023). Collecting concurrent validity, expert-rater agreement, and inter/intra-rater reliability evidence for the FG-COMPASS [Manuscript in preparation].\nFurtado Jr, O., & Gallagher, J. D. (2018). Expert-Rater Agreement and Inter-/Intrarater Reliability for the Furtado–Gallagher Computerized Observational Movement Pattern Assessment System. Perceptual and Motor Skills, 125(3), 423–437. https://doi.org/10.1177/0031512518769205\nMazzardo, O., Fontana, F. E., Furtado Jr, O., & Gallagher, J. D. (2018). The relationship of movement skills with habitual and organized physical activity in seven and eight-year-old children. Pensar a Prática, 21(1). https://doi.org/10.5216/rpp.v21i1.42360\nFurtado Jr, O., & Gallagher, J. D. (2012). The reliability of classification decisions for the Furtado-Gallagher Computerized Observational Movement Pattern Assessment System—FG-COMPASS. Research Quarterly for Exercise and Sport, 83(3), 383–390. https://doi.org/10.1080/02701367.2012.10599872"
+    "text": "Mazzardo, O., Weis, B., Sampaio, A. A., Lima, D. F. de, Souza, D. C. de, & Furtado Jr, O. (2023). Association between fundamental motor skill domains and physical fitness components in children aged 5 to 11 years [Manuscript in preparation].\nPerez, L., & Furtado, O., Jr. (2023). Investigating expert vs rater consensus agreement, inter and intra-rater reliability of two fundamental movement skills for the locomotor subscale of the FG-COMPASS [Manuscript in preparation].\nBolin, M., & Furtado, O. (2023). The relationship between BMI and FMS performance in rural children [Manuscript in preparation].\nWoolever, M., Furtado, O., Jr., Barroso, R. A., Romack, J., & Gallagher, J. D. (2023). Collecting concurrent validity, expert-rater agreement, and inter/intra-rater reliability evidence for the FG-COMPASS [Manuscript in preparation].\nFurtado Jr, O., & Gallagher, J. D. (2018). Expert-Rater Agreement and Inter-/Intrarater Reliability for the Furtado–Gallagher Computerized Observational Movement Pattern Assessment System. Perceptual and Motor Skills, 125(3), 423–437. https://doi.org/10.1177/0031512518769205\nMazzardo, O., Fontana, F. E., Furtado Jr, O., & Gallagher, J. D. (2018). The relationship of movement skills with habitual and organized physical activity in seven and eight-year-old children. Pensar a Prática, 21(1). https://doi.org/10.5216/rpp.v21i1.42360\nFurtado Jr, O., & Gallagher, J. D. (2012). The reliability of classification decisions for the Furtado-Gallagher Computerized Observational Movement Pattern Assessment System—FG-COMPASS. Research Quarterly for Exercise and Sport, 83(3), 383–390. https://doi.org/10.1080/02701367.2012.10599872",
+    "crumbs": [
+      "Publications"
+    ]
   },
   {
     "objectID": "index.html",
@@ -36,13 +51,6 @@
     "crumbs": [
       "Home"
     ]
-  },
-  {
-    "objectID": "index.html#footnotes",
-    "href": "index.html#footnotes",
-    "title": "Furtado-Gallagher Computerized Observational Movement Assessment System",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nFormally know as “Computerized Observational Movement Pattern Assessment System”.↩︎"
   },
   {
     "objectID": "webapp.html",
@@ -56,13 +64,20 @@
     "href": "download.html",
     "title": "Download",
     "section": "",
-    "text": "Testing Protocols\n\nEnglish\nPortuguese (coming soon)\n\nDecision Trees\n\nEnglish"
+    "text": "Testing Protocols\n\nEnglish\nPortuguese (coming soon)\n\nDecision Trees\n\nEnglish",
+    "crumbs": [
+      "Download"
+    ]
   },
   {
     "objectID": "furtado.html",
     "href": "furtado.html",
     "title": "Ovande Furtado JR",
     "section": "",
-    "text": "Dr. Furtado received a B.A. in Physical Education from the Federal University of Parana, Curitiba, PR - Brazil. He earned his M.S. and Ph.D. degrees in Motor Behavior from the University of Pittsburgh, PA. Dr. Furtado’s line of research focuses on two main areas: (1) validation of observational models in psychomotor assessment instruments and (2) the relationship between motor skill competence, perceived motor competence, physical activity levels, and body composition.\n\nEducation\nPh.D. in Motor Behavior, 2009 - University of Pittsburgh\nM.S. in Motor Behavior, 2004 - University of Pittsburgh\nB.A. in Physical Education K-12, 1998 - Federal University of Parana - Brazil\n\n\nExperience\nAssociate Professor Cal State Northridge Aug 2013 – Present Northridge, CA Teaches motor behavior and statistics courses.\nAssociate Professor Eastern Illinois University Aug 2007 – Jun 2013 Charleston, IL Taught motor behavior and statistics courses.\nPhysical Educator Teacher K-12 Falk Lab School Aug 2006 – Jun 2007 Pittsburgh, PA Taught motor skill development for children K-12.\nKinder Kinetics Movement Program Co-Director University of Pittsburgh Aug 2006 – Jun 2007 Pittsburgh, PA"
+    "text": "Dr. Furtado received a B.A. in Physical Education from the Federal University of Parana, Curitiba, PR - Brazil. He earned his M.S. and Ph.D. degrees in Motor Behavior from the University of Pittsburgh, PA. Dr. Furtado’s line of research focuses on two main areas: (1) validation of observational models in psychomotor assessment instruments and (2) the relationship between motor skill competence, perceived motor competence, physical activity levels, and body composition.\n\nEducation\nPh.D. in Motor Behavior, 2009 - University of Pittsburgh\nM.S. in Motor Behavior, 2004 - University of Pittsburgh\nB.A. in Physical Education K-12, 1998 - Federal University of Parana - Brazil\n\n\nExperience\nAssociate Professor Cal State Northridge Aug 2013 – Present Northridge, CA Teaches motor behavior and statistics courses.\nAssociate Professor Eastern Illinois University Aug 2007 – Jun 2013 Charleston, IL Taught motor behavior and statistics courses.\nPhysical Educator Teacher K-12 Falk Lab School Aug 2006 – Jun 2007 Pittsburgh, PA Taught motor skill development for children K-12.\nKinder Kinetics Movement Program Co-Director University of Pittsburgh Aug 2006 – Jun 2007 Pittsburgh, PA",
+    "crumbs": [
+      "Developers",
+      "Ovande Furtado JR"
+    ]
   }
 ]
