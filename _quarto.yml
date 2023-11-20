@@ -4,7 +4,7 @@ project:
 
 website:
   page-navigation: true
-  title: "Furtado-Gallagher Computerized Observational Movement Assessment System"
+  title: "Furtado-Gallagher Children Observational Movement Assessment System"
   
   page-footer:
     right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
