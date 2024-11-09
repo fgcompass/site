@@ -8,7 +8,7 @@ website:
   
   page-footer:
     right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
-    left: "&copy; Copyright FG-COMPASS, 2023"
+    left: "© 2024 FG-COMPASS. All rights reserved."
           
   sidebar:
     logo: "images/logos/logo-bk.png"

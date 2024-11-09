@@ -1,12 +1,7 @@
 ---
 title: ""
-filters:
-   - lightbox
 lightbox: auto
-format: 
-  html:
-     mermaid:
-        theme: neutral
+format: html
 ---
 
 The Children Observational Movement Pattern Assessment System[^1] (FG-COMPASS) is an assessment tool designed to evaluate the proficiency of fundamental movement skills in children between the ages of 5 to 10. It can be utilized in both educational and clinical environments.
