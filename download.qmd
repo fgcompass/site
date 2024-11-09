@@ -4,7 +4,7 @@ title: "Download"
 
 **Testing Protocols**
 
--   [English](static/files/fgcompass-tp-eng.pdf)
+-   [English](static/files/fgcompass-testing-protocols-port-v2.2)
 
 -   Portuguese (coming soon)
 
