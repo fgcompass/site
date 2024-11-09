@@ -10,4 +10,4 @@ title: "Download"
 
 **Decision Trees**
 
--   [English](static/files/fgcompass-dt-eng.pdf)
+-   [English](static/files/fgcompass-decision-trees-v2.2.pdf)
