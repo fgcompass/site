@@ -12,4 +12,4 @@ We're excited to share the user's manual for the FG-COMPASS, which also comes wi
 
 The FG-COMPASS decision trees are compiled in a single file, which includes the scales we use to evaluate children's performance.
 
--   [English](static/files/fgcompass-dt-eng.pdf)
+-   [English](static/files/fgcompass-decision-trees-v2.2.pdf)
