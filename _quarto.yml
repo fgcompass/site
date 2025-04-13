@@ -5,10 +5,16 @@ project:
 website:
   page-navigation: true
   title: "Furtado-Gallagher Children Observational Movement Assessment System"
-  
-  page-footer:
-    right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
-    left: "&copy; Copyright FG-COMPASS, 2023"
+  announcement: 
+    content: "**NEW** - FG-COMPASS Manual is now available for download!"
+    position: below-navbar
+
+  page-footer: 
+    left: "Copyright 2025 @ FG-COMPASS"
+    background: light
+    right: 
+      - icon: book
+        href: https://drfurtado.github.io/compass-manual/
           
   sidebar:
     logo: "images/logos/logo-bk.png"
@@ -27,11 +33,20 @@ website:
     search: true
     collapse-level: 1
     contents:
-      - href: index.qmd
+      - icon: house
+        href: index.qmd
         text: Home
-      - publications.qmd
-      - download.qmd
+      - icon: download
+        href: download.qmd
+        text: Download
+      - icon: journal-text
+        href: publications.qmd
+        text: Publications
+      - icon: book
+        href: https://drfurtado.github.io/compass-manual/
+        text: User Manual
       - section: Developers
+        icon: person
         contents: 
           - furtado.qmd
           - gallagher.qmd

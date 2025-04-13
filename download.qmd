@@ -4,10 +4,12 @@ title: "Download"
 
 **Testing Protocols**
 
--   [English](static/files/fgcompass-testing-protocols-port-v2.2)
+We're excited to share the user's manual for the FG-COMPASS, which also comes with the testing protocols. Just click on the link below to explore it!
 
--   Portuguese (coming soon)
+<https://drfurtado.github.io/compass-manual/>
 
 **Decision Trees**
+
+The FG-COMPASS decision trees are compiled in a single file, which includes the scales we use to evaluate children's performance.
 
 -   [English](static/files/fgcompass-dt-eng.pdf)
