@@ -1,0 +1,8 @@
+/* Navbar logo */
+.navbar-brand .navbar-logo,
+.navbar .navbar-logo {
+  max-height: 44px;
+  height: 44px;
+  width: auto;
+}
+body.quarto-dark .navbar-logo { filter: invert(1); }

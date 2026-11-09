@@ -1,0 +1,79 @@
+# Brazilian Portuguese version of the FG-COMPASS site.
+# Render from the repository root with:  quarto render pt
+# Output goes to docs/pt/, next to the English site in docs/.
+project:
+  type: website
+  output-dir: ../docs/pt
+
+website:
+  title: "FG-COMPASS"
+  description: "Uma avaliação observacional rápida e validada das habilidades motoras fundamentais de crianças de 5 a 10 anos."
+  page-navigation: true
+  favicon: ../images/logos/logo-bk-round.png
+  open-graph: true
+  announcement:
+    content: "**Novidade:** o manual do usuário do FG-COMPASS já está disponível. [Leia aqui](https://drfurtado.github.io/compass-manual/)."
+    position: below-navbar
+    dismissable: true
+
+  navbar:
+    logo: "../images/logos/logo-bk.png"
+    logo-alt: "Logotipo do FG-COMPASS"
+    logo-href: index.html
+    title: false
+    collapse-below: lg
+    left:
+      - href: index.qmd
+        text: Início
+      - href: index.qmd#how-it-works
+        text: Como funciona
+      - href: download.qmd
+        text: Downloads
+      - href: publications.qmd
+        text: Pesquisa
+      - href: webapp.qmd
+        text: Aplicativo web
+      - text: Sobre
+        menu:
+          - href: furtado.qmd
+            text: Ovande Furtado Jr.
+          - href: gallagher.qmd
+            text: Jere D. Gallagher
+    right:
+      - text: "EN"
+        href: ../index.html
+        icon: translate
+        aria-label: "Read in English"
+      - text: Manual do usuário
+        href: https://drfurtado.github.io/compass-manual/
+        icon: book
+      - icon: github
+        href: https://github.com/fgcompass
+        aria-label: GitHub
+      - icon: twitter-x
+        href: https://twitter.com/fgcompass
+        aria-label: "@fgcompass no X"
+    search: true
+
+  page-footer:
+    left: "© 2025 FG-COMPASS · Sistema Furtado–Gallagher de Avaliação Observacional de Padrões de Movimento em Crianças"
+    right:
+      - icon: book
+        href: https://drfurtado.github.io/compass-manual/
+        aria-label: Manual do usuário
+      - icon: github
+        href: https://github.com/fgcompass
+        aria-label: GitHub
+
+format:
+  html:
+    theme:
+      light: [cosmo, ../theme.scss]
+      dark: [cosmo, ../theme-dark.scss]
+    css: [../styles.css, ../logo.css]
+    toc: true
+    lang: pt-BR
+    include-after-body:
+      - text: '<script src="../fg-lang.js"></script>'
+
+editor: visual

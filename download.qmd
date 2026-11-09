@@ -1,15 +1,26 @@
 ---
 title: "Download"
+subtitle: "Everything you need to run an FG-COMPASS assessment."
 ---
 
-**Testing Protocols**
+## Decision trees
 
-We're excited to share the user's manual for the FG-COMPASS, which also comes with the testing protocols. Just click on the link below to explore it!
+The ten FG-COMPASS decision trees (rating scales) in one file, five locomotor and five object-control skills.
 
-<https://drfurtado.github.io/compass-manual/>
+[<i class="bi bi-file-earmark-arrow-down" aria-hidden="true"></i> Decision trees, English (PDF, v2.2)](static/files/fgcompass-decision-trees-v2.2.pdf){.btn .btn-primary}
 
-**Decision Trees**
+## Testing protocols and record forms
 
-The FG-COMPASS decision trees are compiled in a single file, which includes the scales we use to evaluate children's performance.
+Setup, instructions for children, notes for examiners and group record forms for each skill.
 
--   [English](static/files/fgcompass-decision-trees-v2.2.pdf)
+[<i class="bi bi-file-earmark-arrow-down" aria-hidden="true"></i> Testing protocols and record forms, English (PDF, v2.2)](static/files/fgcompass-testing-protocols-port-v2.2.pdf){.btn .btn-primary}
+
+## User manual
+
+The manual explains how to administer, score and interpret the FG-COMPASS.
+
+[<i class="bi bi-book" aria-hidden="true"></i> Read the user manual online](https://drfurtado.github.io/compass-manual/){.btn .btn-outline-primary}
+
+## Other languages
+
+A Brazilian Portuguese version of the assessment is coming soon. [Ver o site em português](pt/download.html).

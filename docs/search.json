@@ -4,90 +4,83 @@
     "href": "gallagher.html",
     "title": "Jere D. Gallagher",
     "section": "",
-    "text": "in memorium\nThroughout her career, Dr. Jere Dee Gallagher was highly regarded and esteemed as an authority on child development. She dedicated most of her time to the University of Pittsburgh’s School of Education, where she eventually rose to the position of associate dean. During her tenure, she was instrumental in creating the Kinder Kinetics Program in the Health and Physical Activity Department, which she directed for over 25 years and considered her life’s crowning achievement",
-    "crumbs": [
-      "Developers",
-      "Jere D. Gallagher"
-    ]
+    "text": "in memorium\nThroughout her career, Dr. Jere Dee Gallagher was highly regarded and esteemed as an authority on child development. She dedicated most of her time to the University of Pittsburgh’s School of Education, where she eventually rose to the position of associate dean. During her tenure, she was instrumental in creating the Kinder Kinetics Program in the Health and Physical Activity Department, which she directed for over 25 years and considered her life’s crowning achievement"
   },
   {
     "objectID": "gallagher.html#education",
     "href": "gallagher.html#education",
     "title": "Jere D. Gallagher",
     "section": "Education",
-    "text": "Education\nLouisiana State University | PhD in Motor Development\nEast Carolina University - Greenville | B.A. and M.S. Health and Physical Education",
-    "crumbs": [
-      "Developers",
-      "Jere D. Gallagher"
-    ]
+    "text": "Education\nLouisiana State University | PhD in Motor Development\nEast Carolina University - Greenville | B.A. and M.S. Health and Physical Education"
   },
   {
     "objectID": "gallagher.html#experience",
     "href": "gallagher.html#experience",
     "title": "Jere D. Gallagher",
     "section": "Experience",
-    "text": "Experience\nUniversity of Pittsburgh | Associate Dean - School of Education\nSouthern Illinois University | Assistant Professor",
-    "crumbs": [
-      "Developers",
-      "Jere D. Gallagher"
-    ]
-  },
-  {
-    "objectID": "publications.html",
-    "href": "publications.html",
-    "title": "Publications",
-    "section": "",
-    "text": "Bolin, M., & Furtado, O., Jr. (2023). Examining the relationship between bmi, sex, and fundamental movement skill performance in low-income rural children. Journal of Kinesiology & Wellness, 12(1, 1), 30–37. https://doi.org/10.56980/jkw.v12i1.138\n\n\nFurtado, O., Jr. (2009). Development and initial validation of the Furtado-Gallagher Computerized Observational Movement Pattern Assessment System - FG-COMPASS [PhD thesis]. https://d-scholarship.pitt.edu/8917/\n\n\nFurtado, O., Jr., & Gallagher, J. D. (2012). The reliability of classification decisions for the Furtado-Gallagher Computerized Observational Movement Pattern Assessment System - FG-COMPASS. Research Quarterly for Exercise and Sport, 83(3), 383–390. https://doi.org/10.1080/02701367.2012.10599872\n\n\nFurtado, O., Jr., & Gallagher, J. D. (2018). Expert-rater agreement and inter-/intrarater reliability for the Furtado–Gallagher Computerized Observational Movement Pattern Assessment System. Perceptual and Motor Skills, 125(3), 423–437. https://doi.org/10.1177/0031512518769205\n\n\nMazzardo, O., Fontana, F. E., Furtado, O., Jr., & Gallagher, J. D. (2018). The relationship of movement skills with habitual and organized physical activity in seven and eight-year-old children. Pensar a Prática, 21(1), 135–146. https://doi.org/10.5216/rpp.v21i1.42360\n\n\nPerez, L., & Furtado, O., Jr. (2024). Investigating Expert-Rater Agreement and Inter/Intra-Rater Reliability of Two Fundamental Movement Skills for the Locomotor Subscale of the FG-COMPASS. Perceptual and Motor Skills. https://doi.org/10.1177/00315125241272720",
-    "crumbs": [
-      "Publications"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Furtado-Gallagher Children Observational Movement Assessment System",
-    "section": "",
-    "text": "The Children Observational Movement Pattern Assessment System1 (FG-COMPASS) is an assessment tool designed to evaluate the proficiency of fundamental movement skills in children between the ages of 5 to 10. It can be utilized in both educational and clinical environments.\nThe tool employs a decision-tree strategy to evaluate proficiency levels of skills. The model framework is illustrated below:\nWhere,\nThe purpose of DQ is to differentiate between the highest and lowest levels, namely levels 1 and 4. UCQ is designed to verify if an individual is at level 4. If UCQ fails to confirm level 4, then the individual is evaluated as level 3. Similarly, LCQ is meant to confirm if an individual is at level 1. If LCQ fails to confirm level 1, then the individual is evaluated as level 2.\nUsing the framework mentioned earlier, decision-trees were created for 10 movement skills, which include 5 Locomotor and 5 Manipulative skills. Below is an example of the decision-tree for the Overhand Throw.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#footnotes",
-    "href": "index.html#footnotes",
-    "title": "Furtado-Gallagher Children Observational Movement Assessment System",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nFormerly known as Furtado-Gallagher Computerized Observational Movement Pattern Assessment System.↩︎",
-    "crumbs": [
-      "Home"
-    ]
+    "text": "Experience\nUniversity of Pittsburgh | Associate Dean - School of Education\nSouthern Illinois University | Assistant Professor"
   },
   {
     "objectID": "webapp.html",
     "href": "webapp.html",
-    "title": "WebApp",
+    "title": "Web app",
     "section": "",
-    "text": "We are excited to announce the release of the WebApp prototype of our innovative assessment tool, FG-COMPASS! This initial release focuses on one of the ten skills that make up our comprehensive assessment framework: Overhand Throwing.\nWe have been working diligently to develop a web application that offers an intuitive and accurate assessment experience. Today, we are proud to unveil the prototype for Overhand Throwing.\nWe invite you to test the prototype and provide valuable feedback to help us improve and refine the tool.\nTo try the FG-COMPASS Overhand Throwing prototype, click the link below.\nThank you for your continued support and interest in the FG-COMPASS.\nhttps://fgcompass.shinyapps.io/throw/"
+    "text": "The FG-COMPASS web app prototype is ready to try. This first release covers one of the ten skills in the assessment: the overhand throw.\nPlease test it and send us your feedback to help us improve the tool.\n Open the prototype"
   },
   {
     "objectID": "download.html",
     "href": "download.html",
     "title": "Download",
     "section": "",
-    "text": "Testing Protocols\nWe’re excited to share the user’s manual for the FG-COMPASS, which also comes with the testing protocols. Just click on the link below to explore it!\nhttps://drfurtado.github.io/compass-manual/\nDecision Trees\nThe FG-COMPASS decision trees are compiled in a single file, which includes the scales we use to evaluate children’s performance.\n\nEnglish",
-    "crumbs": [
-      "Download"
-    ]
+    "text": "The ten FG-COMPASS decision trees (rating scales) in one file, five locomotor and five object-control skills.\n Decision trees, English (PDF, v2.2)"
+  },
+  {
+    "objectID": "download.html#decision-trees",
+    "href": "download.html#decision-trees",
+    "title": "Download",
+    "section": "",
+    "text": "The ten FG-COMPASS decision trees (rating scales) in one file, five locomotor and five object-control skills.\n Decision trees, English (PDF, v2.2)"
+  },
+  {
+    "objectID": "download.html#testing-protocols-and-record-forms",
+    "href": "download.html#testing-protocols-and-record-forms",
+    "title": "Download",
+    "section": "Testing protocols and record forms",
+    "text": "Testing protocols and record forms\nSetup, instructions for children, notes for examiners and group record forms for each skill.\n Testing protocols and record forms, English (PDF, v2.2)"
+  },
+  {
+    "objectID": "download.html#user-manual",
+    "href": "download.html#user-manual",
+    "title": "Download",
+    "section": "User manual",
+    "text": "User manual\nThe manual explains how to administer, score and interpret the FG-COMPASS.\n Read the user manual online"
+  },
+  {
+    "objectID": "download.html#other-languages",
+    "href": "download.html#other-languages",
+    "title": "Download",
+    "section": "Other languages",
+    "text": "Other languages\nA Brazilian Portuguese version of the assessment is coming soon. Ver o site em português."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "See how well a child moves, in two yes/no questions per skill.",
+    "section": "",
+    "text": "Movement skills assessment · Ages 5–10\n      See how well a child moves, in two yes/no questions per skill.\n      \n        FG-COMPASS helps teachers, coaches, clinicians and researchers rate how children perform\n        10 everyday movement skills, like throwing, kicking and jumping, on a simple 1–4 scale.\n        You watch the child live. No video, no lengthy checklists.\n      \n      \n        \n           Download the decision trees\n        \n        \n           Read the manual\n        \n      \n      Free PDF · Research-validated · Built for schools, clinics and labs\n    \n\n    \n    \n      \n        Try it\n         Overhand throw\n      \n      Question 1 of 2\n      Did the trunk rotate to the side of the throw during preparation?\n      \n        Yes\n        No\n      \n      \n        4\n        \n          Level 4 · Mature\n          \n        \n      \n      \n        \n          1234\n        \n        \n           Try again\n        \n      \n    \n  \n\n\n\n\n  \n    10movement skills\n    2subtests: locomotor & object control\n    5–10years of age\n    4proficiency levels\n    Liveobservation, no video needed\n  \n\n\n\n\n  \n    \n      Why it matters\n      Movement skills are the building blocks of an active, healthy childhood.\n    \n    \n      \n        Running, jumping, throwing and catching are fundamental movement skills. Children who move well\n        tend to be more physically active, and research links these skills to healthier body composition,\n        stronger thinking skills such as working memory, and more confident play with peers.\n      \n      \n        Spotting where a child is, and where they are stuck, lets you teach the next step and catch delays early.\n        FG-COMPASS makes that check fast enough to do in a regular class or clinic session.\n      \n    \n  \n\n\n\n\n  \n    How it works\n    Watch, answer, score. That's it.\n    \n      \n        \n        Watch the child perform a skill\n        Observe the skill live, in the gym, playground or clinic. A short protocol covers setup, instructions and trials for each skill.\n      \n      \n        \n        Answer two yes/no questions\n        The first question points toward the lower or upper levels. A second question confirms where the child lands.\n      \n      \n        \n        Get a level from 1 to 4\n        Record the level for each skill to see a child's profile, track progress or compare before and after a program.\n      \n    \n\n    \n      \n        The decision tree in action\n        Every skill uses the same three-question tree. Each child follows one path: a key question, then one confirming question.\n      \n      \n        No\n        Yes\n        Yes\n        No\n        No\n        Yes\n        Question 1Key feature seen?\n        Question 2Early patternconfirmed?\n        Question 2Mature patternconfirmed?\n        Level 1Initial\n        Level 2Emerging\n        Level 3Developing\n        Level 4Mature\n      \n      \n         \n         Pause\n      \n    \n\n    \n       For researchers: the composite decision-tree model\n      \n        \n          \n            FG-COMPASS is a process-oriented, criterion-referenced instrument. Each skill is scored with a\n            composite decision tree that combines the Observational Plan and Three-Stage approaches to\n            FMS assessment, using only three key performance criteria drawn from validated and hypothesized developmental sequences.\n          \n          \n            Discriminatory question (DQ) separates the extremes (levels 1 and 4).\n            Upper confirmatory question (UCQ) confirms level 4; if not confirmed, the child is level 3.\n            Lower confirmatory question (LCQ) confirms level 1; if not confirmed, the child is level 2.\n          \n        \n        \n          \n          Framework model shared by all ten decision trees.\n        \n      \n    \n  \n\n\n\n\n  \n    What it measures\n    Ten skills, two subtests.\n    \n      \n         Locomotor\n        Moving the body from place to place.\n        \n          SkippingHoppingHorizontal jumpVertical jumpGalloping\n        \n      \n      \n         Object control\n        Sending, receiving and controlling a ball.\n        \n          ThrowingCatchingKickingBattingStationary dribble\n        \n      \n    \n  \n\n\n\n\n  \n    Reading the results\n    What the four levels mean\n    Example: the overhand throw, from the first attempts to a mature throwing pattern.\n    \n      \n        \n        1Initial The key mature feature is missing and the early pattern is confirmed.Throw: the trunk faces the target and there is no step forward.\n      \n      \n        \n        2Emerging The key feature is still missing, but the child has moved past the early pattern.Throw: little or no trunk rotation, but the child steps forward.\n      \n      \n        \n        3Developing The key feature is present, but the mature pattern is not yet complete.Throw: the trunk rotates, with a short step on the opposite foot.\n      \n      \n        \n        4Mature The key feature is present and the mature pattern is confirmed.Throw: the trunk rotates, with a long step on the opposite foot (at least half the child's height).\n      \n    \n  \n\n\n\n\n  \n    Who it's for\n    Practical enough for the gym, rigorous enough for the lab.\n    \n      \n        \n        PE teachers & coaches\n        Check a whole class quickly, track progress over the year and see whether a program is working.\n      \n      \n        \n        Clinicians & therapists\n        Spot movement delays early and plan targeted support, with clear levels to share with families.\n      \n      \n        \n        Researchers & students\n        A process-oriented, criterion-referenced instrument with published reliability and expert-rater agreement.\n      \n    \n  \n\n\n\n\n  \n    \n      The evidence\n      Built on more than 15 years of research.\n      \n        FG-COMPASS was developed at the University of Pittsburgh and tested for reliability and agreement with expert raters\n        in peer-reviewed studies.\n      \n      See all publications \n    \n    \n      \n        2024\n        Expert-rater agreement and inter/intra-rater reliability of two locomotor skills\n        Perceptual and Motor Skills\n      \n      \n        2018\n        Expert-rater agreement and inter-/intrarater reliability for FG-COMPASS\n        Perceptual and Motor Skills\n      \n      \n        2012\n        The reliability of classification decisions for FG-COMPASS\n        Research Quarterly for Exercise and Sport\n      \n      \n        2009\n        Development and initial validation of FG-COMPASS\n        Doctoral dissertation, University of Pittsburgh\n      \n    \n  \n\n\n\n\n  \n    Get started\n    \n      \n        \n        Decision trees\n        All 10 scoring trees in one PDF (v2.2).\n      \n      \n        \n        User manual\n        Testing protocols, scoring and interpretation.\n      \n      \n        \n        Web app beta\n        Try scoring the overhand throw online.\n      \n    \n    \n      FG-COMPASS stands for the Furtado–Gallagher Children Observational Movement Pattern Assessment System\n      (formerly the Furtado–Gallagher Computerized Observational Movement Pattern Assessment System)."
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Research",
+    "section": "",
+    "text": "Bolin, M., & Furtado, O., Jr. (2023). Examining the relationship between bmi, sex, and fundamental movement skill performance in low-income rural children. Journal of Kinesiology & Wellness, 12(1, 1), 30–37. https://doi.org/10.56980/jkw.v12i1.138\n\n\nFurtado, O., Jr. (2009). Development and initial validation of the Furtado-Gallagher Computerized Observational Movement Pattern Assessment System - FG-COMPASS [PhD thesis]. https://d-scholarship.pitt.edu/8917/\n\n\nFurtado, O., Jr., & Gallagher, J. D. (2012). The reliability of classification decisions for the Furtado-Gallagher Computerized Observational Movement Pattern Assessment System - FG-COMPASS. Research Quarterly for Exercise and Sport, 83(3), 383–390. https://doi.org/10.1080/02701367.2012.10599872\n\n\nFurtado, O., Jr., & Gallagher, J. D. (2018). Expert-rater agreement and inter-/intrarater reliability for the Furtado–Gallagher Computerized Observational Movement Pattern Assessment System. Perceptual and Motor Skills, 125(3), 423–437. https://doi.org/10.1177/0031512518769205\n\n\nMazzardo, O., Fontana, F. E., Furtado, O., Jr., & Gallagher, J. D. (2018). The relationship of movement skills with habitual and organized physical activity in seven and eight-year-old children. Pensar a Prática, 21(1), 135–146. https://doi.org/10.5216/rpp.v21i1.42360\n\n\nPerez, L., & Furtado, O., Jr. (2024). Investigating Expert-Rater Agreement and Inter/Intra-Rater Reliability of Two Fundamental Movement Skills for the Locomotor Subscale of the FG-COMPASS. Perceptual and Motor Skills. https://doi.org/10.1177/00315125241272720"
   },
   {
     "objectID": "furtado.html",
     "href": "furtado.html",
     "title": "Ovande Furtado JR",
     "section": "",
-    "text": "Dr. Furtado received a B.A. in Physical Education from the Federal University of Parana, Curitiba, PR - Brazil. He earned his M.S. and Ph.D. degrees in Motor Behavior from the University of Pittsburgh, PA. Dr. Furtado’s line of research focuses on two main areas: (1) validation of observational models in psychomotor assessment instruments and (2) the relationship between motor skill competence, perceived motor competence, physical activity levels, and body composition.\n\nEducation\nPh.D. in Motor Behavior, 2009 - University of Pittsburgh\nM.S. in Motor Behavior, 2004 - University of Pittsburgh\nB.A. in Physical Education K-12, 1998 - Federal University of Parana - Brazil\n\n\nExperience\nAssociate Professor\nCal State Northridge, Northridge, CA\n2013 – Present\nTeaches motor behavior and statistics courses.\nAssociate Professor\nEastern Illinois University, Charleston, IL\n2007-2013\nTaught motor behavior and statistics courses.\nPhysical Educator Teacher K-12\nFalk Lab School, Pittsburgh, PA\n2006-2007\nTaught motor skill development for children K-12.\nKinder Kinetics Movement Program Co-Director\nUniversity of Pittsburgh, Pittsburgh, PA\n2004-2007",
-    "crumbs": [
-      "Developers",
-      "Ovande Furtado JR"
-    ]
+    "text": "Dr. Furtado received a B.A. in Physical Education from the Federal University of Parana, Curitiba, PR - Brazil. He earned his M.S. and Ph.D. degrees in Motor Behavior from the University of Pittsburgh, PA. Dr. Furtado’s line of research focuses on two main areas: (1) validation of observational models in psychomotor assessment instruments and (2) the relationship between motor skill competence, perceived motor competence, physical activity levels, and body composition.\n\nEducation\nPh.D. in Motor Behavior, 2009 - University of Pittsburgh\nM.S. in Motor Behavior, 2004 - University of Pittsburgh\nB.A. in Physical Education K-12, 1998 - Federal University of Parana - Brazil\n\n\nExperience\nAssociate Professor\nCal State Northridge, Northridge, CA\n2013 – Present\nTeaches motor behavior and statistics courses.\nAssociate Professor\nEastern Illinois University, Charleston, IL\n2007-2013\nTaught motor behavior and statistics courses.\nPhysical Educator Teacher K-12\nFalk Lab School, Pittsburgh, PA\n2006-2007\nTaught motor skill development for children K-12.\nKinder Kinetics Movement Program Co-Director\nUniversity of Pittsburgh, Pittsburgh, PA\n2004-2007"
   }
 ]

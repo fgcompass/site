@@ -1,0 +1,31 @@
+---
+title: "Downloads"
+subtitle: "Tudo o que você precisa para aplicar o FG-COMPASS."
+lang: pt-BR
+---
+
+## Árvores de decisão
+
+As dez árvores de decisão (escalas de avaliação) do FG-COMPASS em um único arquivo: cinco habilidades de locomoção e cinco de controle de objetos.
+
+<!-- PT-BR ASSESSMENT: when the Portuguese decision trees are ready, add the PDF to static/files/
+     and replace the "Em breve" callout below with a download button, e.g.
+     [Árvores de decisão em português (PDF)](../static/files/fgcompass-arvores-de-decisao-pt-v2.2.pdf){.btn .btn-primary} -->
+
+::: {.callout-tip title="Em breve: versão em português"}
+A versão em português das árvores de decisão e dos protocolos de teste está em preparação. Enquanto isso, a versão em inglês está disponível abaixo.
+:::
+
+[<i class="bi bi-file-earmark-arrow-down" aria-hidden="true"></i> Árvores de decisão, inglês (PDF, v2.2)](../static/files/fgcompass-decision-trees-v2.2.pdf){.btn .btn-primary}
+
+## Protocolos de teste e fichas de registro
+
+Montagem, instruções para as crianças, observações para o avaliador e fichas de registro em grupo para cada habilidade.
+
+[<i class="bi bi-file-earmark-arrow-down" aria-hidden="true"></i> Protocolos de teste e fichas de registro, inglês (PDF, v2.2)](../static/files/fgcompass-testing-protocols-port-v2.2.pdf){.btn .btn-primary}
+
+## Manual do usuário
+
+O manual explica como aplicar, pontuar e interpretar o FG-COMPASS (disponível em inglês).
+
+[<i class="bi bi-book" aria-hidden="true"></i> Ler o manual do usuário](https://drfurtado.github.io/compass-manual/){.btn .btn-outline-primary}

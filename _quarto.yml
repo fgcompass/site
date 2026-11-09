@@ -1,66 +1,95 @@
 project:
   type: website
   output-dir: docs
+  # English (default) pages live at the root. The Brazilian Portuguese site is a
+  # separate Quarto project in pt/ that renders into docs/pt/ (see README.md).
+  render:
+    - index.qmd
+    - download.qmd
+    - publications.qmd
+    - webapp.qmd
+    - furtado.qmd
+    - gallagher.qmd
+  resources:
+    - fg-demo.js
+    - fg-lang.js
+    - fg-tree.js
+    - static/files/*.pdf
+    - images/ot-l*.png
+    - images/dts/*.png
+    - images/logos/*.png
 
 website:
+  title: "FG-COMPASS"
+  description: "A quick, research-validated observational assessment of fundamental movement skills for children aged 5 to 10."
   page-navigation: true
-  title: "Furtado-Gallagher Children Observational Movement Assessment System"
-  announcement: 
-    content: "**NEW** - FG-COMPASS Manual is now available for download!"
+  favicon: images/logos/logo-bk-round.png
+  open-graph: true
+  announcement:
+    content: "**New:** the FG-COMPASS user manual is now available. [Read it here](https://drfurtado.github.io/compass-manual/)."
     position: below-navbar
+    dismissable: true
 
-  page-footer: 
-    left: "Copyright 2025 @ FG-COMPASS"
-    background: light
-    right: 
-      - icon: book
-        href: https://drfurtado.github.io/compass-manual/
-          
-  sidebar:
+  navbar:
     logo: "images/logos/logo-bk.png"
-    css: logo.css
-    pinned: true
-    align: center
-    tools: 
+    logo-alt: "FG-COMPASS logo"
+    title: false
+    collapse-below: lg
+    left:
+      - href: index.qmd
+        text: Home
+      - href: index.qmd#how-it-works
+        text: How it works
+      - href: download.qmd
+        text: Download
+      - href: publications.qmd
+        text: Research
+      - href: webapp.qmd
+        text: Web app
+      - text: About
+        menu:
+          - href: furtado.qmd
+            text: Ovande Furtado Jr.
+          - href: gallagher.qmd
+            text: Jere D. Gallagher
+    right:
+      - text: "PT-BR"
+        href: pt/index.html
+        icon: translate
+        aria-label: "Ler em português"
+      - text: User manual
+        href: https://drfurtado.github.io/compass-manual/
+        icon: book
       - icon: github
         href: https://github.com/fgcompass
-        text: "Manual"
-      - icon: twitter
+        aria-label: GitHub
+      - icon: twitter-x
         href: https://twitter.com/fgcompass
-        text: "@fgcompass"
-        
-    style: "docked"
+        aria-label: "@fgcompass on X"
     search: true
-    collapse-level: 1
-    contents:
-      - icon: house
-        href: index.qmd
-        text: Home
-      - icon: download
-        href: download.qmd
-        text: Download
-      - icon: journal-text
-        href: publications.qmd
-        text: Publications
+
+  page-footer:
+    left: "© 2025 FG-COMPASS · Furtado–Gallagher Children Observational Movement Pattern Assessment System"
+    right:
       - icon: book
         href: https://drfurtado.github.io/compass-manual/
-        text: User Manual
-      - section: Developers
-        icon: person
-        contents: 
-          - furtado.qmd
-          - gallagher.qmd
-        
-    
+        aria-label: User manual
+      - icon: github
+        href: https://github.com/fgcompass
+        aria-label: GitHub
+
 format:
   html:
     theme:
-      light: [cosmo, theme.scss] # from https://github.com/sta210-s22/website/blob/main/_quarto.yml
+      light: [cosmo, theme.scss]
       dark: [cosmo, theme-dark.scss]
+    css: [styles.css, logo.css]
     code-copy: true
     code-overflow: wrap
     toc: true
-
+    lang: en
+    include-after-body:
+      - text: '<script src="fg-lang.js"></script>'
 
 filters:
   - include-files.lua
@@ -70,6 +99,3 @@ execute:
  freeze: auto
 
 editor: visual
-
-
-

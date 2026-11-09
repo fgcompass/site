@@ -1,5 +1,6 @@
 ---
-title: "Publications"
+title: "Research"
+subtitle: "Published studies on the development, reliability and use of FG-COMPASS."
 bibliography: references.bib
 nocite: |
   @*
