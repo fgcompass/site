@@ -816,9 +816,9 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     { el: function () { return document.querySelector("#btCard .bt-hint"); },
       h: "Watch 3 trials first", p: "Have the child perform the skill three times and watch all three before you answer. Tap Yes only if you saw the behavior in at least 2 of the 3 valid trials." },
     { el: function () { return document.querySelector("#btGrid .bt-q1"); }, wait: function () { return bt.q1 !== null; },
-      h: "Start with Question 1", p: "Watch the child perform the skill, then answer the first question. Each button sits over the branch it leads to.", d: "Tap Yes or No to try it." },
+      h: "Start with Question 1", p: "Watch the child perform the skill, then answer the first question. Each button sits over the branch it leads to.", d: "Tap Yes or No to try it, or press Next to see an example.", auto: '#btGrid .bt-q1 [data-a="0"]' },
     { el: function () { return document.querySelector("#btGrid .bt-node.active") || document.querySelector("#btGrid .bt-low, #btGrid .bt-up"); }, wait: function () { return btLevel() !== null; },
-      h: "Your answer opens one branch", p: "The other side fades out, so only one question is left. Answer it the same way.", d: "Tap Yes or No on the highlighted question." },
+      h: "Your answer opens one branch", p: "The other side fades out, so only one question is left. Answer it the same way.", d: "Tap Yes or No on the highlighted question, or press Next.", auto: '#btGrid .bt-node.active [data-a="1"]' },
     { el: function () { return document.querySelector("#btGrid .bt-leaf.hit"); },
       h: "That's the level", p: "The line shows the path you took. All four level drawings stay visible, so you can check your call at a glance. Tapping a drawing opens it larger to compare levels side by side." },
     { el: function () { return $("btRes"); },
@@ -836,7 +836,11 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     tip = document.createElement("div"); tip.className = "tour-tip"; tip.setAttribute("role", "dialog"); tip.setAttribute("aria-live", "polite");
     document.body.appendChild(tip);
     tip.addEventListener("click", function (e) {
-      if (e.target.closest(".skip")) tourEnd(); else if (e.target.closest(".nx")) tourGo(tour.i + 1);
+      if (e.target.closest(".skip")) tourEnd();
+      else if (e.target.closest(".nx")) {
+        var st = TOUR[tour.i], b = st.wait && !st.wait() && st.auto && document.querySelector(st.auto);
+        if (b) b.click(); else tourGo(tour.i + 1);  /* on a "try it" step, Next answers for them */
+      }
     });
     bt = { q1: null, q2: null, level: null, skill: skill.id }; _renderB();
     tourGo(0);
@@ -856,7 +860,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       (waiting ? '<div class="do">' + st.d + "</div>" : "") +
       '<div class="row"><button type="button" class="skip">' + (last ? "Close" : "Skip tour") + '</button><span class="dots">' +
       TOUR.map(function (_, k) { return '<i class="' + (k === tour.i ? "on" : "") + '"></i>'; }).join("") + "</span>" +
-      (waiting ? "<span></span>" : '<button type="button" class="nx">' + (last ? "Start rating" : "Next") + "</button>") + "</div>";
+      '<button type="button" class="nx">' + (last ? "Start rating" : "Next") + "</button></div>";
     if (scroll && el.scrollIntoView) el.scrollIntoView({ block: "center", behavior: "smooth" });
     tourPlace(); setTimeout(tourPlace, 450);
   }
