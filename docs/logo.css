@@ -13,31 +13,35 @@
   }
 }
 
-/* Wide screens: a square FG badge centered on the navbar that hangs over the
-   section below, with the menu split evenly to its left and right. */
-@media (min-width: 1280px) {
+/* Wide screens: the stacked FG COMPASS logo hangs from the top of the navbar
+   like a tag, centered, with the menu split evenly to its left and right. */
+@media (min-width: 1360px) {
   #quarto-header, #quarto-header .navbar, .navbar-container { overflow: visible; }
   .navbar-container { position: relative; }
   .navbar-brand-container {
-    position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+    position: absolute; left: 50%; top: calc(-1 * var(--bs-navbar-padding-y, .5rem)); transform: translateX(-50%);
     margin: 0 !important; z-index: 5;
   }
   .navbar .navbar-brand.navbar-brand-logo {
-    display: block; width: 92px; height: 92px; margin: 10px 0 0; padding: 0;
-    border-radius: 24px;
+    position: relative; display: block; width: 176px; height: 150px; margin: 0; padding: 0;
+    border-radius: 0 0 28px 28px;
     background:
-      url("images/brand/fg-compass-symbol.svg") center 56% / 68% auto no-repeat,
-      linear-gradient(135deg, #10364C 0%, #0E4963 55%, #266B6A 100%);
-    box-shadow: 0 0 0 4px #082B42, 0 18px 30px -12px rgba(0, 0, 0, .6);
-    transition: transform .15s ease;
+      url("images/brand/fg-compass-stacked-dark.svg") center bottom 26px / 132px auto no-repeat,
+      linear-gradient(180deg, #082B42 0%, #0E4963 70%, #155A63 100%);
+    box-shadow: 0 0 0 1px rgba(153, 207, 211, .18), 0 22px 40px -16px rgba(0, 0, 0, .65);
+    transition: transform .2s ease;
   }
-  .navbar .navbar-brand.navbar-brand-logo:hover { transform: translateY(-2px); }
+  .navbar .navbar-brand.navbar-brand-logo::after {
+    content: ""; position: absolute; left: 22px; right: 22px; bottom: 12px;
+    height: 3px; border-radius: 3px; background: #F9A73E;
+  }
+  .navbar .navbar-brand.navbar-brand-logo:hover { transform: translateY(3px); }
   .navbar .navbar-brand.navbar-brand-logo .navbar-logo {
     position: absolute; width: 1px; height: 1px; max-height: 1px; opacity: 0; overflow: hidden;
   }
-  /* each half of the menu stays clear of the badge */
-  .navbar-collapse > .navbar-nav.me-auto { padding-right: 64px; }
-  .navbar-collapse > .navbar-nav.ms-auto { padding-left: 64px; }
-  /* inner pages: leave room under the badge */
-  #quarto-content:not(:has(.fh)) { padding-top: 2.25rem; }
+  /* each half of the menu stays clear of the logo */
+  .navbar-collapse > .navbar-nav.me-auto { padding-right: 104px; }
+  .navbar-collapse > .navbar-nav.ms-auto { padding-left: 104px; }
+  /* inner pages: leave room under the logo */
+  #quarto-content:not(:has(.fh)):not(:has(.fg-hero)) { padding-top: 5.5rem; }
 }
