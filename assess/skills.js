@@ -5,7 +5,9 @@
      q1 (discriminatory)  YES -> up (upper confirmatory): YES = Level 4, NO = Level 3
                           NO  -> low (lower confirmatory): YES = Level 1, NO = Level 2
    PT-BR: skill names are translated; questions and protocols stay in English until the
-   official Portuguese version of the assessment is added (fill in the `pt` fields then). */
+   official Portuguese version of the assessment is added (fill in the `pt` fields then).
+   Level illustrations: img/<id>-l<level>.jpg (from the protocols PDF). `noImg` lists levels
+   whose illustration is not available yet. */
 window.FG_SKILLS = [
   // ---------------- Object control (manipulative) ----------------
   {
@@ -33,8 +35,7 @@ window.FG_SKILLS = [
     notes: [
       "Give four trials (the first is for practice only).",
       "Do not allow the child to step over the line."
-    ],
-    img: "../images/ot-l"
+    ]
   },
   {
     id: "kick", group: "obj", name: { en: "Kick", pt: "Chute" },
@@ -174,7 +175,7 @@ window.FG_SKILLS = [
     notes: ["Give four trials (the first is for practice only)."]
   },
   {
-    id: "hjump", group: "loc", name: { en: "Horizontal jump", pt: "Salto horizontal" },
+    id: "hjump", group: "loc", noImg: [1], name: { en: "Horizontal jump", pt: "Salto horizontal" },
     q1: "Did the arms move forward & upward upon takeoff and downward at landing?",
     up: "Did the hands exceed the height of the head at liftoff?",
     low: "Was the takeoff/landing executed on one foot?",
@@ -200,7 +201,7 @@ window.FG_SKILLS = [
     ]
   },
   {
-    id: "skip", group: "loc", name: { en: "Skip", pt: "Saltitar" },
+    id: "skip", group: "loc", noImg: [3], name: { en: "Skip", pt: "Saltitar" },
     q1: "Did the arms move rhythmically in opposition to the legs?",
     up: "Was there a low vertical lift on hop?",
     low: "Is there a break in the rhythm caused by a double hop or step?",

@@ -15,6 +15,7 @@ project:
     - fg-lang.js
     - fg-tree.js
     - assess/*
+    - assess/img/*.jpg
     - static/files/*.pdf
     - images/ot-l*.png
     - images/dts/*.png

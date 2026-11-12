@@ -109,7 +109,45 @@ details.protocol summary { padding: .9rem 1.1rem; font-weight: 600; cursor: poin
 .btn.ghost { background: transparent; color: var(--teal-ink); }
 .btn.warn { background: transparent; border-color: var(--line); color: var(--muted); }
 .ex { margin-top: 1rem; }
-.ex img { width: 100%; max-height: 160px; object-fit: contain; background: #fff; border-radius: .6rem; border: 1px solid var(--line); padding: .4rem; }
+.ex { display: block; width: 100%; padding: 0; border: 0; background: none; }
+.ex img { width: 100%; max-height: 180px; object-fit: contain; background: #fff; border-radius: .6rem; border: 1px solid var(--line); padding: .4rem; }
+
+/* Compare levels */
+.qfoot { display: flex; justify-content: space-between; align-items: center; gap: .5rem; margin-top: .35rem; }
+.qfoot .cmp { margin-left: auto; }
+.cmp { display: inline-flex; align-items: center; gap: .4rem; background: none; border: 1px solid var(--line); color: var(--teal-ink);
+       border-radius: 999px; padding: .35rem .85rem; font-weight: 600; font-size: .88rem; min-height: 40px; }
+.cmp svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+.cmp:hover { background: var(--alt); }
+dialog#cmpDlg { padding: 0; border: 0; background: transparent; max-width: none; max-height: none; width: 100%; height: 100%; margin: 0; }
+dialog#cmpDlg::backdrop { background: rgba(10,20,30,.55); }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; margin: 0 auto; max-width: 960px; max-height: 92vh; overflow: auto;
+         background: var(--card); color: var(--ink); border-radius: 1.1rem 1.1rem 0 0; padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+         box-shadow: 0 -10px 40px rgba(0,0,0,.25); animation: up .22s ease; }
+@keyframes up { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+.sheet-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+.sheet-head h2 { margin: .1rem 0 0; font-size: 1.2rem; }
+.x { border: 0; background: var(--alt); color: var(--ink); width: 40px; height: 40px; border-radius: 50%; font-size: 1.5rem; line-height: 1; flex: 0 0 auto; }
+.pills { display: flex; gap: .4rem; margin: .8rem 0; }
+.pills button { flex: 1; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: .6rem; padding: .45rem .3rem; font-weight: 600; font-size: .85rem; min-height: 40px; }
+.pills button[aria-selected="true"] { background: var(--amber); border-color: var(--amber); color: #1d1a12; }
+.slides { display: flex; gap: .75rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.slides::-webkit-scrollbar { display: none; }
+.slide { flex: 0 0 100%; scroll-snap-align: start; margin: 0; }
+.slide .pic { background: #fff; border: 1px solid var(--line); border-radius: .7rem; aspect-ratio: 2500 / 1932; display: grid; place-items: center; overflow: hidden; }
+.slide .pic img { width: 100%; height: 100%; object-fit: contain; }
+.slide .pic span { color: #8796a2; font-size: .9rem; }
+.slide.cur .pic { border-color: var(--teal); box-shadow: 0 0 0 2px var(--teal) inset; }
+.slide figcaption { padding: .6rem .1rem 0; font-size: .92rem; color: var(--muted); }
+.slide figcaption strong { display: block; color: var(--navy); font-family: "Lexend", sans-serif; font-size: 1rem; }
+.slide .you { display: inline-block; margin-left: .4rem; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--teal-ink); }
+@media (min-width: 760px) {
+  .sheet { top: 50%; bottom: auto; transform: translateY(-50%); border-radius: 1.1rem; padding: 1.4rem; animation: none; width: calc(100% - 48px); }
+  .pills { display: none; }
+  .slides { display: grid; grid-template-columns: repeat(4, 1fr); overflow: visible; }
+  .slide { flex: none; }
+  .slide figcaption { font-size: .85rem; }
+}
 
 /* Results */
 .empty { text-align: center; padding: 2.5rem 1rem; color: var(--muted); }
@@ -189,7 +227,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
 }
 
 @media print {
-  header .tabs, header .lang, .actions, .meta input, #rateView, .no-print { display: none !important; }
+  header .tabs, header .lang, .actions, .meta input, #rateView, .no-print, dialog { display: none !important; }
   #resultsView { display: block !important; }
   body { background: #fff; }
 }
@@ -245,7 +283,10 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
         <button class="yes" type="button" id="btnYes"></button>
         <button class="no" type="button" id="btnNo"></button>
       </div>
-      <button class="link" type="button" id="btnBack" hidden></button>
+      <div class="qfoot">
+        <button class="link" type="button" id="btnBack" hidden></button>
+        <button class="cmp" type="button" id="btnCompare" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="8" height="7" rx="1.5"/><rect x="13" y="4" width="8" height="7" rx="1.5"/><rect x="3" y="13" width="8" height="7" rx="1.5"/><rect x="13" y="13" width="8" height="7" rx="1.5"/></svg><span id="tCompare"></span></button>
+      </div>
       <div class="tree" aria-hidden="true" id="tree"></div>
     </div>
 
@@ -259,10 +300,11 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
         </div>
       </div>
       <div class="answers" id="rAnswers"></div>
-      <div class="ex" id="rEx" hidden><img id="rImg" alt=""></div>
+      <button class="ex" id="rEx" type="button" hidden><img id="rImg" alt=""></button>
       <div class="actions">
         <button class="btn" type="button" id="btnNext"></button>
         <button class="btn ghost" type="button" id="btnRedo"></button>
+        <button class="cmp" type="button" id="btnCompare2" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="8" height="7" rx="1.5"/><rect x="13" y="4" width="8" height="7" rx="1.5"/><rect x="3" y="13" width="8" height="7" rx="1.5"/><rect x="13" y="13" width="8" height="7" rx="1.5"/></svg><span id="tCompare2"></span></button>
       </div>
     </div>
   </section>
@@ -285,6 +327,17 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   </section>
 </main>
 
+<dialog id="cmpDlg" aria-labelledby="cmpTitle">
+  <div class="sheet">
+    <div class="sheet-head">
+      <div><span class="step" id="cmpSkill"></span><h2 id="cmpTitle"></h2></div>
+      <button class="x" type="button" id="cmpClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="pills" id="cmpPills" role="tablist"></div>
+    <div class="slides" id="cmpSlides"></div>
+  </div>
+</dialog>
+
 <script src="skills.js"></script>
 <script>
 (function () {
@@ -300,6 +353,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       yes: "Yes", no: "No", back: "Back to question 1",
       levelWord: "Level", levelNames: ["Initial", "Emerging", "Developing", "Proficient"],
       next: "Next child", redo: "Change answers", example: "Example illustration",
+      compare: "Compare levels", compareTitle: "What each level looks like", soon: "Illustration coming soon", yours: "This rating", close: "Close",
       resultsTitle: "Session results", observer: "Rater", location: "Class or location", date: "Date",
       csv: "Download CSV", print: "Print", clear: "Clear results",
       clearConfirm: "Clear all results from this session?",
@@ -318,6 +372,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       yes: "Sim", no: "Não", back: "Voltar à pergunta 1",
       levelWord: "Nível", levelNames: ["Inicial", "Emergente", "Em desenvolvimento", "Proficiente"],
       next: "Próxima criança", redo: "Alterar respostas", example: "Ilustração de exemplo",
+      compare: "Comparar níveis", compareTitle: "Como é cada nível", soon: "Ilustração em breve", yours: "Esta avaliação", close: "Fechar",
       resultsTitle: "Resultados da sessão", observer: "Avaliador", location: "Turma ou local", date: "Data",
       csv: "Baixar CSV", print: "Imprimir", clear: "Limpar resultados",
       clearConfirm: "Apagar todos os resultados desta sessão?",
@@ -358,6 +413,8 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     $("tHint").textContent = t("hint") + (t("qLangNote") ? " " + t("qLangNote") : "");
     $("btnYes").textContent = t("yes"); $("btnNo").textContent = t("no"); $("btnBack").textContent = "← " + t("back");
     $("btnNext").textContent = t("next") + " →"; $("btnRedo").textContent = t("redo");
+    $("tCompare").textContent = t("compare"); $("tCompare2").textContent = t("compare");
+    $("cmpClose").setAttribute("aria-label", t("close"));
     $("tResultsTitle").textContent = t("resultsTitle"); $("tObserver").textContent = t("observer");
     $("tLocation").textContent = t("location"); $("tDate").textContent = t("date");
     $("btnCsv").textContent = t("csv"); $("btnPrint").textContent = t("print"); $("btnClear").textContent = t("clear");
@@ -423,7 +480,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     $("rAnswers").innerHTML = answers.map(function (a, i) {
       return "<div><span>" + (i + 1) + ". " + esc(a.q) + "</span><b>" + esc(a.a ? t("yes") : t("no")) + "</b></div>";
     }).join("");
-    if (skill.img) { $("rEx").hidden = false; $("rImg").src = skill.img + level + ".png"; $("rImg").alt = t("example") + ": " + t("levelWord") + " " + level; }
+    if (hasImg(skill, level)) { $("rEx").hidden = false; $("rImg").src = imgSrc(skill, level); $("rImg").alt = t("example") + ": " + t("levelWord") + " " + level; }
     else $("rEx").hidden = true;
     $("btnNext").focus();
   }
@@ -519,6 +576,52 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     $("rateView").hidden = !r; $("resultsView").hidden = r;
     window.scrollTo(0, 0);
   }
+
+
+  /* ---------- compare levels ---------- */
+  function hasImg(s, l) { return !(s.noImg && s.noImg.indexOf(l) > -1); }
+  function imgSrc(s, l) { return "img/" + s.id + "-l" + l + ".jpg"; }
+  var dlg = $("cmpDlg"), opener = null;
+  function openCompare(focusLevel) {
+    var names = t("levelNames"), lw = t("levelWord");
+    $("cmpSkill").textContent = txt(skill.name);
+    $("cmpTitle").textContent = t("compareTitle");
+    $("cmpPills").innerHTML = [1, 2, 3, 4].map(function (l) {
+      return '<button type="button" role="tab" data-go="' + l + '">' + lw + " " + l + "</button>";
+    }).join("");
+    $("cmpSlides").innerHTML = [1, 2, 3, 4].map(function (l) {
+      var pic = hasImg(skill, l)
+        ? '<img src="' + imgSrc(skill, l) + '" alt="' + esc(txt(skill.name) + ", " + lw + " " + l) + '" loading="lazy">'
+        : "<span>" + esc(t("soon")) + "</span>";
+      var you = focusLevel === l && !$("rCard").hidden ? '<span class="you">' + esc(t("yours")) + "</span>" : "";
+      return '<figure class="slide' + (focusLevel === l && !$("rCard").hidden ? " cur" : "") + '" id="slide' + l + '"><div class="pic">' + pic +
+        "</div><figcaption><strong>" + lw + " " + l + " · " + esc(names[l - 1]) + you + "</strong>" + esc(skill.levels[l - 1]) + "</figcaption></figure>";
+    }).join("");
+    opener = document.activeElement;
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+    goSlide(focusLevel || 1, true);
+    $("cmpClose").focus();
+  }
+  function goSlide(l, instant) {
+    var el = $("slide" + l), box = $("cmpSlides");
+    if (el && box.scrollWidth > box.clientWidth) box.scrollTo({ left: el.offsetLeft - box.offsetLeft, behavior: instant ? "auto" : "smooth" });
+    markPill(l);
+  }
+  function markPill(l) {
+    $("cmpPills").querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-selected", String(+b.dataset.go === l)); });
+  }
+  function closeCompare() { if (dlg.close) dlg.close(); else dlg.removeAttribute("open"); }
+  dlg.addEventListener("close", function () { if (opener && opener.focus) opener.focus(); });
+  dlg.addEventListener("click", function (e) { if (e.target === dlg) closeCompare(); });
+  $("cmpClose").addEventListener("click", closeCompare);
+  $("cmpPills").addEventListener("click", function (e) { var b = e.target.closest("[data-go]"); if (b) goSlide(+b.dataset.go); });
+  $("cmpSlides").addEventListener("scroll", function () {
+    var box = this, w = box.clientWidth; if (!w) return;
+    markPill(Math.min(4, Math.round(box.scrollLeft / (w + 12)) + 1));
+  }, { passive: true });
+  $("btnCompare").addEventListener("click", function () { openCompare(1); });
+  $("btnCompare2").addEventListener("click", function () { openCompare(lastLevel); });
+  $("rEx").addEventListener("click", function () { openCompare(lastLevel); });
 
   /* ---------- events ---------- */
   $("skillPicker").addEventListener("click", function (e) {
