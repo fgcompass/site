@@ -14,6 +14,7 @@ project:
     - fg-demo.js
     - fg-lang.js
     - fg-tree.js
+    - assess/*
     - static/files/*.pdf
     - images/ot-l*.png
     - images/dts/*.png

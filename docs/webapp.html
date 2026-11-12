@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="logo.css">
 <meta property="og:title" content="Web app – FG-COMPASS">
-<meta property="og:description" content="FG-COMPASS prototype for the overhand throw.">
+<meta property="og:description" content="Rate children’s movement skills with the FG-COMPASS decision trees, right in your browser.">
 <meta property="og:site_name" content="FG-COMPASS">
 </head>
 
@@ -168,8 +168,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-it-does" id="toc-what-it-does" class="nav-link active" data-scroll-target="#what-it-does">What it does</a></li>
+  <li><a href="#privacy" id="toc-privacy" class="nav-link" data-scroll-target="#privacy">Privacy</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -307,7 +314,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Web app</h1>
-<p class="subtitle lead">FG-COMPASS prototype for the overhand throw.</p>
+<p class="subtitle lead">Rate children’s movement skills with the FG-COMPASS decision trees, right in your browser.</p>
 </div>
 
 
@@ -324,11 +331,34 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The FG-COMPASS web app prototype is ready to try. This first release covers one of the ten skills in the assessment: the <strong>overhand throw</strong>.</p>
-<p>Please test it and send us your feedback to help us improve the tool.</p>
-<p><a href="https://fgcompass.shinyapps.io/throw/" class="btn btn-primary"><i class="bi bi-phone" aria-hidden="true"></i> Open the prototype</a></p>
+<p>The FG-COMPASS Rater walks you through the decision tree for each skill: answer one or two yes/no questions and get the child’s level from 1 to 4. It works on phones, tablets and laptops, so you can use it in the gym, in class or in the clinic.</p>
+<p><a class="btn btn-primary btn-lg" href="assess/index.html"><i class="bi bi-phone" aria-hidden="true"></i> Open the Rater</a></p>
+<section id="what-it-does" class="level2">
+<h2 class="anchored" data-anchor-id="what-it-does">What it does</h2>
+<ul>
+<li><strong>All 10 skills</strong>, five locomotor and five object control, using the v2.2 decision trees.</li>
+<li><strong>Setup and instructions</strong> for each skill: what to set up, what to say to the child and notes for the rater.</li>
+<li><strong>Session results</strong>: a table of levels by child and skill, which you can download as a CSV file or print.</li>
+<li><strong>English</strong> for now. A Portuguese version will follow, using the validated Portuguese wording of the decision trees.</li>
+</ul>
+</section>
+<section id="privacy" class="level2">
+<h2 class="anchored" data-anchor-id="privacy">Privacy</h2>
+<p>Nothing is saved online or in your browser. Results disappear when you close or reload the page, so download the CSV first if you need it. That makes the Rater a good fit for teaching and practice: students can rate classmates or videos without creating accounts or storing children’s data.</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This is a prototype for teaching and practice. For research data collection, follow the testing protocols and record forms on the <a href="./download.html">Download</a> page.</p>
+</div>
+</div>
+</div>
+<p>The <a href="https://fgcompass.shinyapps.io/throw/">earlier prototype</a> (overhand throw only) is still online.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -456,11 +486,6 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
-            // target, if specified
-            link.setAttribute("target", "_blank");
-            if (link.getAttribute("rel") === null) {
-              link.setAttribute("rel", "noopener");
-            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

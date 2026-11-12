@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../logo.css">
 <meta property="og:title" content="Aplicativo web – FG-COMPASS">
-<meta property="og:description" content="Protótipo do FG-COMPASS para o arremesso por cima do ombro.">
+<meta property="og:description" content="Avalie as habilidades motoras das crianças com as árvores de decisão do FG-COMPASS, direto no navegador.">
 <meta property="og:site_name" content="FG-COMPASS">
 </head>
 
@@ -168,8 +168,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+  <li><a href="#o-que-ele-faz" id="toc-o-que-ele-faz" class="nav-link active" data-scroll-target="#o-que-ele-faz">O que ele faz</a></li>
+  <li><a href="#privacidade" id="toc-privacidade" class="nav-link" data-scroll-target="#privacidade">Privacidade</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -307,7 +314,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Aplicativo web</h1>
-<p class="subtitle lead">Protótipo do FG-COMPASS para o arremesso por cima do ombro.</p>
+<p class="subtitle lead">Avalie as habilidades motoras das crianças com as árvores de decisão do FG-COMPASS, direto no navegador.</p>
 </div>
 
 
@@ -324,11 +331,34 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>O protótipo do aplicativo web do FG-COMPASS está disponível para testes. Esta primeira versão cobre uma das dez habilidades da avaliação: o <strong>arremesso por cima do ombro</strong>. O aplicativo está em inglês.</p>
-<p>Experimente e envie suas sugestões para nos ajudar a aprimorar a ferramenta.</p>
-<p><a href="https://fgcompass.shinyapps.io/throw/" class="btn btn-primary"><i class="bi bi-phone" aria-hidden="true"></i> Abrir o protótipo</a></p>
+<p>O Avaliador FG-COMPASS guia você pela árvore de decisão de cada habilidade: responda uma ou duas perguntas de sim ou não e obtenha o nível da criança, de 1 a 4. Funciona em celulares, tablets e computadores, na quadra, na sala de aula ou na clínica.</p>
+<p><a class="btn btn-primary btn-lg" href="../assess/index.html"><i class="bi bi-phone" aria-hidden="true"></i> Abrir o Avaliador</a></p>
+<section id="o-que-ele-faz" class="level2">
+<h2 class="anchored" data-anchor-id="o-que-ele-faz">O que ele faz</h2>
+<ul>
+<li><strong>As 10 habilidades</strong>, cinco de locomoção e cinco de controle de objetos, com as árvores de decisão v2.2.</li>
+<li><strong>Montagem e instruções</strong> de cada habilidade: o que preparar, o que dizer à criança e observações para o avaliador.</li>
+<li><strong>Resultados da sessão</strong>: uma tabela de níveis por criança e habilidade, que pode ser baixada em CSV ou impressa.</li>
+<li><strong>Por enquanto, somente em inglês.</strong> A versão em português será adicionada com a redação validada das árvores de decisão.</li>
+</ul>
+</section>
+<section id="privacidade" class="level2">
+<h2 class="anchored" data-anchor-id="privacidade">Privacidade</h2>
+<p>Nada é salvo on-line nem no navegador. Os resultados somem ao fechar ou recarregar a página; baixe o CSV antes, se precisar. Por isso o Avaliador é ideal para ensino e prática: os alunos podem avaliar colegas ou vídeos sem criar contas nem armazenar dados das crianças.</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Este é um protótipo para ensino e prática. Para coleta de dados de pesquisa, siga os protocolos de teste e as fichas de registro da página <a href="./download.html">Downloads</a>.</p>
+</div>
+</div>
+</div>
+<p>O <a href="https://fgcompass.shinyapps.io/throw/">protótipo anterior</a> (somente arremesso, em inglês) continua disponível.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -456,11 +486,6 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
-            // target, if specified
-            link.setAttribute("target", "_blank");
-            if (link.getAttribute("rel") === null) {
-              link.setAttribute("rel", "noopener");
-            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

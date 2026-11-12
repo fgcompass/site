@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#172a3b" media="(prefers-color-scheme: dark)">
+<title>FG-COMPASS Rater</title>
+<meta name="description" content="Rate children's fundamental movement skills with the FG-COMPASS decision trees. Nothing is stored online.">
+<link rel="icon" href="../images/logos/logo-bk-round.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@500;600;700&display=swap">
+<style>
+:root {
+  --navy: #12304a; --teal: #0f8b8d; --teal-ink: #0b6f71; --amber: #f2a541;
+  --ink: #1c2733; --muted: #55636f; --paper: #fbfaf7; --alt: #eef4f4; --card: #fff; --line: #dde5e8;
+  --shadow: 0 8px 24px rgba(18,48,74,.08);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --navy: #f1f5f9; --teal: #3cc6c4; --teal-ink: #3cc6c4; --amber: #f6b85e;
+    --ink: #dbe4ec; --muted: #9fb0bf; --paper: #0e1822; --alt: #132231; --card: #172a3b; --line: #24394c;
+    --shadow: 0 8px 24px rgba(0,0,0,.3);
+  }
+  .brand img { filter: invert(1); }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font: 16px/1.5 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; }
+h1, h2, h3, .lex { font-family: "Lexend", "Inter", sans-serif; color: var(--navy); }
+button { font: inherit; cursor: pointer; }
+a { color: var(--teal-ink); }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+/* Header */
+header { background: var(--card); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+.bar { display: flex; align-items: center; gap: .75rem; height: 60px; }
+.brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--navy); }
+.brand img { height: 34px; width: auto; }
+.brand span { font-family: "Lexend", sans-serif; font-weight: 600; font-size: 1rem; }
+.brand small { display: block; font-family: "Inter", sans-serif; font-weight: 500; font-size: .72rem; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+.spacer { flex: 1; }
+.lang { border: 1px solid var(--line); background: none; color: var(--ink); border-radius: 999px; padding: .25rem .7rem; font-size: .85rem; font-weight: 600; }
+.tabs { display: flex; gap: .25rem; }
+.tab { border: 0; background: none; padding: .7rem .9rem; font-weight: 600; color: var(--muted); border-bottom: 3px solid transparent; }
+.tab[aria-selected="true"] { color: var(--teal-ink); border-color: var(--teal); }
+.count { display: inline-block; min-width: 1.4em; padding: 0 .35em; margin-left: .3rem; border-radius: 999px; background: var(--alt); font-size: .8rem; text-align: center; }
+
+main { padding: 1.25rem 0 4rem; }
+.section-label { text-transform: uppercase; letter-spacing: .1em; font-size: .75rem; font-weight: 600; color: var(--teal-ink); margin: 0 0 .5rem; }
+
+/* Skill picker */
+.skills { display: grid; gap: .9rem; margin-bottom: 1.25rem; }
+.chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+.chip { border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 999px; padding: .45rem .9rem; font-weight: 500; font-size: .95rem; }
+.chip[aria-pressed="true"] { background: var(--teal); border-color: var(--teal); color: #fff; }
+.chip .done { margin-left: .35rem; font-size: .75rem; opacity: .8; }
+
+/* Cards */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 1rem; padding: 1.25rem; box-shadow: var(--shadow); }
+.row { display: flex; gap: .75rem; align-items: end; flex-wrap: wrap; }
+label { display: block; font-size: .85rem; font-weight: 600; color: var(--muted); margin-bottom: .3rem; }
+input[type=text], input[type=date] {
+  width: 100%; padding: .65rem .8rem; border: 1px solid var(--line); border-radius: .6rem;
+  background: var(--paper); color: var(--ink); font: inherit;
+}
+.grow { flex: 1 1 220px; }
+
+details.protocol { margin: 1rem 0; background: var(--card); border: 1px solid var(--line); border-radius: 1rem; }
+details.protocol summary { padding: .9rem 1.1rem; font-weight: 600; cursor: pointer; color: var(--navy); }
+.protocol-body { padding: 0 1.1rem 1.1rem; display: grid; gap: 1rem; }
+@media (min-width: 720px) { .protocol-body { grid-template-columns: repeat(3, 1fr); } }
+.protocol-body h4 { margin: 0 0 .35rem; font-size: .9rem; font-family: "Lexend", sans-serif; color: var(--navy); }
+.protocol-body ul { margin: 0; padding-left: 1.1rem; font-size: .92rem; }
+.protocol-body li { margin-bottom: .3rem; }
+
+/* Question */
+.qcard { margin-top: 1rem; }
+.qhead { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: .5rem; }
+.step { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+.who { font-size: .9rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 45%; }
+.q { font-family: "Lexend", sans-serif; font-size: clamp(1.25rem, 3.5vw, 1.6rem); line-height: 1.35; font-weight: 500; margin: .25rem 0 .5rem; color: var(--navy); }
+.hint { font-size: .9rem; color: var(--muted); margin: 0 0 1.1rem; }
+.yn { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+.yn button { padding: 1rem; border-radius: .8rem; font-weight: 700; font-size: 1.15rem; border: 2px solid; }
+.yes { background: var(--teal); border-color: var(--teal) !important; color: #fff; }
+.no { background: transparent; border-color: var(--line) !important; color: var(--ink); }
+.yes:active, .no:active { transform: scale(.98); }
+.link { background: none; border: 0; color: var(--teal-ink); font-weight: 600; padding: .5rem 0; }
+
+/* Tree */
+.tree { display: grid; grid-template-columns: repeat(4, 1fr); gap: .4rem; margin-top: 1.25rem; font-size: .78rem; text-align: center; }
+.tree div { border: 1px solid var(--line); background: var(--alt); border-radius: .5rem; padding: .35rem .25rem; color: var(--muted); }
+.tree .t1 { grid-column: 1 / -1; }
+.tree .t2 { grid-column: span 2; }
+.tree .on { background: rgba(15,139,141,.14); border-color: var(--teal); color: var(--ink); }
+.tree .lv.on { background: var(--amber); border-color: var(--amber); color: #1d1a12; font-weight: 700; }
+
+/* Result */
+.result { display: flex; gap: 1rem; align-items: flex-start; }
+.badge { flex: 0 0 auto; width: 72px; height: 72px; border-radius: 18px; display: grid; place-items: center; background: var(--amber); color: #1d1a12; font: 700 2.2rem "Lexend", sans-serif; }
+.result h2 { margin: .1rem 0 .3rem; font-size: 1.35rem; }
+.result p { margin: 0; color: var(--muted); }
+.answers { margin: 1rem 0 0; padding: .75rem 1rem; background: var(--alt); border-radius: .7rem; font-size: .88rem; }
+.answers div { display: flex; justify-content: space-between; gap: 1rem; }
+.answers b { color: var(--teal-ink); white-space: nowrap; }
+.actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.1rem; }
+.btn { border: 2px solid var(--teal); background: var(--teal); color: #fff; padding: .7rem 1.1rem; border-radius: .7rem; font-weight: 600; }
+.btn.ghost { background: transparent; color: var(--teal-ink); }
+.btn.warn { background: transparent; border-color: var(--line); color: var(--muted); }
+.ex { margin-top: 1rem; }
+.ex img { width: 100%; max-height: 160px; object-fit: contain; background: #fff; border-radius: .6rem; border: 1px solid var(--line); padding: .4rem; }
+
+/* Results */
+.empty { text-align: center; padding: 2.5rem 1rem; color: var(--muted); }
+.dist { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; margin: 1rem 0; }
+.dist div { background: var(--card); border: 1px solid var(--line); border-radius: .8rem; padding: .7rem; }
+.dist strong { display: block; font: 700 1.6rem "Lexend", sans-serif; color: var(--teal-ink); }
+.dist span { font-size: .8rem; color: var(--muted); }
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: .8rem; background: var(--card); }
+table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+th, td { padding: .55rem .7rem; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); background: var(--alt); }
+td.lvl { font-weight: 700; text-align: center; }
+td.lvl span { display: inline-block; min-width: 1.8em; border-radius: .4rem; background: var(--amber); color: #1d1a12; }
+.note { font-size: .85rem; color: var(--muted); margin-top: 1rem; }
+.meta { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 1rem; }
+[hidden] { display: none !important; }
+button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.chip, .tab, .btn, .link, .lang { min-height: 44px; }
+.yn button { min-height: 64px; }
+#rCard:not([hidden]) { animation: pop .25s ease; }
+@keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+#qText { transition: opacity .15s ease; }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+
+/* ---- Phones ---- */
+@media (max-width: 640px) {
+  .wrap { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+  .bar { height: 54px; }
+  .brand img { height: 28px; }
+  .tab { flex: 1; text-align: center; padding: .55rem .5rem; }
+  main { padding: .9rem 0 calc(2rem + env(safe-area-inset-bottom)); }
+  /* Phone order: skills, child, question, then setup/instructions */
+  #rateView { display: flex; flex-direction: column; }
+  #skillPicker { order: 1; } .who-card { order: 2; } #qCard, #rCard { order: 3; } #protocol { order: 4; }
+  /* all ten skills in one swipeable row */
+  .skills { display: flex; gap: .45rem; margin: 0 -16px .7rem; padding: 0 16px 2px; overflow-x: auto;
+            scrollbar-width: none; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
+            mask-image: linear-gradient(90deg, transparent 0, #000 12px, #000 calc(100% - 28px), transparent 100%); }
+  .skills::-webkit-scrollbar { display: none; }
+  .skills > div, .chips { display: contents; }
+  .skills .section-label { flex: 0 0 auto; align-self: center; margin: 0 .1rem 0 .3rem; font-size: .66rem; writing-mode: horizontal-tb; }
+  .skills > div:first-child .section-label { margin-left: 0; }
+  .chip { flex: 0 0 auto; scroll-snap-align: start; padding: .35rem .85rem; }
+  .who-card label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .who-card input { padding: .55rem .75rem; }
+  .qhead { flex-direction: column-reverse; align-items: flex-start; gap: .1rem; }
+  .who { max-width: 100%; font-weight: 600; color: var(--ink); }
+  .card { padding: 1rem; border-radius: .9rem; }
+  .card.who-card { padding: .6rem; }
+  details.protocol { margin: .7rem 0 0; }
+  details.protocol summary { padding: .75rem 1rem; font-size: .95rem; }
+  .qcard { margin-top: .7rem; scroll-margin-top: 110px; }
+  .q { font-size: 1.2rem; margin: .1rem 0 .4rem; }
+  .tree { margin-top: .9rem; }
+  .hint { font-size: .85rem; margin-bottom: .9rem; }
+  .result { gap: .8rem; }
+  .badge { width: 60px; height: 60px; font-size: 1.9rem; border-radius: 14px; }
+  .result h2 { font-size: 1.2rem; }
+  .actions .btn { flex: 1 1 auto; }
+  .dist { grid-template-columns: repeat(2, 1fr); }
+  .meta { grid-template-columns: 1fr; }
+  /* All ratings as stacked rows instead of a wide table */
+  #allTable thead { display: none; }
+  #allTable tr { display: grid; grid-template-columns: 1fr auto; gap: .1rem .75rem; padding: .6rem .8rem; border-bottom: 1px solid var(--line); }
+  #allTable td { border: 0; padding: 0; white-space: normal; }
+  #allTable td:nth-child(1) { grid-column: 1; font-size: .78rem; color: var(--muted); }
+  #allTable td:nth-child(2) { grid-column: 1; font-weight: 600; }
+  #allTable td:nth-child(3) { grid-column: 1; font-size: .9rem; color: var(--muted); }
+  #allTable td:nth-child(4) { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 1.1rem; }
+  #allTable td:nth-child(5) { grid-column: 2; grid-row: 3; text-align: right; }
+  #allTable td:nth-child(5) .link { min-height: 0; padding: 0; font-size: .85rem; }
+}
+@media (max-width: 360px) {
+  .yn { gap: .5rem; }
+  .q { font-size: 1.15rem; }
+  .tree { font-size: .7rem; }
+}
+
+@media print {
+  header .tabs, header .lang, .actions, .meta input, #rateView, .no-print { display: none !important; }
+  #resultsView { display: block !important; }
+  body { background: #fff; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="../index.html" id="homeLink">
+      <img src="../images/logos/logo-bk.png" alt="FG-COMPASS">
+      <span><small id="tAppSub">Web app · beta</small><span id="tAppName">Rater</span></span>
+    </a>
+    <div class="spacer"></div>
+    <button class="lang" id="langBtn" type="button" aria-label="Português">PT-BR</button>
+  </div>
+  <div class="wrap tabs" role="tablist">
+    <button class="tab" role="tab" id="tabRate" aria-selected="true" aria-controls="rateView" type="button"></button>
+    <button class="tab" role="tab" id="tabResults" aria-selected="false" aria-controls="resultsView" type="button"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- ============ RATE ============ -->
+  <section id="rateView" role="tabpanel" aria-labelledby="tabRate">
+    <div class="skills" id="skillPicker"></div>
+
+    <div class="card who-card">
+      <div class="row">
+        <div class="grow">
+          <label for="performer" id="tPerformer"></label>
+          <input type="text" id="performer" autocomplete="off">
+        </div>
+      </div>
+    </div>
+
+    <details class="protocol" id="protocol">
+      <summary id="tProtocol"></summary>
+      <div class="protocol-body">
+        <div><h4 id="tSetup"></h4><ul id="pSetup"></ul></div>
+        <div><h4 id="tSay"></h4><ul id="pSay"></ul></div>
+        <div><h4 id="tNotes"></h4><ul id="pNotes"></ul></div>
+      </div>
+    </details>
+
+    <div class="card qcard" id="qCard" aria-live="polite">
+      <div class="qhead">
+        <span class="step" id="qStep"></span>
+        <span class="who" id="qWho"></span>
+      </div>
+      <p class="q" id="qText"></p>
+      <p class="hint" id="tHint"></p>
+      <div class="yn">
+        <button class="yes" type="button" id="btnYes"></button>
+        <button class="no" type="button" id="btnNo"></button>
+      </div>
+      <button class="link" type="button" id="btnBack" hidden></button>
+      <div class="tree" aria-hidden="true" id="tree"></div>
+    </div>
+
+    <div class="card qcard" id="rCard" hidden aria-live="polite">
+      <div class="result">
+        <div class="badge" id="rBadge"></div>
+        <div>
+          <span class="step" id="rWho"></span>
+          <h2 id="rTitle"></h2>
+          <p id="rDesc"></p>
+        </div>
+      </div>
+      <div class="answers" id="rAnswers"></div>
+      <div class="ex" id="rEx" hidden><img id="rImg" alt=""></div>
+      <div class="actions">
+        <button class="btn" type="button" id="btnNext"></button>
+        <button class="btn ghost" type="button" id="btnRedo"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESULTS ============ -->
+  <section id="resultsView" role="tabpanel" aria-labelledby="tabResults" hidden>
+    <h1 style="margin:.2rem 0 1rem;font-size:1.5rem" id="tResultsTitle"></h1>
+    <div class="meta">
+      <div><label for="observer" id="tObserver"></label><input type="text" id="observer" autocomplete="off"></div>
+      <div><label for="location" id="tLocation"></label><input type="text" id="location" autocomplete="off"></div>
+      <div><label for="date" id="tDate"></label><input type="date" id="date"></div>
+    </div>
+    <div id="resultsBody"></div>
+    <div class="actions" id="resultsActions">
+      <button class="btn" type="button" id="btnCsv"></button>
+      <button class="btn ghost" type="button" id="btnPrint"></button>
+      <button class="btn warn" type="button" id="btnClear"></button>
+    </div>
+    <p class="note" id="tPrivacy"></p>
+  </section>
+</main>
+
+<script src="skills.js"></script>
+<script>
+(function () {
+  "use strict";
+  var SK = window.FG_SKILLS;
+  var T = {
+    en: {
+      appName: "Rater", appSub: "Web app · beta", langBtn: "PT-BR", langAria: "Ver em português",
+      rate: "Rate", results: "Results", objControl: "Object control", locomotor: "Locomotor",
+      performer: "Child (name or ID)", performerPh: "Performer",
+      protocol: "Setup and instructions", setup: "Set up", say: "Say to the child", notes: "Notes for the rater",
+      q: "Question", of: "of", hint: "Answer Yes only if you saw it in at least 2 of the 3 valid trials.",
+      yes: "Yes", no: "No", back: "Back to question 1",
+      levelWord: "Level", levelNames: ["Initial", "Emerging", "Developing", "Proficient"],
+      next: "Next child", redo: "Change answers", example: "Example illustration",
+      resultsTitle: "Session results", observer: "Rater", location: "Class or location", date: "Date",
+      csv: "Download CSV", print: "Print", clear: "Clear results",
+      clearConfirm: "Clear all results from this session?",
+      empty: "No ratings yet. Rate a child and the result will show up here.",
+      byChild: "By child", allRatings: "All ratings", child: "Child", skill: "Skill", level: "Level", time: "Time",
+      remove: "Remove",
+      privacy: "Nothing is saved online or in your browser. Results disappear when you close or reload this page, so download the CSV first if you need it.",
+      leave: "Your results will be lost.", homeTitle: "FG-COMPASS site", qLangNote: ""
+    },
+    pt: {
+      appName: "Avaliador", appSub: "Aplicativo web · beta", langBtn: "EN", langAria: "View in English",
+      rate: "Avaliar", results: "Resultados", objControl: "Controle de objetos", locomotor: "Locomoção",
+      performer: "Criança (nome ou código)", performerPh: "Criança",
+      protocol: "Montagem e instruções", setup: "Montagem", say: "Diga à criança", notes: "Observações para o avaliador",
+      q: "Pergunta", of: "de", hint: "Responda Sim apenas se observou o comportamento em pelo menos 2 das 3 tentativas válidas.",
+      yes: "Sim", no: "Não", back: "Voltar à pergunta 1",
+      levelWord: "Nível", levelNames: ["Inicial", "Emergente", "Em desenvolvimento", "Proficiente"],
+      next: "Próxima criança", redo: "Alterar respostas", example: "Ilustração de exemplo",
+      resultsTitle: "Resultados da sessão", observer: "Avaliador", location: "Turma ou local", date: "Data",
+      csv: "Baixar CSV", print: "Imprimir", clear: "Limpar resultados",
+      clearConfirm: "Apagar todos os resultados desta sessão?",
+      empty: "Nenhuma avaliação ainda. Avalie uma criança e o resultado aparecerá aqui.",
+      byChild: "Por criança", allRatings: "Todas as avaliações", child: "Criança", skill: "Habilidade", level: "Nível", time: "Hora",
+      remove: "Remover",
+      privacy: "Nada é salvo on-line nem no navegador. Os resultados somem ao fechar ou recarregar a página; baixe o CSV antes, se precisar.",
+      leave: "Seus resultados serão perdidos.", homeTitle: "Site do FG-COMPASS",
+      qLangNote: "As perguntas e os protocolos estão em inglês até a publicação da versão oficial em português."
+    }
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+  // Portuguese is turned off until the validated Portuguese wording of the decision trees
+  // is added to skills.js. Set PT_ENABLED to true to show the language switch again.
+  var PT_ENABLED = false;
+  var params = new URLSearchParams(location.search);
+  var lang = PT_ENABLED && params.get("lang") === "pt" ? "pt" : "en";
+  if (!PT_ENABLED) $("langBtn").hidden = true;
+  var skill = SK.find(function (s) { return s.id === params.get("skill"); }) || SK[0];
+  var node = "q1", answers = [], results = [], counter = 1;
+  var t = function (k) { return T[lang][k]; };
+  var txt = function (v) { return typeof v === "string" ? v : (v[lang] || v.en); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+
+  function performerName() { return $("performer").value.trim() || (t("performerPh") + " " + counter); }
+
+  /* ---------- static text ---------- */
+  function applyLang() {
+    document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+    $("tAppName").textContent = t("appName"); $("tAppSub").textContent = t("appSub");
+    $("langBtn").textContent = t("langBtn"); $("langBtn").setAttribute("aria-label", t("langAria"));
+    $("homeLink").href = lang === "pt" ? "../pt/index.html" : "../index.html";
+    $("homeLink").title = t("homeTitle");
+    $("tPerformer").textContent = t("performer"); $("performer").placeholder = t("performer");
+    $("tProtocol").textContent = t("protocol"); $("tSetup").textContent = t("setup");
+    $("tSay").textContent = t("say"); $("tNotes").textContent = t("notes");
+    $("tHint").textContent = t("hint") + (t("qLangNote") ? " " + t("qLangNote") : "");
+    $("btnYes").textContent = t("yes"); $("btnNo").textContent = t("no"); $("btnBack").textContent = "← " + t("back");
+    $("btnNext").textContent = t("next") + " →"; $("btnRedo").textContent = t("redo");
+    $("tResultsTitle").textContent = t("resultsTitle"); $("tObserver").textContent = t("observer");
+    $("tLocation").textContent = t("location"); $("tDate").textContent = t("date");
+    $("btnCsv").textContent = t("csv"); $("btnPrint").textContent = t("print"); $("btnClear").textContent = t("clear");
+    $("tPrivacy").textContent = t("privacy");
+    renderTabs(); renderPicker(); renderProtocol(); renderQuestion(); renderResults();
+    if (!$("rCard").hidden) showResult(lastLevel, true);
+  }
+
+  function renderTabs() {
+    $("tabRate").textContent = t("rate");
+    $("tabResults").innerHTML = esc(t("results")) + '<span class="count">' + results.length + "</span>";
+  }
+
+  function renderPicker() {
+    var html = "";
+    [["obj", "objControl"], ["loc", "locomotor"]].forEach(function (g) {
+      html += '<div><p class="section-label">' + esc(t(g[1])) + '</p><div class="chips">';
+      SK.filter(function (s) { return s.group === g[0]; }).forEach(function (s) {
+        var n = results.filter(function (r) { return r.skill === s.id; }).length;
+        html += '<button type="button" class="chip" data-skill="' + s.id + '" aria-pressed="' + (s === skill) + '">' +
+          esc(txt(s.name)) + (n ? '<span class="done">✓' + n + "</span>" : "") + "</button>";
+      });
+      html += "</div></div>";
+    });
+    $("skillPicker").innerHTML = html;
+  }
+
+  function renderProtocol() {
+    var li = function (a) { return a.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join(""); };
+    $("pSetup").innerHTML = li(skill.setup); $("pSay").innerHTML = li(skill.say); $("pNotes").innerHTML = li(skill.notes);
+    $("tProtocol").textContent = t("protocol") + " · " + txt(skill.name);
+  }
+
+  function renderTree(level) {
+    var path = { q1: ["q1"], up: ["q1", "up"], low: ["q1", "low"] }[node] || [];
+    if (level) path = ["q1", level > 2 ? "up" : "low", "L" + level];
+    var on = function (k) { return path.indexOf(k) > -1 ? " on" : ""; };
+    var lw = t("levelWord");
+    $("tree").innerHTML =
+      '<div class="t1' + on("q1") + '">' + esc(t("q")) + ' 1</div>' +
+      '<div class="t2' + on("low") + '">' + esc(t("q")) + ' 2 · ' + esc(t("no")) + '</div>' +
+      '<div class="t2' + on("up") + '">' + esc(t("q")) + ' 2 · ' + esc(t("yes")) + '</div>' +
+      [1, 2, 3, 4].map(function (l) { return '<div class="lv' + on("L" + l) + '">' + lw + " " + l + "</div>"; }).join("");
+  }
+
+  function renderQuestion() {
+    $("qStep").textContent = t("q") + " " + (node === "q1" ? 1 : 2) + " " + t("of") + " 2 · " + txt(skill.name);
+    $("qWho").textContent = performerName();
+    $("qText").textContent = skill[node];
+    $("btnBack").hidden = node === "q1";
+    renderTree();
+  }
+
+  var lastLevel = null;
+  function showResult(level, redraw) {
+    lastLevel = level;
+    var name = t("levelNames")[level - 1];
+    $("qCard").hidden = true; $("rCard").hidden = false;
+    $("rBadge").textContent = level;
+    $("rWho").textContent = (redraw ? results[results.length - 1].performer : performerName()) + " · " + txt(skill.name);
+    $("rTitle").textContent = t("levelWord") + " " + level + " · " + name;
+    $("rDesc").textContent = skill.levels[level - 1];
+    $("rAnswers").innerHTML = answers.map(function (a, i) {
+      return "<div><span>" + (i + 1) + ". " + esc(a.q) + "</span><b>" + esc(a.a ? t("yes") : t("no")) + "</b></div>";
+    }).join("");
+    if (skill.img) { $("rEx").hidden = false; $("rImg").src = skill.img + level + ".png"; $("rImg").alt = t("example") + ": " + t("levelWord") + " " + level; }
+    else $("rEx").hidden = true;
+    $("btnNext").focus();
+  }
+
+  function answer(yes) {
+    answers.push({ q: skill[node], a: yes });
+    if (node === "q1") { node = yes ? "up" : "low"; renderQuestion(); bringIntoView("qCard"); return; }
+    var level = node === "up" ? (yes ? 4 : 3) : (yes ? 1 : 2);
+    results.push({
+      performer: performerName(), skill: skill.id, level: level,
+      q1: answers[0].a, q2: answers[1].a, time: new Date()
+    });
+    renderTabs(); renderPicker(); renderResults();
+    showResult(level);
+    bringIntoView("rCard");
+  }
+
+  // On small screens, keep the active card in view below the sticky header.
+  function bringIntoView(id) {
+    var el = $(id), head = document.querySelector("header");
+    var top = el.getBoundingClientRect().top, h = head.getBoundingClientRect().height;
+    if (top < h + 8 || top > window.innerHeight * 0.45) {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: window.scrollY + top - h - 12, behavior: reduce ? "auto" : "smooth" });
+    }
+  }
+
+  function resetQuestion() {
+    node = "q1"; answers = [];
+    $("rCard").hidden = true; $("qCard").hidden = false;
+    renderQuestion();
+  }
+
+  /* ---------- results ---------- */
+  function renderResults() {
+    var body = $("resultsBody");
+    $("resultsActions").hidden = !results.length;
+    if (!results.length) { body.innerHTML = '<div class="empty card">' + esc(t("empty")) + "</div>"; return; }
+    var counts = [0, 0, 0, 0];
+    results.forEach(function (r) { counts[r.level - 1]++; });
+    var html = '<div class="dist">' + counts.map(function (c, i) {
+      return "<div><strong>" + c + "</strong><span>" + esc(t("levelWord")) + " " + (i + 1) + " · " + esc(t("levelNames")[i]) + "</span></div>";
+    }).join("") + "</div>";
+
+    // Matrix: children x skills (latest rating wins)
+    var kids = [], used = [];
+    results.forEach(function (r) {
+      if (kids.indexOf(r.performer) < 0) kids.push(r.performer);
+      if (used.indexOf(r.skill) < 0) used.push(r.skill);
+    });
+    var cols = SK.filter(function (s) { return used.indexOf(s.id) > -1; });
+    html += '<p class="section-label">' + esc(t("byChild")) + '</p><div class="tablewrap"><table><thead><tr><th>' + esc(t("child")) + "</th>" +
+      cols.map(function (s) { return "<th>" + esc(txt(s.name)) + "</th>"; }).join("") + "</tr></thead><tbody>";
+    kids.forEach(function (k) {
+      html += "<tr><td>" + esc(k) + "</td>" + cols.map(function (s) {
+        var r = results.filter(function (x) { return x.performer === k && x.skill === s.id; }).pop();
+        return '<td class="lvl">' + (r ? "<span>" + r.level + "</span>" : "–") + "</td>";
+      }).join("") + "</tr>";
+    });
+    html += "</tbody></table></div>";
+
+    // All ratings
+    html += '<p class="section-label" style="margin-top:1.25rem">' + esc(t("allRatings")) + '</p><div class="tablewrap"><table id="allTable"><thead><tr><th>' +
+      [t("time"), t("child"), t("skill"), t("level"), ""].map(esc).join("</th><th>") + "</th></tr></thead><tbody>";
+    results.slice().reverse().forEach(function (r) {
+      var i = results.indexOf(r), s = SK.find(function (x) { return x.id === r.skill; });
+      html += "<tr><td>" + r.time.toLocaleTimeString(lang === "pt" ? "pt-BR" : "en-US", { hour: "2-digit", minute: "2-digit" }) +
+        "</td><td>" + esc(r.performer) + "</td><td>" + esc(txt(s.name)) + '</td><td class="lvl"><span>' + r.level +
+        '</span></td><td class="no-print"><button class="link" type="button" data-del="' + i + '">' + esc(t("remove")) + "</button></td></tr>";
+    });
+    html += "</tbody></table></div>";
+    body.innerHTML = html;
+  }
+
+  function csv() {
+    var head = ["observer", "location", "date", "performer", "skill", "level", "level_name", "q1_answer", "q2_answer", "time"];
+    var q = function (v) { v = String(v == null ? "" : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+    var rows = results.map(function (r) {
+      return [$("observer").value, $("location").value, $("date").value, r.performer, r.skill, r.level,
+        T.en.levelNames[r.level - 1], r.q1 ? "YES" : "NO", r.q2 ? "YES" : "NO", r.time.toISOString()].map(q).join(",");
+    });
+    var blob = new Blob(["﻿" + head.join(",") + "\n" + rows.join("\n") + "\n"], { type: "text/csv;charset=utf-8" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "fgcompass-results" + ($("date").value ? "-" + $("date").value : "") + ".csv";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  }
+
+  function showTab(which) {
+    var r = which === "rate";
+    $("tabRate").setAttribute("aria-selected", r); $("tabResults").setAttribute("aria-selected", !r);
+    $("rateView").hidden = !r; $("resultsView").hidden = r;
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- events ---------- */
+  $("skillPicker").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-skill]"); if (!b) return;
+    skill = SK.find(function (s) { return s.id === b.dataset.skill; });
+    renderPicker(); renderProtocol(); resetQuestion();
+    b = $("skillPicker").querySelector('[data-skill="' + skill.id + '"]');
+    if (b && b.scrollIntoView) b.scrollIntoView({ block: "nearest", inline: "nearest" });
+    var u = new URL(location.href); u.searchParams.set("skill", skill.id); history.replaceState(null, "", u);
+  });
+  $("btnYes").addEventListener("click", function () { answer(true); });
+  $("btnNo").addEventListener("click", function () { answer(false); });
+  $("btnBack").addEventListener("click", resetQuestion);
+  $("performer").addEventListener("input", function () { $("qWho").textContent = performerName(); });
+  $("btnNext").addEventListener("click", function () {
+    counter++; $("performer").value = ""; resetQuestion(); $("performer").focus();
+  });
+  $("btnRedo").addEventListener("click", function () {
+    var last = results.pop();
+    if (last) { $("performer").value = last.performer.indexOf(t("performerPh") + " ") === 0 ? "" : last.performer; }
+    renderTabs(); renderPicker(); renderResults(); resetQuestion();
+  });
+  $("tabRate").addEventListener("click", function () { showTab("rate"); });
+  $("tabResults").addEventListener("click", function () { showTab("results"); });
+  $("resultsBody").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-del]"); if (!b) return;
+    results.splice(+b.dataset.del, 1); renderTabs(); renderPicker(); renderResults();
+  });
+  $("btnCsv").addEventListener("click", csv);
+  $("btnPrint").addEventListener("click", function () { window.print(); });
+  $("btnClear").addEventListener("click", function () {
+    if (window.confirm(t("clearConfirm"))) { results = []; counter = 1; renderTabs(); renderPicker(); renderResults(); }
+  });
+  $("langBtn").addEventListener("click", function () {
+    lang = lang === "en" ? "pt" : "en";
+    var u = new URL(location.href); if (lang === "pt") u.searchParams.set("lang", "pt"); else u.searchParams.delete("lang");
+    history.replaceState(null, "", u);
+    applyLang();
+  });
+  window.addEventListener("beforeunload", function (e) {
+    if (results.length) { e.preventDefault(); e.returnValue = t("leave"); }
+  });
+
+  var d = new Date(); $("date").value = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  applyLang();
+})();
+</script>
+</body>
+</html>
