@@ -44,11 +44,16 @@ header {
 .brand { display: flex; align-items: center; gap: .9rem; text-decoration: none; color: #fff; min-width: 0; }
 .brand img { height: 44px; width: auto; display: block; }
 .brand .app { display: flex; flex-direction: column; justify-content: center; padding-left: .9rem; border-left: 1px solid rgba(153,207,211,.3); line-height: 1.15; }
-.brand .app span { font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em; color: #fff; }
+.brand .app span { font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em; color: #fff; white-space: nowrap; }
 .brand small { display: block; font-weight: 700; font-size: .68rem; color: #F9A73E; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 2px; }
 .spacer { flex: 1; }
 .lang { border: 1px solid rgba(153,207,211,.35); background: none; color: #D1E0E6; border-radius: 999px; padding: .25rem .8rem; font-size: .85rem; font-weight: 600; }
 .lang:hover { border-color: #2EC7BC; color: #2EC7BC; }
+.back { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: 0 .9rem; border-radius: 999px; background: rgba(46,199,188,.12); border: 1px solid rgba(46,199,188,.45); color: #fff; font-size: .88rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.back:hover { background: #2EC7BC; border-color: #2EC7BC; color: #082B42; }
+.back svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+@media (max-width: 640px) { .back { padding: 0 .7rem; } .back .full { display: none; } }
+@media (min-width: 641px) { .back .short { display: none; } }
 .tabs { display: flex; gap: .25rem; }
 .tab { border: 0; background: none; padding: .7rem 1rem; font-weight: 600; color: #A4C2CA; border-bottom: 3px solid transparent; }
 .tab:hover { color: #fff; }
@@ -250,7 +255,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
 }
 
 @media print {
-  header .tabs, header .lang, .actions, .meta input, #rateView, .no-print, dialog { display: none !important; }
+  header .tabs, header .lang, header .back, .actions, .meta input, #rateView, .no-print, dialog { display: none !important; }
   header { position: static; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   #resultsView { display: block !important; }
   body { background: #fff; }
@@ -265,6 +270,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       <span class="app"><small id="tAppSub">Beta</small><span id="tAppName">Web app</span></span>
     </a>
     <div class="spacer"></div>
+    <a class="back" href="../index.html" id="backLink"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><span class="full" id="tBackFull">Back to site</span><span class="short" id="tBackShort">Site</span></a>
     <button class="lang" id="langBtn" type="button" aria-label="Português">PT-BR</button>
   </div>
   <div class="wrap tabs" role="tablist">
@@ -388,7 +394,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       byChild: "By child", allRatings: "All ratings", child: "Child", skill: "Skill", level: "Level", time: "Time",
       remove: "Remove",
       privacy: "Nothing is saved online or in your browser. Results disappear when you close or reload this page, so download the CSV first if you need it.",
-      leave: "Your results will be lost.", homeTitle: "FG-COMPASS site", qLangNote: ""
+      leave: "Your results will be lost.", homeTitle: "FG-COMPASS site", backFull: "Back to site", backShort: "Site", qLangNote: ""
     },
     pt: {
       appName: "Aplicativo web", appSub: "Beta", langBtn: "EN", langAria: "View in English",
@@ -407,7 +413,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       byChild: "Por criança", allRatings: "Todas as avaliações", child: "Criança", skill: "Habilidade", level: "Nível", time: "Hora",
       remove: "Remover",
       privacy: "Nada é salvo on-line nem no navegador. Os resultados somem ao fechar ou recarregar a página; baixe o CSV antes, se precisar.",
-      leave: "Seus resultados serão perdidos.", homeTitle: "Site do FG-COMPASS",
+      leave: "Seus resultados serão perdidos.", homeTitle: "Site do FG-COMPASS", backFull: "Voltar ao site", backShort: "Site",
       qLangNote: "As perguntas e os protocolos estão em inglês até a publicação da versão oficial em português."
     }
   };
@@ -434,6 +440,8 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     $("langBtn").textContent = t("langBtn"); $("langBtn").setAttribute("aria-label", t("langAria"));
     $("homeLink").href = lang === "pt" ? "../pt/index.html" : "../index.html";
     $("homeLink").title = t("homeTitle");
+    $("backLink").href = $("homeLink").href;
+    $("tBackFull").textContent = t("backFull"); $("tBackShort").textContent = t("backShort");
     $("tPerformer").textContent = t("performer"); $("performer").placeholder = t("performer");
     $("tProtocol").textContent = t("protocol"); $("tSetup").textContent = t("setup");
     $("tSay").textContent = t("say"); $("tNotes").textContent = t("notes");
