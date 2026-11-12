@@ -48,7 +48,7 @@
         n:[["Open the Rater","assess/index.html"],["Print the decision trees","static/files/fgcompass-decision-trees-v2.2.pdf"]]},
     cl:{h:"Spot movement delays early and plan support.",p:"Clear levels for each skill help you see where a child is stuck and explain it to families in plain words.",
         u:[["Find the gaps","A profile across 10 skills shows which ones lag behind."],["Target support","Each level names the feature that is missing."],["Share with families","Initial, Emerging, Developing and Proficient are easy to explain."]],
-        n:[["Read the manual","https://drfurtado.github.io/compass-manual/"],["See the four levels","#levels"]]},
+        n:[["Read the manual","https://fgcompass.github.io/manual/"],["See the four levels","#levels"]]},
     rs:{h:"A criterion-referenced instrument with published reliability.",p:"FG-COMPASS is process-oriented, with expert-rater agreement and inter- and intra-rater reliability reported in peer-reviewed journals.",
         u:[["Composite trees","Three key criteria per skill, drawn from developmental sequences."],["Reliable ratings","Agreement with expert raters, reported since 2012."],["Live or recorded","Designed for live observation in the field."]],
         n:[["See the publications","publications.html"],["The decision-tree model","#how-it-works"]]},
