@@ -36,13 +36,17 @@ a { color: var(--teal-ink); }
 
 /* Header: the site's deep navy bar, in both themes */
 header {
-  position: sticky; top: 0; z-index: 5; color: #D1E0E6;
+  position: sticky; top: 0; z-index: 5; color: #D1E0E6; transition: transform .25s ease;
   background: radial-gradient(60% 140% at 100% 0%, rgba(46,199,188,.14), rgba(46,199,188,0) 70%), #082B42;
   border-bottom: 1px solid rgba(153,207,211,.23);
 }
-.bar { display: flex; align-items: center; gap: .9rem; height: 72px; }
+.bar { display: flex; align-items: center; gap: .75rem; height: 64px; }
+header.away { transform: translateY(-100%); }
+@media (max-width: 359px) { .brand img { height: 20px !important; } .brand .app span { font-size: .9rem !important; } }
+.brand { flex-shrink: 0; }
+@media (prefers-reduced-motion: reduce) { header { transition: none; } }
 .brand { display: flex; align-items: center; gap: .9rem; text-decoration: none; color: #fff; min-width: 0; }
-.brand img { height: 44px; width: auto; display: block; }
+.brand img { height: 38px; width: auto; display: block; }
 .brand .app { display: flex; flex-direction: column; justify-content: center; padding-left: .9rem; border-left: 1px solid rgba(153,207,211,.3); line-height: 1.15; }
 .brand .app span { font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em; color: #fff; white-space: nowrap; }
 .brand small { display: block; font-weight: 700; font-size: .68rem; color: #F9A73E; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 2px; }
@@ -52,14 +56,16 @@ header {
 .back { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: 0 .9rem; border-radius: 999px; background: rgba(46,199,188,.12); border: 1px solid rgba(46,199,188,.45); color: #fff; font-size: .88rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
 .back:hover { background: #2EC7BC; border-color: #2EC7BC; color: #082B42; }
 .back svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; flex: none; }
-@media (max-width: 640px) { .back { padding: 0 .7rem; } .back .full { display: none; } }
+@media (max-width: 640px) { .back { padding: 0; width: 40px; min-height: 40px; justify-content: center; } .back .full, .back .short { display: none; } }
 @media (min-width: 641px) { .back .short { display: none; } }
-.tabs { display: flex; gap: .25rem; }
-.tab { border: 0; background: none; padding: .7rem 1rem; font-weight: 600; color: #A4C2CA; border-bottom: 3px solid transparent; }
+/* Rate / Results as a compact segmented control inside the bar */
+.tabs { display: flex; gap: 2px; padding: 3px; border-radius: 999px; background: rgba(209,224,230,.1); border: 1px solid rgba(153,207,211,.22); }
+.tab { border: 0; background: none; min-height: 38px !important; padding: 0 .95rem; border-radius: 999px; font-weight: 700; font-size: .9rem; color: #A4C2CA; display: inline-flex; align-items: center; white-space: nowrap; }
 .tab:hover { color: #fff; }
-.tab[aria-selected="true"] { color: #fff; border-color: #2EC7BC; }
+.tab[aria-selected="true"] { color: #082B42; background: #2EC7BC; }
+.tab svg { display: none; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .count { display: inline-block; min-width: 1.5em; padding: 0 .4em; margin-left: .4rem; border-radius: 999px; background: rgba(209,224,230,.16); color: #D1E0E6; font-size: .78rem; font-weight: 700; text-align: center; }
-.tab[aria-selected="true"] .count { background: #F9A73E; color: #082B42; }
+.tab[aria-selected="true"] .count { background: #082B42; color: #F9A73E; }
 
 main.wrap { padding-top: 2rem; padding-bottom: 4rem; }
 .section-label { text-transform: uppercase; letter-spacing: .1em; font-size: .75rem; font-weight: 600; color: var(--teal-ink); margin: 0 0 .5rem; }
@@ -146,6 +152,16 @@ details.protocol summary { padding: .9rem 1.1rem; font-weight: 600; cursor: poin
 .cmp:hover { background: var(--alt); }
 dialog#cmpDlg { padding: 0; border: 0; background: transparent; max-width: none; max-height: none; width: 100%; height: 100%; margin: 0; }
 dialog#cmpDlg::backdrop { background: rgba(10,20,30,.55); }
+.skillf { flex: 0 0 auto; display: grid; gap: .35rem; }
+.skillf .lbl, .who-card label { font-size: .85rem; font-weight: 600; color: var(--muted); }
+select.skbtn { appearance: none; -webkit-appearance: none; cursor: pointer; font-family: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2324696C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right .7rem center; background-size: 18px; padding-right: 2.3rem !important; }
+@media (prefers-color-scheme: dark) { html select.skbtn { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232EC7BC' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); } }
+.skbtn { display: inline-flex; align-items: center; gap: .5rem; min-height: 46px; padding: 0 .8rem 0 1rem; border-radius: .7rem; border: 1.5px solid var(--teal-ink); background: var(--card); color: var(--navy); font-weight: 700; font-size: .98rem; white-space: nowrap; }
+.skbtn:hover { background: var(--alt); }
+.skbtn .done { font-size: .75rem; font-weight: 700; color: var(--teal-ink); }
+.skbtn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .sheet { position: absolute; left: 0; right: 0; bottom: 0; margin: 0 auto; max-width: 960px; max-height: 92vh; overflow: auto;
          background: var(--card); color: var(--ink); border-radius: 1.1rem 1.1rem 0 0; padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom));
          box-shadow: 0 -10px 40px rgba(0,0,0,.25); animation: up .22s ease; }
@@ -200,25 +216,33 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
 /* ---- Phones ---- */
 @media (max-width: 640px) {
   .wrap { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
-  .bar { height: 60px; }
-  .brand img { height: 32px; }
+  .bar { height: 56px; gap: .5rem; }
+  .brand img { height: 24px; }
+  /* phone: app-style top bar plus a bottom tab bar */
+  .bar { height: 54px; }
+  .brand .app small { display: none; }
+  body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
+  html { scroll-padding-top: 64px; scroll-padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+  header .tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+    padding: 6px 10px calc(6px + env(safe-area-inset-bottom)); border-radius: 0; border: 0; border-top: 1px solid rgba(153,207,211,.25);
+    background: #082B42; box-shadow: 0 -6px 20px rgba(8,43,66,.25); }
+  .tab { position: relative; flex-direction: column; justify-content: center; gap: 2px; min-height: 54px !important; border-radius: 14px; padding: 0; font-size: .72rem; letter-spacing: .01em; }
+  .tab svg { display: block; }
+  .tab[aria-selected="true"] { background: rgba(46,199,188,.14); color: #2EC7BC; }
+  .tab .count { position: absolute; top: 5px; left: calc(50% + 6px); margin: 0; min-width: 18px; font-size: .68rem; line-height: 18px; padding: 0 5px; background: #F9A73E; color: #082B42; }
+  .tab[aria-selected="true"] .count { background: #F9A73E; color: #082B42; }
   .brand, .brand .app { gap: .6rem; }
   .brand .app { padding-left: .6rem; }
   .brand .app span { font-size: 1rem; }
-  .tab { flex: 1; text-align: center; padding: .55rem .5rem; }
   main.wrap { padding-top: 1.1rem; padding-bottom: calc(2rem + env(safe-area-inset-bottom)); }
   /* Phone order: skills, child, question, then setup/instructions */
   #rateView { display: flex; flex-direction: column; }
-  #skillPicker { order: 1; } .who-card { order: 2; } #btCard { order: 3; } #protocol { order: 4; }
-  /* all ten skills in one swipeable row */
-  .skills { display: flex; gap: .45rem; margin: 0 -16px .7rem; padding: 0 16px 2px; overflow-x: auto;
-            scrollbar-width: none; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
-            mask-image: linear-gradient(90deg, transparent 0, #000 12px, #000 calc(100% - 28px), transparent 100%); }
-  .skills::-webkit-scrollbar { display: none; }
-  .skills > div, .chips { display: contents; }
-  .skills .section-label { flex: 0 0 auto; align-self: center; margin: 0 .1rem 0 .3rem; font-size: .66rem; writing-mode: horizontal-tb; }
-  .skills > div:first-child .section-label { margin-left: 0; }
-  .chip { flex: 0 0 auto; scroll-snap-align: start; padding: .35rem .85rem; }
+  .who-card { order: 2; } #btCard { order: 3; } #protocol { order: 4; }
+  .who-card .row { flex-wrap: nowrap; gap: .5rem; align-items: flex-start; }
+  .who-card .grow { flex: 1 1 auto; min-width: 0; }
+  .skillf .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .skbtn { min-height: 44px; padding: 0 .55rem 0 .75rem; font-size: 1rem; max-width: 46vw; text-overflow: ellipsis; }
+  .skbtn .nm { overflow: hidden; text-overflow: ellipsis; }
   .who-card label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .who-card input { padding: .55rem .75rem; }
   .qhead { flex-direction: column-reverse; align-items: flex-start; gap: .1rem; }
@@ -367,28 +391,27 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       <span class="app"><small id="tAppSub">Beta</small><span id="tAppName">Web app</span></span>
     </a>
     <div class="spacer"></div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tabRate" aria-selected="true" aria-controls="rateView" type="button"></button>
+      <button class="tab" role="tab" id="tabResults" aria-selected="false" aria-controls="resultsView" type="button"></button>
+    </div>
     <a class="back" href="../index.html" id="backLink"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><span class="full" id="tBackFull">Back to site</span><span class="short" id="tBackShort">Site</span></a>
     <button class="lang" id="langBtn" type="button" aria-label="Português">PT-BR</button>
-  </div>
-  <div class="wrap tabs" role="tablist">
-    <button class="tab" role="tab" id="tabRate" aria-selected="true" aria-controls="rateView" type="button"></button>
-    <button class="tab" role="tab" id="tabResults" aria-selected="false" aria-controls="resultsView" type="button"></button>
   </div>
 </header>
 
 <main class="wrap">
   <!-- ============ RATE ============ -->
   <section id="rateView" role="tabpanel" aria-labelledby="tabRate">
-    <div class="skills" id="skillPicker"></div>
-
     <div class="card who-card">
       <div class="row">
+        <div class="skillf"><label class="lbl" for="skillPicker" id="tSkill"></label><select id="skillPicker" class="skbtn"></select></div>
         <div class="grow">
           <label for="performer" id="tPerformer"></label>
           <input type="text" id="performer" autocomplete="off" required aria-describedby="tNeed">
-          <p class="need" id="tNeed"></p>
         </div>
       </div>
+      <p class="need" id="tNeed"></p>
     </div>
 
     <details class="protocol" id="protocol">
@@ -455,7 +478,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   var T = {
     en: {
       appName: "Web app", appSub: "Beta", langBtn: "PT-BR", langAria: "Ver em português",
-      rate: "Rate", results: "Results", objControl: "Object control", locomotor: "Locomotor",
+      rate: "Rate", results: "Results", objControl: "Object control", locomotor: "Locomotor", skill: "Skill", chooseSkill: "Choose a skill",
       performer: "Child (name or ID)", performerPh: "Performer",
       protocol: "Setup and instructions", setup: "Set up", say: "Say to the child", notes: "Notes for the rater",
       q: "Question", of: "of", hintTitle: "Watch 3 trials.", hint: "Answer Yes only if you saw the behavior in at least 2 of the 3 valid trials.",
@@ -474,7 +497,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     },
     pt: {
       appName: "Aplicativo web", appSub: "Beta", langBtn: "EN", langAria: "View in English",
-      rate: "Avaliar", results: "Resultados", objControl: "Controle de objetos", locomotor: "Locomoção",
+      rate: "Avaliar", results: "Resultados", objControl: "Controle de objetos", locomotor: "Locomoção", skill: "Habilidade", chooseSkill: "Escolha uma habilidade",
       performer: "Criança (nome ou código)", performerPh: "Criança",
       protocol: "Montagem e instruções", setup: "Montagem", say: "Diga à criança", notes: "Observações para o avaliador",
       q: "Pergunta", of: "de", hintTitle: "Observe 3 tentativas.", hint: "Responda Sim apenas se observou o comportamento em pelo menos 2 das 3 tentativas válidas.",
@@ -517,7 +540,8 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     $("homeLink").href = lang === "pt" ? "../pt/index.html" : "../index.html";
     $("homeLink").title = t("homeTitle");
     $("backLink").href = $("homeLink").href;
-    $("tBackFull").textContent = t("backFull"); $("tBackShort").textContent = t("backShort");
+    $("tBackFull").textContent = t("backFull"); $("tBackShort").textContent = t("backShort"); $("backLink").setAttribute("aria-label", t("backFull")); $("backLink").title = t("backFull");
+    $("tSkill").textContent = t("skill");
     $("tPerformer").textContent = t("performer"); $("performer").placeholder = t("performer");
     $("tProtocol").textContent = t("protocol"); $("tSetup").textContent = t("setup");
     $("tSay").textContent = t("say"); $("tNotes").textContent = t("notes");
@@ -535,20 +559,19 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   }
 
   function renderTabs() {
-    $("tabRate").textContent = t("rate");
-    $("tabResults").innerHTML = esc(t("results")) + '<span class="count">' + results.length + "</span>";
+    $("tabRate").innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4h6v3H9z"/><path d="M15 5h3v16H6V5h3"/><path d="M9 14l2 2 4-4"/></svg><span>' + esc(t("rate")) + "</span>";
+    $("tabResults").innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg><span>' + esc(t("results")) + '</span><span class="count">' + results.length + "</span>";
   }
 
   function renderPicker() {
     var html = "";
     [["obj", "objControl"], ["loc", "locomotor"]].forEach(function (g) {
-      html += '<div><p class="section-label">' + esc(t(g[1])) + '</p><div class="chips">';
+      html += '<optgroup label="' + esc(t(g[1])) + '">';
       SK.filter(function (s) { return s.group === g[0]; }).forEach(function (s) {
         var n = results.filter(function (r) { return r.skill === s.id; }).length;
-        html += '<button type="button" class="chip" data-skill="' + s.id + '" aria-pressed="' + (s === skill) + '">' +
-          esc(txt(s.name)) + (n ? '<span class="done">✓' + n + "</span>" : "") + "</button>";
+        html += '<option value="' + s.id + '"' + (s === skill ? " selected" : "") + ">" + esc(txt(s.name)) + (n ? "  ✓" + n : "") + "</option>";
       });
-      html += "</div></div>";
+      html += "</optgroup>";
     });
     $("skillPicker").innerHTML = html;
   }
@@ -757,12 +780,10 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   $("btRedo").addEventListener("click", function () { if (bt.level !== null) results.pop(); renderTabs(); renderPicker(); renderResults(); resetB(); });
   $("btNext").addEventListener("click", function () { counter++; $("performer").value = ""; nameState(); resetB(); var el = $("performer"); el.scrollIntoView({ block: "center", behavior: "smooth" }); el.focus({ preventScroll: true }); });
   /* ---------- events ---------- */
-  $("skillPicker").addEventListener("click", function (e) {
-    var b = e.target.closest("[data-skill]"); if (!b) return;
-    skill = SK.find(function (s) { return s.id === b.dataset.skill; });
+  $("skillPicker").addEventListener("change", function () {
+    var id = this.value;
+    skill = SK.find(function (s) { return s.id === id; });
     renderPicker(); renderProtocol(); resetB();
-    b = $("skillPicker").querySelector('[data-skill="' + skill.id + '"]');
-    if (b && b.scrollIntoView) b.scrollIntoView({ block: "nearest", inline: "nearest" });
     var u = new URL(location.href); u.searchParams.set("skill", skill.id); history.replaceState(null, "", u);
   });
   $("performer").addEventListener("input", function () { $("btWhoName").textContent = hasName() ? performerName() : t("noName"); nameState(); });
@@ -795,9 +816,9 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     { el: function () { return document.querySelector("#btCard .bt-hint"); },
       h: "Watch 3 trials first", p: "Have the child perform the skill three times and watch all three before you answer. Tap Yes only if you saw the behavior in at least 2 of the 3 valid trials." },
     { el: function () { return document.querySelector("#btGrid .bt-q1"); }, wait: function () { return bt.q1 !== null; },
-      h: "Start with Question 1", p: "Watch the child perform the skill, then answer the first question. Each button sits over the branch it leads to.", d: "Tap Yes or No to try it." },
+      h: "Start with Question 1", p: "Watch the child perform the skill, then answer the first question. Each button sits over the branch it leads to.", d: "Tap Yes or No to try it, or press Next to see an example.", auto: '#btGrid .bt-q1 [data-a="0"]' },
     { el: function () { return document.querySelector("#btGrid .bt-node.active") || document.querySelector("#btGrid .bt-low, #btGrid .bt-up"); }, wait: function () { return btLevel() !== null; },
-      h: "Your answer opens one branch", p: "The other side fades out, so only one question is left. Answer it the same way.", d: "Tap Yes or No on the highlighted question." },
+      h: "Your answer opens one branch", p: "The other side fades out, so only one question is left. Answer it the same way.", d: "Tap Yes or No on the highlighted question, or press Next.", auto: '#btGrid .bt-node.active [data-a="1"]' },
     { el: function () { return document.querySelector("#btGrid .bt-leaf.hit"); },
       h: "That's the level", p: "The line shows the path you took. All four level drawings stay visible, so you can check your call at a glance. Tapping a drawing opens it larger to compare levels side by side." },
     { el: function () { return $("btRes"); },
@@ -815,7 +836,11 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     tip = document.createElement("div"); tip.className = "tour-tip"; tip.setAttribute("role", "dialog"); tip.setAttribute("aria-live", "polite");
     document.body.appendChild(tip);
     tip.addEventListener("click", function (e) {
-      if (e.target.closest(".skip")) tourEnd(); else if (e.target.closest(".nx")) tourGo(tour.i + 1);
+      if (e.target.closest(".skip")) tourEnd();
+      else if (e.target.closest(".nx")) {
+        var st = TOUR[tour.i], b = st.wait && !st.wait() && st.auto && document.querySelector(st.auto);
+        if (b) b.click(); else tourGo(tour.i + 1);  /* on a "try it" step, Next answers for them */
+      }
     });
     bt = { q1: null, q2: null, level: null, skill: skill.id }; _renderB();
     tourGo(0);
@@ -835,7 +860,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       (waiting ? '<div class="do">' + st.d + "</div>" : "") +
       '<div class="row"><button type="button" class="skip">' + (last ? "Close" : "Skip tour") + '</button><span class="dots">' +
       TOUR.map(function (_, k) { return '<i class="' + (k === tour.i ? "on" : "") + '"></i>'; }).join("") + "</span>" +
-      (waiting ? "<span></span>" : '<button type="button" class="nx">' + (last ? "Start rating" : "Next") + "</button>") + "</div>";
+      '<button type="button" class="nx">' + (last ? "Start rating" : "Next") + "</button></div>";
     if (scroll && el.scrollIntoView) el.scrollIntoView({ block: "center", behavior: "smooth" });
     tourPlace(); setTimeout(tourPlace, 450);
   }
@@ -872,6 +897,16 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   window.addEventListener("resize", tourPlace);
   document.addEventListener("keydown", function (e) { if (tour && e.key === "Escape") tourEnd(); });
   (function () { var seen = "1"; try { seen = localStorage.getItem("fgc-tour-b"); } catch (e) {} if (!seen) setTimeout(tourStart, 600); })();
+  /* header slides away while scrolling down and comes back on any scroll up */
+  (function () {
+    var head = document.querySelector("header"), lastY = window.scrollY, phone = window.matchMedia("(max-width: 640px)");
+    window.addEventListener("scroll", function () {
+      var y = window.scrollY;
+      if (tour || phone.matches || y < 80 || y < lastY - 4 || document.activeElement === $("performer")) head.classList.remove("away");
+      else if (y > lastY + 4) head.classList.add("away");
+      lastY = y;
+    }, { passive: true });
+  })();
   applyLang();
 })();
 </script>
