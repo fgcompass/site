@@ -29,17 +29,14 @@
       url("images/brand/fg-compass-stacked-dark.svg") center bottom 26px / 132px auto no-repeat,
       linear-gradient(180deg, #082B42 0%, #0E4963 70%, #155A63 100%);
     box-shadow: 0 0 0 1px rgba(153, 207, 211, .18), 0 22px 40px -16px rgba(0, 0, 0, .65);
-    transition: transform .7s cubic-bezier(.22, 1, .36, 1), opacity .55s ease;
   }
   .navbar .navbar-brand.navbar-brand-logo::after {
     content: ""; position: absolute; left: 22px; right: 22px; bottom: 12px;
     height: 3px; border-radius: 3px; background: #F9A73E;
   }
-  .navbar .navbar-brand.navbar-brand-logo:hover { transform: translateY(3px); }
-  /* once the page scrolls, the tag tucks away with the navbar */
-  #quarto-header.headroom--not-top .navbar .navbar-brand.navbar-brand-logo {
-    transform: translateY(-100%); opacity: 0; pointer-events: none;
-  }
+  /* the tag is part of the navbar: when the navbar slides away on scroll,
+     slide far enough that the hanging part goes too */
+  #quarto-header.headroom--unpinned { transform: translateY(-180px) !important; }
   .navbar .navbar-brand.navbar-brand-logo .navbar-logo {
     position: absolute; width: 1px; height: 1px; max-height: 1px; opacity: 0; overflow: hidden;
   }
