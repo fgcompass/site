@@ -25,7 +25,7 @@ lightbox: false
         <a class="btn btn-primary btn-lg" href="../static/files/fgcompass-decision-trees-v2.2.pdf">
           <i class="bi bi-download" aria-hidden="true"></i> Baixar as árvores de decisão
         </a>
-        <a class="btn btn-outline-secondary btn-lg" href="https://drfurtado.github.io/compass-manual/">
+        <a class="btn btn-outline-secondary btn-lg" href="https://fgcompass.github.io/manual/">
           <i class="bi bi-book" aria-hidden="true"></i> Ler o manual
         </a>
       </div>
@@ -292,7 +292,7 @@ lightbox: false
         <strong>Árvores de decisão</strong>
         <span>As 10 árvores de avaliação em PDF. Versão em português em breve.</span>
       </a>
-      <a class="fg-start-card" href="https://drfurtado.github.io/compass-manual/">
+      <a class="fg-start-card" href="https://fgcompass.github.io/manual/">
         <i class="bi bi-book" aria-hidden="true"></i>
         <strong>Manual do usuário</strong>
         <span>Protocolos de teste, pontuação e interpretação (em inglês).</span>

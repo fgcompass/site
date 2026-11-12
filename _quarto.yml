@@ -30,7 +30,7 @@ website:
   image: images/brand/open-graph.png
   open-graph: true
   announcement:
-    content: "**New:** the FG-COMPASS user manual is now available. [Read it here](https://drfurtado.github.io/compass-manual/)."
+    content: "**New:** the FG-COMPASS user manual is now available. [Read it here](https://fgcompass.github.io/manual/)."
     position: below-navbar
     dismissable: true
 
@@ -62,7 +62,7 @@ website:
         icon: translate
         aria-label: "Ler em português"
       - text: User manual
-        href: https://drfurtado.github.io/compass-manual/
+        href: https://fgcompass.github.io/manual/
         icon: book
       - icon: github
         href: https://github.com/fgcompass
@@ -76,7 +76,7 @@ website:
     left: "© 2025 FG-COMPASS · Furtado–Gallagher Children Observational Movement Pattern Assessment System"
     right:
       - icon: book
-        href: https://drfurtado.github.io/compass-manual/
+        href: https://fgcompass.github.io/manual/
         aria-label: User manual
       - icon: github
         href: https://github.com/fgcompass

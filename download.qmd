@@ -19,7 +19,7 @@ Setup, instructions for children, notes for examiners and group record forms for
 
 The manual explains how to administer, score and interpret the FG-COMPASS.
 
-[<i class="bi bi-book" aria-hidden="true"></i> Read the user manual online](https://drfurtado.github.io/compass-manual/){.btn .btn-outline-primary}
+[<i class="bi bi-book" aria-hidden="true"></i> Read the user manual online](https://fgcompass.github.io/manual/){.btn .btn-outline-primary}
 
 ## Other languages
 
