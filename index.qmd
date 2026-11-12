@@ -23,7 +23,7 @@ lightbox: false
         <a class="btn btn-primary btn-lg" href="static/files/fgcompass-decision-trees-v2.2.pdf">
           <i class="bi bi-download" aria-hidden="true"></i> Download the decision trees
         </a>
-        <a class="btn btn-outline-secondary btn-lg" href="https://drfurtado.github.io/compass-manual/">
+        <a class="btn btn-outline-secondary btn-lg" href="https://fgcompass.github.io/manual/">
           <i class="bi bi-book" aria-hidden="true"></i> Read the manual
         </a>
       </div>
@@ -289,7 +289,7 @@ lightbox: false
         <strong>Decision trees</strong>
         <span>All 10 scoring trees in one PDF (v2.2).</span>
       </a>
-      <a class="fg-start-card" href="https://drfurtado.github.io/compass-manual/">
+      <a class="fg-start-card" href="https://fgcompass.github.io/manual/">
         <i class="bi bi-book" aria-hidden="true"></i>
         <strong>User manual</strong>
         <span>Testing protocols, scoring and interpretation.</span>

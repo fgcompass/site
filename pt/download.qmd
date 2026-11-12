@@ -28,4 +28,4 @@ Montagem, instruções para as crianças, observações para o avaliador e ficha
 
 O manual explica como aplicar, pontuar e interpretar o FG-COMPASS (disponível em inglês).
 
-[<i class="bi bi-book" aria-hidden="true"></i> Ler o manual do usuário](https://drfurtado.github.io/compass-manual/){.btn .btn-outline-primary}
+[<i class="bi bi-book" aria-hidden="true"></i> Ler o manual do usuário](https://fgcompass.github.io/manual/){.btn .btn-outline-primary}
