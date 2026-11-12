@@ -1,6 +1,7 @@
 ---
 pagetitle: "FG-COMPASS · See how well a child moves"
 description: "A quick, research-validated observational assessment of fundamental movement skills for children aged 5 to 10."
+image: images/brand/open-graph.png
 page-layout: full
 toc: false
 lightbox: false
