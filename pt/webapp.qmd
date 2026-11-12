@@ -1,0 +1,12 @@
+---
+title: "Aplicativo web"
+subtitle: "Protótipo do FG-COMPASS para o arremesso por cima do ombro."
+lang: pt-BR
+link-external-newwindow: true
+---
+
+O protótipo do aplicativo web do FG-COMPASS está disponível para testes. Esta primeira versão cobre uma das dez habilidades da avaliação: o **arremesso por cima do ombro**. O aplicativo está em inglês.
+
+Experimente e envie suas sugestões para nos ajudar a aprimorar a ferramenta.
+
+[<i class="bi bi-phone" aria-hidden="true"></i> Abrir o protótipo](https://fgcompass.shinyapps.io/throw/){.btn .btn-primary}

@@ -1,0 +1,12 @@
+---
+title: "Pesquisa"
+subtitle: "Estudos publicados sobre o desenvolvimento, a fidedignidade e o uso do FG-COMPASS."
+lang: pt-BR
+bibliography: ../references.bib
+nocite: |
+  @*
+csl: ../apa.csl
+---
+
+::: {#refs}
+:::

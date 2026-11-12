@@ -1,0 +1,25 @@
+/*-- scss:defaults --*/
+// FG-COMPASS brand (dark)
+$fg-teal:  #3cc6c4;
+$fg-amber: #f6b85e;
+
+$primary:   $fg-teal;
+$body-bg:   #0e1822;
+$body-color: #dbe4ec;
+$link-color: $fg-teal;
+
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$headings-font-family: "Lexend", "Inter", system-ui, sans-serif;
+$headings-font-weight: 600;
+$headings-color: #f1f5f9;
+$font-size-root: 17px;
+
+$navbar-bg: #0e1822;
+$navbar-fg: #dbe4ec;
+$navbar-hl: $fg-teal;
+$footer-bg: #0e1822;
+
+$border-radius: .6rem;
+
+/*-- scss:rules --*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@400;500;600;700&display=swap');
