@@ -268,3 +268,8 @@ body.quarto-dark .fh{--ink:#D1E0E6; --muted:#A4C2CA; --paper:#071F31; --alt:#0B2
   .fh .start-grid{grid-template-columns:minmax(0,1fr)}
 }
 .fh .name-note{margin-top:28px;font-size:.88rem;color:var(--on-dark-muted);max-width:46rem}
+
+.fh details.research .refs{border-top:1px solid var(--line);padding-top:12px;font-size:.88rem}
+.fh details.research .refs-title{font-weight:700;color:var(--head);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.fh details.research .refs ul{list-style:none;padding-left:0;gap:6px}
+.fh details.research .refs li{padding-left:1.5em;text-indent:-1.5em}
