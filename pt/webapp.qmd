@@ -1,12 +1,26 @@
 ---
 title: "Aplicativo web"
-subtitle: "Protótipo do FG-COMPASS para o arremesso por cima do ombro."
+subtitle: "Avalie as habilidades motoras das crianças com as árvores de decisão do FG-COMPASS, direto no navegador."
 lang: pt-BR
-link-external-newwindow: true
 ---
 
-O protótipo do aplicativo web do FG-COMPASS está disponível para testes. Esta primeira versão cobre uma das dez habilidades da avaliação: o **arremesso por cima do ombro**. O aplicativo está em inglês.
+O Avaliador FG-COMPASS guia você pela árvore de decisão de cada habilidade: responda uma ou duas perguntas de sim ou não e obtenha o nível da criança, de 1 a 4. Funciona em celulares, tablets e computadores, na quadra, na sala de aula ou na clínica.
 
-Experimente e envie suas sugestões para nos ajudar a aprimorar a ferramenta.
+<a class="btn btn-primary btn-lg" href="../assess/index.html?lang=pt"><i class="bi bi-phone" aria-hidden="true"></i> Abrir o Avaliador</a>
 
-[<i class="bi bi-phone" aria-hidden="true"></i> Abrir o protótipo](https://fgcompass.shinyapps.io/throw/){.btn .btn-primary}
+## O que ele faz
+
+- **As 10 habilidades**, cinco de locomoção e cinco de controle de objetos, com as árvores de decisão v2.2.
+- **Montagem e instruções** de cada habilidade: o que preparar, o que dizer à criança e observações para o avaliador.
+- **Resultados da sessão**: uma tabela de níveis por criança e habilidade, que pode ser baixada em CSV ou impressa.
+- **Interface em português e inglês.** As perguntas e os protocolos ficam em inglês até a publicação da versão oficial em português.
+
+## Privacidade
+
+Nada é salvo on-line nem no navegador. Os resultados somem ao fechar ou recarregar a página; baixe o CSV antes, se precisar. Por isso o Avaliador é ideal para ensino e prática: os alunos podem avaliar colegas ou vídeos sem criar contas nem armazenar dados das crianças.
+
+::: {.callout-note appearance="simple"}
+Este é um protótipo para ensino e prática. Para coleta de dados de pesquisa, siga os protocolos de teste e as fichas de registro da página [Downloads](download.qmd).
+:::
+
+O [protótipo anterior](https://fgcompass.shinyapps.io/throw/) (somente arremesso, em inglês) continua disponível.
