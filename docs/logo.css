@@ -12,3 +12,32 @@
     height: 34px;
   }
 }
+
+/* Wide screens: a square FG badge centered on the navbar that hangs over the
+   section below, with the menu split evenly to its left and right. */
+@media (min-width: 1280px) {
+  #quarto-header, #quarto-header .navbar, .navbar-container { overflow: visible; }
+  .navbar-container { position: relative; }
+  .navbar-brand-container {
+    position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+    margin: 0 !important; z-index: 5;
+  }
+  .navbar .navbar-brand.navbar-brand-logo {
+    display: block; width: 92px; height: 92px; margin: 10px 0 0; padding: 0;
+    border-radius: 24px;
+    background:
+      url("images/brand/fg-compass-symbol.svg") center 56% / 68% auto no-repeat,
+      linear-gradient(135deg, #10364C 0%, #0E4963 55%, #266B6A 100%);
+    box-shadow: 0 0 0 4px #082B42, 0 18px 30px -12px rgba(0, 0, 0, .6);
+    transition: transform .15s ease;
+  }
+  .navbar .navbar-brand.navbar-brand-logo:hover { transform: translateY(-2px); }
+  .navbar .navbar-brand.navbar-brand-logo .navbar-logo {
+    position: absolute; width: 1px; height: 1px; max-height: 1px; opacity: 0; overflow: hidden;
+  }
+  /* each half of the menu stays clear of the badge */
+  .navbar-collapse > .navbar-nav.me-auto { padding-right: 64px; }
+  .navbar-collapse > .navbar-nav.ms-auto { padding-left: 64px; }
+  /* inner pages: leave room under the badge */
+  #quarto-content:not(:has(.fh)) { padding-top: 2.25rem; }
+}

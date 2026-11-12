@@ -5,7 +5,7 @@
 
 /* Let the full-bleed sections start right under the navbar */
 #quarto-content:has(.fh) { padding-top: 0; }
-main.content:has(.fh) { margin-top: 0; padding-top: 0; }
+main.content:has(.fh), #quarto-document-content:has(.fh) { margin-top: 0 !important; padding-top: 0 !important; }
 main.content:has(.fh) > section,
 main.content:has(.fh) .cell-output-display > section { margin: 0; }
 main.content:has(.fh) > #title-block-header { display: none; }
