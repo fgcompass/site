@@ -792,6 +792,8 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   /* ---------- guided tour ---------- */
   var tour = null, tip = null;
   var TOUR = [
+    { el: function () { return document.querySelector("#btCard .bt-hint"); },
+      h: "Watch 3 trials first", p: "Have the child perform the skill three times and watch all three before you answer. Tap Yes only if you saw the behavior in at least 2 of the 3 valid trials." },
     { el: function () { return document.querySelector("#btGrid .bt-q1"); }, wait: function () { return bt.q1 !== null; },
       h: "Start with Question 1", p: "Watch the child perform the skill, then answer the first question. Each button sits over the branch it leads to.", d: "Tap Yes or No to try it." },
     { el: function () { return document.querySelector("#btGrid .bt-node.active") || document.querySelector("#btGrid .bt-low, #btGrid .bt-up"); }, wait: function () { return btLevel() !== null; },
@@ -863,7 +865,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     if (!tour) return;
     var st = TOUR[tour.i];
     if (st.wait && st.wait()) { tourGo(tour.i + 1); return; }
-    if (tour.i === 1 && bt.q1 === null) { tourGo(0); return; }
+    if (tour.i === 2 && bt.q1 === null) { tourGo(1); return; }
     tourDraw(false);
   };
   $("btTour").addEventListener("click", tourStart);
