@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#082B42">
-<title>FG-COMPASS Rater</title>
+<title>FG-COMPASS Web App</title>
 <meta name="description" content="Rate children's fundamental movement skills with the FG-COMPASS decision trees. Nothing is stored online.">
 <link rel="icon" href="../images/brand/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../images/brand/favicon.ico" sizes="any">
@@ -40,9 +40,9 @@ header {
   background: radial-gradient(60% 140% at 100% 0%, rgba(46,199,188,.14), rgba(46,199,188,0) 70%), #082B42;
   border-bottom: 1px solid rgba(153,207,211,.23);
 }
-.bar { display: flex; align-items: center; gap: .9rem; height: 64px; }
+.bar { display: flex; align-items: center; gap: .9rem; height: 72px; }
 .brand { display: flex; align-items: center; gap: .9rem; text-decoration: none; color: #fff; min-width: 0; }
-.brand img { height: 34px; width: auto; display: block; }
+.brand img { height: 44px; width: auto; display: block; }
 .brand .app { display: flex; flex-direction: column; justify-content: center; padding-left: .9rem; border-left: 1px solid rgba(153,207,211,.3); line-height: 1.15; }
 .brand .app span { font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em; color: #fff; }
 .brand small { display: block; font-weight: 700; font-size: .68rem; color: #F9A73E; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 2px; }
@@ -195,8 +195,8 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
 /* ---- Phones ---- */
 @media (max-width: 640px) {
   .wrap { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
-  .bar { height: 56px; }
-  .brand img { height: 26px; }
+  .bar { height: 60px; }
+  .brand img { height: 32px; }
   .brand, .brand .app { gap: .6rem; }
   .brand .app { padding-left: .6rem; }
   .brand .app span { font-size: 1rem; }
@@ -262,7 +262,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   <div class="wrap bar">
     <a class="brand" href="../index.html" id="homeLink">
       <img src="../images/brand/fg-compass-horizontal-dark.svg" alt="FG-COMPASS">
-      <span class="app"><small id="tAppSub">Web app · beta</small><span id="tAppName">Rater</span></span>
+      <span class="app"><small id="tAppSub">Beta</small><span id="tAppName">Web app</span></span>
     </a>
     <div class="spacer"></div>
     <button class="lang" id="langBtn" type="button" aria-label="Português">PT-BR</button>
@@ -372,7 +372,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   var SK = window.FG_SKILLS;
   var T = {
     en: {
-      appName: "Rater", appSub: "Web app · beta", langBtn: "PT-BR", langAria: "Ver em português",
+      appName: "Web app", appSub: "Beta", langBtn: "PT-BR", langAria: "Ver em português",
       rate: "Rate", results: "Results", objControl: "Object control", locomotor: "Locomotor",
       performer: "Child (name or ID)", performerPh: "Performer",
       protocol: "Setup and instructions", setup: "Set up", say: "Say to the child", notes: "Notes for the rater",
@@ -391,7 +391,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       leave: "Your results will be lost.", homeTitle: "FG-COMPASS site", qLangNote: ""
     },
     pt: {
-      appName: "Avaliador", appSub: "Aplicativo web · beta", langBtn: "EN", langAria: "View in English",
+      appName: "Aplicativo web", appSub: "Beta", langBtn: "EN", langAria: "View in English",
       rate: "Avaliar", results: "Resultados", objControl: "Controle de objetos", locomotor: "Locomoção",
       performer: "Criança (nome ou código)", performerPh: "Criança",
       protocol: "Montagem e instruções", setup: "Montagem", say: "Diga à criança", notes: "Observações para o avaliador",
