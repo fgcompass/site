@@ -151,12 +151,13 @@ details.protocol summary { padding: .9rem 1.1rem; font-weight: 600; cursor: poin
 .cmp svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
 .cmp:hover { background: var(--alt); }
 dialog#cmpDlg { padding: 0; border: 0; background: transparent; max-width: none; max-height: none; width: 100%; height: 100%; margin: 0; }
-dialog#cmpDlg::backdrop, dialog#skillDlg::backdrop { background: rgba(10,20,30,.55); }
-dialog#skillDlg { padding: 0; border: 0; background: transparent; max-width: none; max-height: none; width: 100%; height: 100%; margin: 0; }
-.sk-sheet { max-width: 620px; }
-.sk-sheet .skills { margin: 1rem 0 .25rem; }
+dialog#cmpDlg::backdrop { background: rgba(10,20,30,.55); }
 .skillf { flex: 0 0 auto; display: grid; gap: .35rem; }
 .skillf .lbl, .who-card label { font-size: .85rem; font-weight: 600; color: var(--muted); }
+select.skbtn { appearance: none; -webkit-appearance: none; cursor: pointer; font-family: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2324696C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right .7rem center; background-size: 18px; padding-right: 2.3rem !important; }
+@media (prefers-color-scheme: dark) { html select.skbtn { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232EC7BC' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); } }
 .skbtn { display: inline-flex; align-items: center; gap: .5rem; min-height: 46px; padding: 0 .8rem 0 1rem; border-radius: .7rem; border: 1.5px solid var(--teal-ink); background: var(--card); color: var(--navy); font-weight: 700; font-size: .98rem; white-space: nowrap; }
 .skbtn:hover { background: var(--alt); }
 .skbtn .done { font-size: .75rem; font-weight: 700; color: var(--teal-ink); }
@@ -221,6 +222,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   .bar { height: 54px; }
   .brand .app small { display: none; }
   body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
+  html { scroll-padding-top: 64px; scroll-padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
   header .tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
     padding: 6px 10px calc(6px + env(safe-area-inset-bottom)); border-radius: 0; border: 0; border-top: 1px solid rgba(153,207,211,.25);
     background: #082B42; box-shadow: 0 -6px 20px rgba(8,43,66,.25); }
@@ -239,7 +241,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   .who-card .row { flex-wrap: nowrap; gap: .5rem; align-items: flex-start; }
   .who-card .grow { flex: 1 1 auto; min-width: 0; }
   .skillf .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-  .skbtn { min-height: 44px; padding: 0 .55rem 0 .75rem; font-size: .9rem; max-width: 46vw; }
+  .skbtn { min-height: 44px; padding: 0 .55rem 0 .75rem; font-size: 1rem; max-width: 46vw; text-overflow: ellipsis; }
   .skbtn .nm { overflow: hidden; text-overflow: ellipsis; }
   .who-card label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .who-card input { padding: .55rem .75rem; }
@@ -403,7 +405,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   <section id="rateView" role="tabpanel" aria-labelledby="tabRate">
     <div class="card who-card">
       <div class="row">
-        <div class="skillf"><span class="lbl" id="tSkill"></span><div id="skillPicker"></div></div>
+        <div class="skillf"><label class="lbl" for="skillPicker" id="tSkill"></label><select id="skillPicker" class="skbtn"></select></div>
         <div class="grow">
           <label for="performer" id="tPerformer"></label>
           <input type="text" id="performer" autocomplete="off" required aria-describedby="tNeed">
@@ -457,12 +459,6 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   </section>
 </main>
 
-<dialog id="skillDlg" aria-labelledby="tSkillTitle">
-  <div class="sheet sk-sheet">
-    <div class="sheet-head"><h2 id="tSkillTitle"></h2><button class="x" type="button" id="skillClose" aria-label="Close">&times;</button></div>
-    <div class="skills" id="skillList"></div>
-  </div>
-</dialog>
 <dialog id="cmpDlg" aria-labelledby="cmpTitle">
   <div class="sheet">
     <div class="sheet-head">
@@ -545,7 +541,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     $("homeLink").title = t("homeTitle");
     $("backLink").href = $("homeLink").href;
     $("tBackFull").textContent = t("backFull"); $("tBackShort").textContent = t("backShort"); $("backLink").setAttribute("aria-label", t("backFull")); $("backLink").title = t("backFull");
-    $("tSkill").textContent = t("skill"); $("tSkillTitle").textContent = t("chooseSkill"); $("skillClose").setAttribute("aria-label", t("close"));
+    $("tSkill").textContent = t("skill");
     $("tPerformer").textContent = t("performer"); $("performer").placeholder = t("performer");
     $("tProtocol").textContent = t("protocol"); $("tSetup").textContent = t("setup");
     $("tSay").textContent = t("say"); $("tNotes").textContent = t("notes");
@@ -568,20 +564,16 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   }
 
   function renderPicker() {
-    var html = "", count = function (id) { return results.filter(function (r) { return r.skill === id; }).length; };
+    var html = "";
     [["obj", "objControl"], ["loc", "locomotor"]].forEach(function (g) {
-      html += '<div><p class="section-label">' + esc(t(g[1])) + '</p><div class="chips">';
+      html += '<optgroup label="' + esc(t(g[1])) + '">';
       SK.filter(function (s) { return s.group === g[0]; }).forEach(function (s) {
-        var n = count(s.id);
-        html += '<button type="button" class="chip" data-skill="' + s.id + '" aria-pressed="' + (s === skill) + '">' +
-          esc(txt(s.name)) + (n ? '<span class="done">✓' + n + "</span>" : "") + "</button>";
+        var n = results.filter(function (r) { return r.skill === s.id; }).length;
+        html += '<option value="' + s.id + '"' + (s === skill ? " selected" : "") + ">" + esc(txt(s.name)) + (n ? "  ✓" + n : "") + "</option>";
       });
-      html += "</div></div>";
+      html += "</optgroup>";
     });
-    $("skillList").innerHTML = html;
-    var n = count(skill.id);
-    $("skillPicker").innerHTML = '<button type="button" class="skbtn" id="skillBtn" aria-haspopup="dialog"><span class="nm">' + esc(txt(skill.name)) + "</span>" +
-      (n ? '<span class="done">✓' + n + "</span>" : "") + '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>';
+    $("skillPicker").innerHTML = html;
   }
 
   function renderProtocol() {
@@ -788,15 +780,10 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   $("btRedo").addEventListener("click", function () { if (bt.level !== null) results.pop(); renderTabs(); renderPicker(); renderResults(); resetB(); });
   $("btNext").addEventListener("click", function () { counter++; $("performer").value = ""; nameState(); resetB(); var el = $("performer"); el.scrollIntoView({ block: "center", behavior: "smooth" }); el.focus({ preventScroll: true }); });
   /* ---------- events ---------- */
-  var skDlg = $("skillDlg");
-  function closeSkills() { if (skDlg.close) skDlg.close(); else skDlg.removeAttribute("open"); }
-  $("skillPicker").addEventListener("click", function () { if (skDlg.showModal) skDlg.showModal(); else skDlg.setAttribute("open", ""); });
-  $("skillClose").addEventListener("click", closeSkills);
-  skDlg.addEventListener("click", function (e) { if (e.target === skDlg) closeSkills(); });
-  $("skillList").addEventListener("click", function (e) {
-    var b = e.target.closest("[data-skill]"); if (!b) return;
-    skill = SK.find(function (s) { return s.id === b.dataset.skill; });
-    renderPicker(); renderProtocol(); resetB(); closeSkills();
+  $("skillPicker").addEventListener("change", function () {
+    var id = this.value;
+    skill = SK.find(function (s) { return s.id === id; });
+    renderPicker(); renderProtocol(); resetB();
     var u = new URL(location.href); u.searchParams.set("skill", skill.id); history.replaceState(null, "", u);
   });
   $("performer").addEventListener("input", function () { $("btWhoName").textContent = hasName() ? performerName() : t("noName"); nameState(); });
