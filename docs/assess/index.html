@@ -323,7 +323,15 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
 .who-card.missing .need { color: #B4541A; font-weight: 700; }
 .who-card.missing input { border-color: var(--amber); box-shadow: 0 0 0 3px rgba(249,167,62,.35); }
 .need-name #btCard:not(.touring) .bt-yn button { opacity: .45; cursor: not-allowed; }
-.bt-hint { margin: -.25rem 0 .75rem; font-size: .85rem; color: var(--muted); }
+.bt-hint { display: flex; gap: .7rem; align-items: flex-start; margin: 0 0 .9rem; padding: .7rem .9rem; border-radius: .8rem;
+  background: rgba(249,167,62,.14); border: 1.5px solid var(--amber); color: var(--ink); animation: hintGlow 2.6s ease-in-out infinite; }
+.bt-hint svg { flex: none; width: 22px; height: 22px; margin-top: 1px; fill: none; stroke: #C9771A; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bt-hint p { margin: 0; font-size: .95rem; line-height: 1.4; }
+.bt-hint b { color: var(--navy); font-weight: 800; }
+@keyframes hintGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(249,167,62,.0), 0 0 10px rgba(249,167,62,.25); } 50% { box-shadow: 0 0 0 4px rgba(249,167,62,.22), 0 0 22px rgba(249,167,62,.55); } }
+@media (prefers-reduced-motion: reduce) { .bt-hint { animation: none; box-shadow: 0 0 14px rgba(249,167,62,.4); } }
+@media (prefers-color-scheme: dark) { html .bt-hint { background: rgba(249,167,62,.12); } html .bt-hint svg { stroke: #F9A73E; } html .bt-hint b { color: #fff; } }
+@media print { .bt-hint { animation: none; box-shadow: none; } }
 @media (prefers-color-scheme: dark) { html .who-card.missing .need { color: #F9A73E; } }
 /* ---------- guided tour ---------- */
 .bt-tourbtn { display: inline-flex; align-items: center; gap: .35rem; min-height: 36px; padding: .35rem .8rem; border-radius: 999px; border: 1.5px solid var(--line); background: var(--card); color: var(--teal-ink); font: 700 .82rem/1 "Inter", sans-serif; cursor: pointer; }
@@ -398,7 +406,8 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
         <span class="bt-acts"><button type="button" class="bt-tourbtn" id="btTour"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z"/></svg><span id="tTour"></span></button>
         <span class="who" id="btWho"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><b id="btWhoName"></b></span></span>
       </div>
-      <p class="hint bt-hint" id="tHint"></p>
+      <div class="bt-hint" role="note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+        <p><b id="tHintTitle"></b> <span id="tHint"></span></p></div>
       <div class="bt-practice" id="btPractice"></div>
       <div class="bt-grid" id="btGrid"></div>
       <div class="bt-res" id="btRes">
@@ -449,7 +458,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       rate: "Rate", results: "Results", objControl: "Object control", locomotor: "Locomotor",
       performer: "Child (name or ID)", performerPh: "Performer",
       protocol: "Setup and instructions", setup: "Set up", say: "Say to the child", notes: "Notes for the rater",
-      q: "Question", of: "of", hint: "Answer Yes only if you saw it in at least 2 of the 3 valid trials.",
+      q: "Question", of: "of", hintTitle: "Watch 3 trials.", hint: "Answer Yes only if you saw it in at least 2 of the 3 valid trials.",
       yes: "Yes", no: "No", back: "Back to question 1",
       levelWord: "Level", levelNames: ["Initial", "Emerging", "Developing", "Proficient"],
       next: "Next child", redo: "Undo", tour: "Take the tour", practice: "Practice mode. Tap anything you like, nothing you do in the tour is recorded.", needName: "Enter the child's name or ID first. Rating unlocks once it is filled in.", needNameShort: "Each rating is saved under this name.", noName: "No name yet", example: "Example illustration",
@@ -468,7 +477,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       rate: "Avaliar", results: "Resultados", objControl: "Controle de objetos", locomotor: "Locomoção",
       performer: "Criança (nome ou código)", performerPh: "Criança",
       protocol: "Montagem e instruções", setup: "Montagem", say: "Diga à criança", notes: "Observações para o avaliador",
-      q: "Pergunta", of: "de", hint: "Responda Sim apenas se observou o comportamento em pelo menos 2 das 3 tentativas válidas.",
+      q: "Pergunta", of: "de", hintTitle: "Observe 3 tentativas.", hint: "Responda Sim apenas se observou o comportamento em pelo menos 2 das 3 tentativas válidas.",
       yes: "Sim", no: "Não", back: "Voltar à pergunta 1",
       levelWord: "Nível", levelNames: ["Inicial", "Emergente", "Em desenvolvimento", "Proficiente"],
       next: "Próxima criança", redo: "Desfazer", tour: "Fazer o tour", practice: "Modo de prática. Nada do que você fizer no tour é registrado.", needName: "Digite primeiro o nome ou código da criança. A avaliação é liberada depois disso.", needNameShort: "Cada avaliação é salva com este nome.", noName: "Sem nome", example: "Ilustração de exemplo",
@@ -512,6 +521,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     $("tPerformer").textContent = t("performer"); $("performer").placeholder = t("performer");
     $("tProtocol").textContent = t("protocol"); $("tSetup").textContent = t("setup");
     $("tSay").textContent = t("say"); $("tNotes").textContent = t("notes");
+    $("tHintTitle").textContent = t("hintTitle");
     $("tHint").textContent = t("hint") + (t("qLangNote") ? " " + t("qLangNote") : "");
     $("btNext").textContent = t("next"); $("btRedo").textContent = t("redo");
     $("tTour").textContent = t("tour"); $("btPractice").textContent = t("practice");
