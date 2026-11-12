@@ -267,11 +267,15 @@ td.lvl span { display: inline-block; min-width: 1.8em; border-radius: .4rem; bac
     }
   };
 
+  var $ = function (id) { return document.getElementById(id); };
+  // Portuguese is turned off until the validated Portuguese wording of the decision trees
+  // is added to skills.js. Set PT_ENABLED to true to show the language switch again.
+  var PT_ENABLED = false;
   var params = new URLSearchParams(location.search);
-  var lang = params.get("lang") === "pt" ? "pt" : "en";
+  var lang = PT_ENABLED && params.get("lang") === "pt" ? "pt" : "en";
+  if (!PT_ENABLED) $("langBtn").hidden = true;
   var skill = SK.find(function (s) { return s.id === params.get("skill"); }) || SK[0];
   var node = "q1", answers = [], results = [], counter = 1;
-  var $ = function (id) { return document.getElementById(id); };
   var t = function (k) { return T[lang][k]; };
   var txt = function (v) { return typeof v === "string" ? v : (v[lang] || v.en); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };

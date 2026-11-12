@@ -32,7 +32,7 @@
     "href": "webapp.html#what-it-does",
     "title": "Web app",
     "section": "What it does",
-    "text": "What it does\n\nAll 10 skills, five locomotor and five object control, using the v2.2 decision trees.\nSetup and instructions for each skill: what to set up, what to say to the child and notes for the rater.\nSession results: a table of levels by child and skill, which you can download as a CSV file or print.\nEnglish and Portuguese interface."
+    "text": "What it does\n\nAll 10 skills, five locomotor and five object control, using the v2.2 decision trees.\nSetup and instructions for each skill: what to set up, what to say to the child and notes for the rater.\nSession results: a table of levels by child and skill, which you can download as a CSV file or print.\nEnglish for now. A Portuguese version will follow, using the validated Portuguese wording of the decision trees."
   },
   {
     "objectID": "webapp.html#privacy",

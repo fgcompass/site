@@ -6,14 +6,14 @@ lang: pt-BR
 
 O Avaliador FG-COMPASS guia você pela árvore de decisão de cada habilidade: responda uma ou duas perguntas de sim ou não e obtenha o nível da criança, de 1 a 4. Funciona em celulares, tablets e computadores, na quadra, na sala de aula ou na clínica.
 
-<a class="btn btn-primary btn-lg" href="../assess/index.html?lang=pt"><i class="bi bi-phone" aria-hidden="true"></i> Abrir o Avaliador</a>
+<a class="btn btn-primary btn-lg" href="../assess/index.html"><i class="bi bi-phone" aria-hidden="true"></i> Abrir o Avaliador</a>
 
 ## O que ele faz
 
 - **As 10 habilidades**, cinco de locomoção e cinco de controle de objetos, com as árvores de decisão v2.2.
 - **Montagem e instruções** de cada habilidade: o que preparar, o que dizer à criança e observações para o avaliador.
 - **Resultados da sessão**: uma tabela de níveis por criança e habilidade, que pode ser baixada em CSV ou impressa.
-- **Interface em português e inglês.** As perguntas e os protocolos ficam em inglês até a publicação da versão oficial em português.
+- **Por enquanto, somente em inglês.** A versão em português será adicionada com a redação validada das árvores de decisão.
 
 ## Privacidade
 

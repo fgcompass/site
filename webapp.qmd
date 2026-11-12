@@ -12,7 +12,7 @@ The FG-COMPASS Rater walks you through the decision tree for each skill: answer 
 - **All 10 skills**, five locomotor and five object control, using the v2.2 decision trees.
 - **Setup and instructions** for each skill: what to set up, what to say to the child and notes for the rater.
 - **Session results**: a table of levels by child and skill, which you can download as a CSV file or print.
-- **English and Portuguese** interface.
+- **English** for now. A Portuguese version will follow, using the validated Portuguese wording of the decision trees.
 
 ## Privacy
 
