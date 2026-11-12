@@ -46,9 +46,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6f8651ef963b5948d58ed63033479b4d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-01b5664216df2e9953f5685b9f15a0d3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-6f8651ef963b5948d58ed63033479b4d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3c84cc7add8321675d1e1034a03dd568.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-320b14cf9f8de22b399231aee5e1e9c9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-3c84cc7add8321675d1e1034a03dd568.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,6 +80,7 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="logo.css">
+<link rel="stylesheet" href="home.css">
 <meta property="og:title" content="FG-COMPASS · See how well a child moves">
 <meta property="og:description" content="A quick, research-validated observational assessment of fundamental movement skills for children aged 5 to 10.">
 <meta property="og:image" content="images/brand/open-graph.png">
@@ -346,321 +347,244 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<!-- ============ HERO ============ -->
-<section class="fg-hero column-screen" aria-labelledby="hero-title">
-  <div class="fg-wrap fg-hero-grid">
-    <div class="fg-hero-copy">
-      <p class="fg-eyebrow">Movement skills assessment · Ages 5–10</p>
-      <h1 id="hero-title">See how well a child moves, in two yes/no questions per skill.</h1>
-      <p class="fg-lead">
-        <strong>FG-COMPASS</strong> helps teachers, coaches, clinicians and researchers rate how children perform
-        10 everyday movement skills, like throwing, kicking and jumping, on a simple <strong>1–4 scale</strong>.
-        You watch the child live. No video, no lengthy checklists.
-      </p>
-      <div class="fg-cta">
-        <a class="btn btn-primary btn-lg" href="static/files/fgcompass-decision-trees-v2.2.pdf">
-          <i class="bi bi-download" aria-hidden="true"></i> Download the decision trees
-        </a>
-        <a class="btn btn-outline-secondary btn-lg" href="https://drfurtado.github.io/compass-manual/">
-          <i class="bi bi-book" aria-hidden="true"></i> Read the manual
-        </a>
+<div class="fh column-screen">
+<svg class="fh-sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-download" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 21h14"></path></symbol>
+  <symbol id="i-phone" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"></rect><path d="M11 18h2"></path></symbol>
+  <symbol id="i-book" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2Z"></path><path d="M20 19v3H6"></path></symbol>
+  <symbol id="i-check" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"></path></symbol>
+  <symbol id="i-x" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></symbol>
+  <symbol id="i-arrow" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></symbol>
+  <symbol id="i-reset" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"></path><path d="M3 4v5h5"></path></symbol>
+  <symbol id="i-ball" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M3.5 9c4 1 9 1 17 0M3.5 15c4-1 9-1 17 0M12 3c-3 5-3 13 0 18"></path></symbol>
+  <symbol id="i-run" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="4.5" r="2"></circle><path d="m8 21 3-6 3 2v5"></path><path d="M6 12l3-4 5 1 3 4h3"></path><path d="m11 15-1-5"></path></symbol>
+  <symbol id="i-whistle" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14" r="6"></circle><path d="M13 9.5 21 7v5h-6"></path><circle cx="9" cy="14" r="1.5"></circle></symbol>
+  <symbol id="i-heart" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"></path><path d="M8 12h2l1-2 2 4 1-2h2"></path></symbol>
+  <symbol id="i-lab" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"></path><path d="M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"></path><path d="M7.5 15h9"></path></symbol>
+  <symbol id="i-family" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="2.5"></circle><circle cx="17" cy="9" r="2"></circle><path d="M4 21v-6a4 4 0 0 1 8 0v6"></path><path d="M14 21v-4a3 3 0 0 1 6 0v4"></path></symbol>
+  <symbol id="i-cap" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5Z"></path><path d="M6 11v5c3 2 9 2 12 0v-5"></path></symbol>
+</svg>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Movement skills assessment · Ages 5–10</p>
+      <h1 id="hero-title">See how well a child moves, in <em>two yes/no questions</em> per skill.</h1>
+      <p class="hero-lead"><strong>FG-COMPASS</strong> rates 10 everyday movement skills, like throwing, kicking and jumping, on a simple 1–4 scale. You watch the child live. No video, no long checklists.</p>
+      <div class="hero-cta">
+        <a class="fh-btn fh-btn-amber" href="static/files/fgcompass-decision-trees-v2.2.pdf"><svg><use href="#i-download"></use></svg>Download the decision trees</a>
+        <a class="fh-btn fh-btn-ghost" href="#how-it-works">See how it works <svg><use href="#i-arrow"></use></svg></a>
       </div>
-      <p class="fg-hero-note">Free PDF · Research-validated · Built for schools, clinics and labs</p>
+      <p class="hero-note">
+        <span><svg><use href="#i-check"></use></svg>Free PDF</span>
+        <span><svg><use href="#i-check"></use></svg>Peer-reviewed reliability</span>
+        <span><svg><use href="#i-check"></use></svg>Works in a gym, clinic or lab</span>
+      </p>
     </div>
 
-    <!-- Interactive demo -->
-    <div class="fg-demo" id="fg-demo" aria-live="polite">
-      <div class="fg-demo-head">
-        <span class="fg-demo-tag">Try it</span>
-        <span class="fg-demo-skill"><i class="bi bi-dribbble" aria-hidden="true"></i> Overhand throw</span>
+    <div class="rate" id="rate" aria-live="polite">
+      <div class="rate-top">
+        <div class="rate-skill"><span class="ic"><svg><use href="#i-ball"></use></svg></span><span>Overhand throw<small>Object control</small></span></div>
+        <span class="rate-tag">Try it</span>
       </div>
-      <p class="fg-demo-step" id="fg-demo-step">Question 1 of 2</p>
-      <p class="fg-demo-q" id="fg-demo-q">Did the trunk rotate to the side of the throw during preparation?</p>
-      <div class="fg-demo-btns" id="fg-demo-btns">
-        <button type="button" class="btn fg-yes" data-a="yes">Yes</button>
-        <button type="button" class="btn fg-no" data-a="no">No</button>
-      </div>
-      <div class="fg-demo-result" id="fg-demo-result" hidden="">
-        <div class="fg-level-badge" id="fg-demo-level">4</div>
-        <div>
-          <p class="fg-demo-level-name" id="fg-demo-level-name">Level 4 · Proficient</p>
-          <p class="fg-demo-level-desc" id="fg-demo-level-desc"></p>
+      <div id="rate-ask">
+        <div class="rate-progress" aria-hidden="true"><i class="on" id="p1"></i><i id="p2"></i></div>
+        <p class="rate-step" id="rate-step">Question 1 of 2</p>
+        <p class="rate-q" id="rate-q">Did the trunk rotate to the side of the throw during preparation?</p>
+        <div class="rate-btns">
+          <button type="button" class="yes" id="btn-yes"><svg><use href="#i-check"></use></svg>Yes</button>
+          <button type="button" id="btn-no"><svg><use href="#i-x"></use></svg>No</button>
         </div>
       </div>
-      <div class="fg-demo-foot">
-        <div class="fg-demo-track" aria-hidden="true">
-          <span data-l="1">1</span><span data-l="2">2</span><span data-l="3">3</span><span data-l="4">4</span>
+      <div class="rate-result" id="rate-result" hidden="">
+        <div class="rate-result-top">
+          <div class="lvl-badge" id="res-badge">4</div>
+          <div><h3 id="res-name" class="anchored">Level 4 · Proficient</h3><p id="res-desc"></p></div>
         </div>
-        <button type="button" class="fg-demo-reset" id="fg-demo-reset" hidden="">
-          <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i> Try again
-        </button>
+        <div class="rate-art" id="res-art" aria-hidden="true"></div>
+      </div>
+      <div class="rate-foot">
+        <div class="scale" aria-hidden="true"><span class="l1">1</span><span class="l2">2</span><span class="l3">3</span><span class="l4">4</span></div>
+        <button type="button" class="rate-reset" id="rate-reset" hidden=""><svg><use href="#i-reset"></use></svg>Try again</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip" aria-hidden="true"><i></i></div>
+
+  <div class="facts">
+    <ul class="wrap" aria-label="FG-COMPASS at a glance">
+      <li><b>10</b><span>movement skills</span></li>
+      <li><b>2</b><span>subtests: locomotor and object control</span></li>
+      <li><b>5–10</b><span>years of age</span></li>
+      <li><b>4</b><span>proficiency levels</span></li>
+      <li><b>Live</b><span>observation, no video needed</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="section" id="who" aria-labelledby="who-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Who it's for</p>
+      <h2 id="who-title" class="anchored">Practical enough for the gym, rigorous enough for the lab.</h2>
+      <p class="fh-lead">Pick your role to see what FG-COMPASS gives you and where to start.</p>
+    </div>
+    <div class="aud">
+      <div class="aud-tabs" role="tablist" aria-label="Audiences">
+        <button class="aud-tab" role="tab" id="tab-pe" aria-controls="aud-panel" aria-selected="true" data-k="pe"><span class="ic"><svg><use href="#i-whistle"></use></svg></span><span>PE teachers &amp; coaches<small>Classes and teams</small></span></button>
+        <button class="aud-tab" role="tab" id="tab-cl" aria-controls="aud-panel" aria-selected="false" data-k="cl"><span class="ic"><svg><use href="#i-heart"></use></svg></span><span>Clinicians &amp; early childhood<small>Therapy and early years</small></span></button>
+        <button class="aud-tab" role="tab" id="tab-rs" aria-controls="aud-panel" aria-selected="false" data-k="rs"><span class="ic"><svg><use href="#i-lab"></use></svg></span><span>Researchers &amp; students<small>Studies and theses</small></span></button>
+        <button class="aud-tab" role="tab" id="tab-pa" aria-controls="aud-panel" aria-selected="false" data-k="pa"><span class="ic"><svg><use href="#i-family"></use></svg></span><span>Parents &amp; administrators<small>Families and programs</small></span></button>
+      </div>
+      <div class="aud-panel" id="aud-panel" role="tabpanel" aria-labelledby="tab-pe">
+        <h3 id="aud-h" class="anchored">Check a whole class in a regular lesson.</h3>
+        <p id="aud-p">Two quick questions per skill keep the pace of a normal class. Rate every child on the same 1–4 scale and see who needs help with what.</p>
+        <ul class="uses" id="aud-uses"></ul>
+        <div class="aud-next" id="aud-next"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ AT A GLANCE ============ -->
-<section class="fg-stats column-screen" aria-label="FG-COMPASS at a glance">
-  <div class="fg-wrap fg-stats-grid">
-    <div><strong>10</strong><span>movement skills</span></div>
-    <div><strong>2</strong><span>subtests: locomotor &amp; object control</span></div>
-    <div><strong>5–10</strong><span>years of age</span></div>
-    <div><strong>4</strong><span>proficiency levels</span></div>
-    <div><strong>Live</strong><span>observation, no video needed</span></div>
-  </div>
-</section>
-
-<!-- ============ WHY ============ -->
-<section class="fg-section column-screen" id="why" aria-labelledby="why-title">
-  <div class="fg-wrap fg-two">
-    <div>
-      <p class="fg-kicker">Why it matters</p>
-      <h2 id="why-title" class="anchored">Movement skills are the building blocks of an active, healthy childhood.</h2>
+<!-- HOW -->
+<section class="section alt" id="how-it-works" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">How it works</p>
+      <h2 id="how-title" class="anchored">Watch, answer, score. That's it.</h2>
     </div>
-    <div class="fg-prose">
-      <p>
-        Running, jumping, throwing and catching are <em>fundamental movement skills</em>. Children who move well
-        tend to be more physically active, and research links these skills to healthier body composition,
-        stronger thinking skills such as working memory, and more confident play with peers.
-      </p>
-      <p>
-        Spotting where a child is, and where they are stuck, lets you teach the next step and catch delays early.
-        FG-COMPASS makes that check fast enough to do in a regular class or clinic session.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ HOW IT WORKS ============ -->
-<section class="fg-section fg-alt column-screen" id="how-it-works" aria-labelledby="how-title">
-  <div class="fg-wrap">
-    <p class="fg-kicker">How it works</p>
-    <h2 id="how-title" class="anchored">Watch, answer, score. That's it.</h2>
-    <ol class="fg-steps">
-      <li>
-        <span class="fg-step-icon"><i class="bi bi-eye" aria-hidden="true"></i></span>
-        <h3 class="anchored">Watch the child perform a skill</h3>
-        <p>Observe the skill live, in the gym, playground or clinic. A short protocol covers setup, instructions and trials for each skill.</p>
-      </li>
-      <li>
-        <span class="fg-step-icon"><i class="bi bi-signpost-split" aria-hidden="true"></i></span>
-        <h3 class="anchored">Answer two yes/no questions</h3>
-        <p>The first question points toward the lower or upper levels. A second question confirms where the child lands.</p>
-      </li>
-      <li>
-        <span class="fg-step-icon"><i class="bi bi-bar-chart-steps" aria-hidden="true"></i></span>
-        <h3 class="anchored">Get a level from 1 to 4</h3>
-        <p>Record the level for each skill to see a child's profile, track progress or compare before and after a program.</p>
-      </li>
+    <ol class="steps">
+      <li><span class="num">1</span><h3 class="anchored">Watch the child perform a skill</h3><p>Observe live, in the gym, playground or clinic. A short protocol covers setup, instructions and trials for each skill.</p></li>
+      <li><span class="num">2</span><h3 class="anchored">Answer two yes/no questions</h3><p>The first question points toward the lower or upper levels. A second question confirms where the child lands.</p></li>
+      <li><span class="num">3</span><h3 class="anchored">Record a level from 1 to 4</h3><p>A level for each skill builds the child's profile, so you can track progress or compare before and after a program.</p></li>
     </ol>
 
-    <div class="fg-tree" id="fg-tree" data-cap4="Key feature seen, proficient pattern confirmed: <strong>Level 4, Proficient</strong>" data-cap3="Key feature seen, proficient pattern not confirmed: <strong>Level 3, Developing</strong>" data-cap2="Key feature not seen, early pattern not confirmed: <strong>Level 2, Emerging</strong>" data-cap1="Key feature not seen, early pattern confirmed: <strong>Level 1, Initial</strong>" data-pause="Pause" data-play="Play">
-      <div class="fg-tree-head">
-        <h3 class="anchored">The decision tree in action</h3>
+    <div class="tree">
+      <div class="tree-copy">
+        <h3 style="font-size:1.4rem;font-weight:800;letter-spacing:-.02em" class="anchored">One tree, four possible paths</h3>
         <p>Every skill uses the same three-question tree. Each child follows one path: a key question, then one confirming question.</p>
+        <div class="paths" role="group" aria-label="Show the path to a level">
+          <button type="button" class="l1" data-l="1" aria-pressed="false"><i></i>Level 1</button>
+          <button type="button" class="l2" data-l="2" aria-pressed="false"><i></i>Level 2</button>
+          <button type="button" class="l3" data-l="3" aria-pressed="false"><i></i>Level 3</button>
+          <button type="button" class="l4" data-l="4" aria-pressed="true"><i></i>Level 4</button>
+        </div>
+        <p class="tree-cap" id="tree-cap" aria-live="polite"></p>
       </div>
-      <svg viewbox="0 0 560 330" role="img" aria-label="Animated decision tree showing the four possible paths to levels 1 to 4">
-        <g class="e" id="e-q1-l"><path d="M280 76 L130 132"></path><text x="185" y="98" class="el">No</text></g>
-        <g class="e" id="e-q1-r"><path d="M280 76 L430 132"></path><text x="375" y="98" class="el">Yes</text></g>
-        <g class="e" id="e-l-1"><path d="M90 200 L65 252"></path><text x="58" y="230" class="el">Yes</text></g>
-        <g class="e" id="e-l-2"><path d="M170 200 L195 252"></path><text x="202" y="230" class="el">No</text></g>
-        <g class="e" id="e-r-3"><path d="M390 200 L365 252"></path><text x="358" y="230" class="el">No</text></g>
-        <g class="e" id="e-r-4"><path d="M470 200 L495 252"></path><text x="502" y="230" class="el">Yes</text></g>
-        <g class="n" id="n-q1"><rect x="150" y="8" width="260" height="68" rx="14"></rect><text x="280" y="32" class="k">Question 1</text><text x="280" y="57">Key feature seen?</text></g>
-        <g class="n" id="n-l"><rect x="20" y="132" width="220" height="68" rx="34"></rect><text x="130" y="150" class="k">Question 2</text><text x="130" y="169">Early pattern</text><text x="130" y="192">confirmed?</text></g>
-        <g class="n" id="n-r"><rect x="320" y="132" width="220" height="68" rx="34"></rect><text x="430" y="150" class="k">Question 2</text><text x="430" y="169">Proficient pattern</text><text x="430" y="192">confirmed?</text></g>
-        <g class="n lv" id="n-1"><rect x="10" y="252" width="115" height="66" rx="12"></rect><text x="67" y="281" class="big">Level 1</text><text x="67" y="303" class="s">Initial</text></g>
-        <g class="n lv" id="n-2"><rect x="140" y="252" width="115" height="66" rx="12"></rect><text x="197" y="281" class="big">Level 2</text><text x="197" y="303" class="s">Emerging</text></g>
-        <g class="n lv" id="n-3"><rect x="305" y="252" width="115" height="66" rx="12"></rect><text x="362" y="281" class="big">Level 3</text><text x="362" y="303" class="s">Developing</text></g>
-        <g class="n lv" id="n-4"><rect x="435" y="252" width="115" height="66" rx="12"></rect><text x="492" y="281" class="big">Level 4</text><text x="492" y="303" class="s">Proficient</text></g>
-      </svg>
-      <div class="fg-tree-foot">
-        <p class="fg-tree-cap" id="fg-tree-cap" aria-live="polite">&nbsp;</p>
-        <button type="button" class="fg-tree-toggle" id="fg-tree-toggle"><i class="bi bi-pause-fill" aria-hidden="true"></i> <span>Pause</span></button>
+      <div class="tree-svg">
+        <svg viewbox="0 0 560 330" role="img" aria-label="Decision tree: a key question leads to one of two confirming questions, which lead to levels 1 to 4">
+          <g class="edge" id="e-ql"><path d="M280 76 L130 132"></path><text x="190" y="96">No</text></g>
+          <g class="edge" id="e-qr"><path d="M280 76 L430 132"></path><text x="370" y="96">Yes</text></g>
+          <g class="edge" id="e-1"><path d="M90 200 L67 252"></path><text x="60" y="230">Yes</text></g>
+          <g class="edge" id="e-2"><path d="M170 200 L197 252"></path><text x="204" y="230">No</text></g>
+          <g class="edge" id="e-3"><path d="M390 200 L362 252"></path><text x="356" y="230">No</text></g>
+          <g class="edge" id="e-4"><path d="M470 200 L492 252"></path><text x="500" y="230">Yes</text></g>
+          <g class="node" id="n-q"><rect x="150" y="8" width="260" height="68" rx="14"></rect><text x="280" y="34" class="k">QUESTION 1</text><text x="280" y="58">Key feature seen?</text></g>
+          <g class="node" id="n-l"><rect x="20" y="132" width="220" height="68" rx="14"></rect><text x="130" y="156" class="k">QUESTION 2</text><text x="130" y="180">Early pattern confirmed?</text></g>
+          <g class="node" id="n-r"><rect x="320" y="132" width="220" height="68" rx="14"></rect><text x="430" y="156" class="k">QUESTION 2</text><text x="430" y="180">Proficient pattern confirmed?</text></g>
+          <g class="node lv l1" id="n-1"><rect x="10" y="252" width="115" height="66" rx="12"></rect><text x="67" y="281" class="big">Level 1</text><text x="67" y="303" class="k">INITIAL</text></g>
+          <g class="node lv l2" id="n-2"><rect x="140" y="252" width="115" height="66" rx="12"></rect><text x="197" y="281" class="big">Level 2</text><text x="197" y="303" class="k">EMERGING</text></g>
+          <g class="node lv l3" id="n-3"><rect x="305" y="252" width="115" height="66" rx="12"></rect><text x="362" y="281" class="big">Level 3</text><text x="362" y="303" class="k">DEVELOPING</text></g>
+          <g class="node lv l4" id="n-4"><rect x="435" y="252" width="115" height="66" rx="12"></rect><text x="492" y="281" class="big">Level 4</text><text x="492" y="303" class="k">PROFICIENT</text></g>
+        </svg>
       </div>
     </div>
 
-    <details class="fg-details">
-      <summary><i class="bi bi-mortarboard" aria-hidden="true"></i> For researchers: the composite decision-tree model</summary>
-      <div class="fg-details-body">
-        <div class="fg-prose">
-          <p>
-            FG-COMPASS is a process-oriented, criterion-referenced instrument. Each skill is scored with a
-            <strong>composite decision tree</strong> that combines the Observational Plan and Three-Stage approaches to
-            FMS assessment, using only three key performance criteria drawn from validated and hypothesized developmental sequences.
-          </p>
-          <ul>
-            <li><strong>Discriminatory question (DQ)</strong> separates the extremes (levels 1 and 4).</li>
-            <li><strong>Upper confirmatory question (UCQ)</strong> confirms level 4; if not confirmed, the child is level 3.</li>
-            <li><strong>Lower confirmatory question (LCQ)</strong> confirms level 1; if not confirmed, the child is level 2.</li>
-          </ul>
-        </div>
-        <div class="fg-figure">
-          <img src="images/dts/fgcompass-dt-model.png" alt="Decision-tree model: a discriminatory question leads to an upper or lower confirmatory question, which leads to levels 1 to 4." loading="lazy">
-          <p class="fg-figcap">Framework model shared by all ten decision trees.</p>
-        </div>
+    <details class="research">
+      <summary><svg><use href="#i-cap"></use></svg>For researchers: the composite decision-tree model</summary>
+      <div class="body">
+        <p>FG-COMPASS is a process-oriented, criterion-referenced instrument. Each skill is scored with a <strong>composite decision tree</strong> that combines the Observational Plan and Three-Stage approaches to FMS assessment, using only three key performance criteria drawn from validated and hypothesized developmental sequences.</p>
+        <ul>
+          <li><strong>Discriminatory question (DQ)</strong> separates the extremes (levels 1 and 4).</li>
+          <li><strong>Upper confirmatory question (UCQ)</strong> confirms level 4; if not confirmed, the child is level 3.</li>
+          <li><strong>Lower confirmatory question (LCQ)</strong> confirms level 1; if not confirmed, the child is level 2.</li>
+        </ul>
       </div>
     </details>
   </div>
 </section>
 
-<!-- ============ SKILLS ============ -->
-<section class="fg-section column-screen" id="skills" aria-labelledby="skills-title">
-  <div class="fg-wrap">
-    <p class="fg-kicker">What it measures</p>
-    <h2 id="skills-title" class="anchored">Ten skills, two subtests.</h2>
-    <div class="fg-skills">
-      <div class="fg-skill-card">
-        <h3 class="anchored"><i class="bi bi-person-walking" aria-hidden="true"></i> Locomotor</h3>
-        <p>Moving the body from place to place.</p>
-        <ul class="fg-chips">
-          <li>Skipping</li><li>Hopping</li><li>Horizontal jump</li><li>Vertical jump</li><li>Galloping</li>
-        </ul>
+<!-- LEVELS -->
+<section class="section" id="levels" aria-labelledby="levels-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Reading the results</p>
+      <h2 id="levels-title" class="anchored">What the four levels mean</h2>
+      <p class="fh-lead">Example: the overhand throw, from the first attempts to a proficient throwing pattern.</p>
+    </div>
+    <div class="levels">
+      <figure class="level l1 figure"><div class="level-art"><i style="--src:url(images/home/throw-l1.png)"></i></div>
+        <figcaption><div class="level-name"><b>1</b><strong>Initial</strong></div><p>The key proficient feature is missing and the early pattern is confirmed.</p><p class="throw"><span>In the throw</span>The trunk faces the target and there is no step forward.</p></figcaption></figure>
+      <figure class="level l2 figure"><div class="level-art"><i style="--src:url(images/home/throw-l2.png)"></i></div>
+        <figcaption><div class="level-name"><b>2</b><strong>Emerging</strong></div><p>The key feature is still missing, but the child has moved past the early pattern.</p><p class="throw"><span>In the throw</span>Little or no trunk rotation, but the child steps forward.</p></figcaption></figure>
+      <figure class="level l3 figure"><div class="level-art"><i style="--src:url(images/home/throw-l3.png)"></i></div>
+        <figcaption><div class="level-name"><b>3</b><strong>Developing</strong></div><p>The key feature is present, but the proficient pattern is not yet complete.</p><p class="throw"><span>In the throw</span>The trunk rotates, with a short step on the opposite foot.</p></figcaption></figure>
+      <figure class="level l4 figure"><div class="level-art"><i style="--src:url(images/home/throw-l4.png)"></i></div>
+        <figcaption><div class="level-name"><b>4</b><strong>Proficient</strong></div><p>The key feature is present and the proficient pattern is confirmed.</p><p class="throw"><span>In the throw</span>The trunk rotates, with a long step on the opposite foot (at least half the child's height).</p></figcaption></figure>
+    </div>
+    <div class="ramp" aria-hidden="true"></div>
+    <div class="ramp-labels" aria-hidden="true"><span>First attempts</span><span>Proficient pattern</span></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section alt" id="skills" aria-labelledby="skills-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">What it measures</p>
+      <h2 id="skills-title" class="anchored">Ten skills, two subtests.</h2>
+    </div>
+    <div class="skills">
+      <div class="subtest">
+        <div class="subtest-head"><span class="ic"><svg><use href="#i-run"></use></svg></span><div><h3 class="anchored">Locomotor</h3><p>Moving the body from place to place.</p></div></div>
+        <ul class="skill-list"><li>Skipping</li><li>Hopping</li><li>Horizontal jump</li><li>Vertical jump</li><li>Galloping</li></ul>
       </div>
-      <div class="fg-skill-card">
-        <h3 class="anchored"><i class="bi bi-dribbble" aria-hidden="true"></i> Object control</h3>
-        <p>Sending, receiving and controlling a ball.</p>
-        <ul class="fg-chips">
-          <li>Throwing</li><li>Catching</li><li>Kicking</li><li>Batting</li><li>Stationary dribble</li>
-        </ul>
+      <div class="subtest">
+        <div class="subtest-head"><span class="ic"><svg><use href="#i-ball"></use></svg></span><div><h3 class="anchored">Object control</h3><p>Sending, receiving and controlling a ball.</p></div></div>
+        <ul class="skill-list"><li>Throwing</li><li>Catching</li><li>Kicking</li><li>Batting</li><li>Stationary dribble</li></ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ LEVELS ============ -->
-<section class="fg-section fg-alt column-screen" id="levels" aria-labelledby="levels-title">
-  <div class="fg-wrap">
-    <p class="fg-kicker">Reading the results</p>
-    <h2 id="levels-title" class="anchored">What the four levels mean</h2>
-    <p class="fg-sub">Example: the overhand throw, from the first attempts to a proficient throwing pattern.</p>
-    <div class="fg-levels">
-      <figure class="fg-level figure">
-        <img src="images/ot-l1.png" alt="Illustration of a level 1 overhand throw" loading="lazy" class="figure-img">
-        <figcaption><span class="fg-level-num">1</span><strong>Initial</strong> The key proficient feature is missing and the early pattern is confirmed.<em>Throw: the trunk faces the target and there is no step forward.</em></figcaption>
-      </figure>
-      <figure class="fg-level figure">
-        <img src="images/ot-l2.png" alt="Illustration of a level 2 overhand throw" loading="lazy" class="figure-img">
-        <figcaption><span class="fg-level-num">2</span><strong>Emerging</strong> The key feature is still missing, but the child has moved past the early pattern.<em>Throw: little or no trunk rotation, but the child steps forward.</em></figcaption>
-      </figure>
-      <figure class="fg-level figure">
-        <img src="images/ot-l3.png" alt="Illustration of a level 3 overhand throw" loading="lazy" class="figure-img">
-        <figcaption><span class="fg-level-num">3</span><strong>Developing</strong> The key feature is present, but the proficient pattern is not yet complete.<em>Throw: the trunk rotates, with a short step on the opposite foot.</em></figcaption>
-      </figure>
-      <figure class="fg-level figure">
-        <img src="images/ot-l4.png" alt="Illustration of a level 4 overhand throw" loading="lazy" class="figure-img">
-        <figcaption><span class="fg-level-num">4</span><strong>Proficient</strong> The key feature is present and the proficient pattern is confirmed.<em>Throw: the trunk rotates, with a long step on the opposite foot (at least half the child's height).</em></figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WHO ============ -->
-<section class="fg-section column-screen" id="who" aria-labelledby="who-title">
-  <div class="fg-wrap">
-    <p class="fg-kicker">Who it's for</p>
-    <h2 id="who-title" class="anchored">Practical enough for the gym, rigorous enough for the lab.</h2>
-    <div class="fg-cards">
-      <article class="fg-card">
-        <i class="bi bi-people" aria-hidden="true"></i>
-        <h3 class="anchored">PE teachers &amp; coaches</h3>
-        <p>Check a whole class quickly, track progress over the year and see whether a program is working.</p>
-      </article>
-      <article class="fg-card">
-        <i class="bi bi-heart-pulse" aria-hidden="true"></i>
-        <h3 class="anchored">Clinicians &amp; therapists</h3>
-        <p>Spot movement delays early and plan targeted support, with clear levels to share with families.</p>
-      </article>
-      <article class="fg-card">
-        <i class="bi bi-clipboard-data" aria-hidden="true"></i>
-        <h3 class="anchored">Researchers &amp; students</h3>
-        <p>A process-oriented, criterion-referenced instrument with published reliability and expert-rater agreement.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ EVIDENCE ============ -->
-<section class="fg-section fg-alt column-screen" id="evidence" aria-labelledby="evidence-title">
-  <div class="fg-wrap fg-two">
-    <div>
-      <p class="fg-kicker">The evidence</p>
+<!-- EVIDENCE -->
+<section class="section" id="evidence" aria-labelledby="evidence-title">
+  <div class="wrap evidence">
+    <div class="sec-head">
+      <p class="eyebrow">The evidence</p>
       <h2 id="evidence-title" class="anchored">Built on more than 15 years of research.</h2>
-      <p class="fg-prose">
-        FG-COMPASS was developed at the University of Pittsburgh and tested for reliability and agreement with expert raters
-        in peer-reviewed studies.
-      </p>
-      <a class="fg-link" href="./publications.html">See all publications <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      <p class="fh-lead">Developed at the University of Pittsburgh and tested for reliability and agreement with expert raters in peer-reviewed studies.</p>
+      <div class="ev-quote"><b>Why movement skills matter</b><span>Children who move well tend to be more active. Research links these skills to healthier body composition, working memory and more confident play with peers.</span></div>
+      <a class="text-link" href="./publications.html">See all publications <svg><use href="#i-arrow"></use></svg></a>
     </div>
-    <ul class="fg-papers">
-      <li>
-        <span class="fg-paper-year">2024</span>
-        <a href="https://doi.org/10.1177/00315125241272720">Expert-rater agreement and inter/intra-rater reliability of two locomotor skills</a>
-        <span class="fg-paper-src">Perceptual and Motor Skills</span>
-      </li>
-      <li>
-        <span class="fg-paper-year">2018</span>
-        <a href="https://doi.org/10.1177/0031512518769205">Expert-rater agreement and inter-/intrarater reliability for FG-COMPASS</a>
-        <span class="fg-paper-src">Perceptual and Motor Skills</span>
-      </li>
-      <li>
-        <span class="fg-paper-year">2012</span>
-        <a href="https://doi.org/10.1080/02701367.2012.10599872">The reliability of classification decisions for FG-COMPASS</a>
-        <span class="fg-paper-src">Research Quarterly for Exercise and Sport</span>
-      </li>
-      <li>
-        <span class="fg-paper-year">2009</span>
-        <a href="https://d-scholarship.pitt.edu/8917/">Development and initial validation of FG-COMPASS</a>
-        <span class="fg-paper-src">Doctoral dissertation, University of Pittsburgh</span>
-      </li>
-    </ul>
+    <ol class="timeline">
+      <li><span class="yr">2024</span><div><a href="https://doi.org/10.1177/00315125241272720">Expert-rater agreement and inter/intra-rater reliability of two locomotor skills</a><small>Perceptual and Motor Skills</small></div></li>
+      <li><span class="yr">2018</span><div><a href="https://doi.org/10.1177/0031512518769205">Expert-rater agreement and inter-/intrarater reliability for FG-COMPASS</a><small>Perceptual and Motor Skills</small></div></li>
+      <li><span class="yr">2012</span><div><a href="https://doi.org/10.1080/02701367.2012.10599872">The reliability of classification decisions for FG-COMPASS</a><small>Research Quarterly for Exercise and Sport</small></div></li>
+      <li><span class="yr">2009</span><div><a href="https://d-scholarship.pitt.edu/8917/">Development and initial validation of FG-COMPASS</a><small>Doctoral dissertation, University of Pittsburgh</small></div></li>
+    </ol>
   </div>
 </section>
 
-<!-- ============ GET STARTED ============ -->
-<section class="fg-section fg-final column-screen" id="get-started" aria-labelledby="start-title">
-  <div class="fg-wrap">
-    <h2 id="start-title" class="anchored">Get started</h2>
-    <div class="fg-start">
-      <a class="fg-start-card" href="static/files/fgcompass-decision-trees-v2.2.pdf">
-        <i class="bi bi-file-earmark-arrow-down" aria-hidden="true"></i>
-        <strong>Decision trees</strong>
-        <span>All 10 scoring trees in one PDF (v2.2).</span>
-      </a>
-      <a class="fg-start-card" href="https://drfurtado.github.io/compass-manual/">
-        <i class="bi bi-book" aria-hidden="true"></i>
-        <strong>User manual</strong>
-        <span>Testing protocols, scoring and interpretation.</span>
-      </a>
-      <a class="fg-start-card" href="assess/index.html">
-        <i class="bi bi-phone" aria-hidden="true"></i>
-        <strong>Web app <em>beta</em></strong>
-        <span>Rate all 10 skills on a phone or laptop. Nothing is stored.</span>
-      </a>
+<!-- START -->
+<section class="section start" id="get-started" aria-labelledby="start-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Get started</p>
+      <h2 id="start-title" class="anchored">Everything you need is free.</h2>
+      <p class="fh-lead">Print the trees for the gym, read the manual for the full protocol, or rate on your phone.</p>
     </div>
-    <p class="fg-name-note">
-      FG-COMPASS stands for the Furtado–Gallagher Children Observational Movement Pattern Assessment System
-      (formerly the Furtado–Gallagher <em>Computerized</em> Observational Movement Pattern Assessment System).
-    </p>
+    <div class="start-grid">
+      <a class="start-card primary" href="static/files/fgcompass-decision-trees-v2.2.pdf"><span class="ic"><svg><use href="#i-download"></use></svg></span><strong>Decision trees</strong><span>All 10 scoring trees in one PDF (v2.2).</span><span class="go">Download PDF →</span></a>
+      <a class="start-card" href="https://drfurtado.github.io/compass-manual/"><span class="ic"><svg><use href="#i-book"></use></svg></span><strong>User manual</strong><span>Testing protocols, scoring and interpretation.</span><span class="go">Read the manual →</span></a>
+      <a class="start-card" href="assess/index.html"><span class="ic"><svg><use href="#i-phone"></use></svg></span><strong>FG-COMPASS Rater <em>Beta</em></strong><span>Rate all 10 skills on a phone or laptop. Nothing is stored.</span><span class="go">Open the Rater →</span></a>
+    </div>
+    <p class="name-note">FG-COMPASS stands for the Furtado–Gallagher Children Observational Movement Pattern Assessment System (formerly the Furtado–Gallagher <em>Computerized</em> Observational Movement Pattern Assessment System).</p>
   </div>
 </section>
-
-<script>
-window.FG_DEMO = {
-  q1:  { step: "Question 1 of 2", q: "Did the trunk rotate to the side of the throw during preparation?", yes: "up", no: "low" },
-  up:  { step: "Question 2 of 2", q: "Was there a long step opposite the throwing arm?", yes: 4, no: 3 },
-  low: { step: "Question 2 of 2", q: "Did the child fail to step forward?", yes: 1, no: 2 },
-  result: "Result", level: "Level",
-  levels: {
-    1: ["Initial",    "The key proficient feature is missing and the early pattern is confirmed."],
-    2: ["Emerging",   "The key feature is still missing, but the child has moved past the early pattern."],
-    3: ["Developing", "The key feature is present, but the proficient pattern is not yet complete."],
-    4: ["Proficient", "The key feature is present and the proficient pattern is confirmed."]
-  }
-};
-</script>
-<script src="fg-demo.js"></script>
-<script src="fg-tree.js"></script>
+</div>
+<script src="home.js"></script>
 
 
 

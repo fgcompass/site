@@ -12,12 +12,14 @@ project:
     - gallagher.qmd
   resources:
     - fg-demo.js
+    - home.js
     - fg-lang.js
     - fg-tree.js
     - assess/*
     - assess/img/*.jpg
     - static/files/*.pdf
     - images/ot-l*.png
+    - images/home/*.png
     - images/dts/*.png
     - images/logos/*.png
     - images/brand/*
@@ -87,7 +89,7 @@ format:
     theme:
       light: [cosmo, theme.scss]
       dark: [cosmo, theme-dark.scss]
-    css: [styles.css, logo.css]
+    css: [styles.css, logo.css, home.css]
     code-copy: true
     code-overflow: wrap
     toc: true
