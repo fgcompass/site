@@ -78,7 +78,17 @@ details.protocol summary { padding: .9rem 1.1rem; font-weight: 600; cursor: poin
 .qcard { margin-top: 1rem; }
 .qhead { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: .5rem; }
 .step { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
-.who { font-size: .9rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 45%; }
+.who { display: inline-flex; align-items: center; gap: .4rem; max-width: 60%; min-width: 0;
+       padding: .3rem .8rem .3rem .45rem; border-radius: 999px; border: 2px solid var(--amber);
+       background: rgba(242,165,65,.16); color: var(--ink); font-weight: 700; font-size: .95rem; line-height: 1.2; }
+.who svg { flex: 0 0 auto; width: 22px; height: 22px; padding: 3px; border-radius: 50%; background: var(--amber);
+           fill: none; stroke: #1d1a12; stroke-width: 2.2; }
+.who b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 700; }
+.who.pulse { animation: whoPulse 1.1s ease-out 2; }
+@keyframes whoPulse { 0% { box-shadow: 0 0 0 0 rgba(242,165,65,.7); } 70% { box-shadow: 0 0 0 12px rgba(242,165,65,0); } 100% { box-shadow: 0 0 0 0 rgba(242,165,65,0); } }
+.rtop { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; margin-bottom: .9rem; }
+.rtop .who { max-width: 100%; }
+@media (prefers-reduced-motion: reduce) { .who.pulse { animation: none; } }
 .q { font-family: "Lexend", sans-serif; font-size: clamp(1.25rem, 3.5vw, 1.6rem); line-height: 1.35; font-weight: 500; margin: .25rem 0 .5rem; color: var(--navy); }
 .hint { font-size: .9rem; color: var(--muted); margin: 0 0 1.1rem; }
 .yn { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
@@ -194,7 +204,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   .who-card label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .who-card input { padding: .55rem .75rem; }
   .qhead { flex-direction: column-reverse; align-items: flex-start; gap: .1rem; }
-  .who { max-width: 100%; font-weight: 600; color: var(--ink); }
+  .qhead .who { max-width: 100%; margin-bottom: .45rem; }
   .card { padding: 1rem; border-radius: .9rem; }
   .card.who-card { padding: .6rem; }
   details.protocol { margin: .7rem 0 0; }
@@ -275,7 +285,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     <div class="card qcard" id="qCard" aria-live="polite">
       <div class="qhead">
         <span class="step" id="qStep"></span>
-        <span class="who" id="qWho"></span>
+        <span class="who" id="qWho"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><b id="qWhoName"></b></span>
       </div>
       <p class="q" id="qText"></p>
       <p class="hint" id="tHint"></p>
@@ -291,10 +301,13 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     </div>
 
     <div class="card qcard" id="rCard" hidden aria-live="polite">
+      <div class="rtop">
+        <span class="who" id="rWhoPill"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><b id="rWhoName"></b></span>
+        <span class="step" id="rWho"></span>
+      </div>
       <div class="result">
         <div class="badge" id="rBadge"></div>
         <div>
-          <span class="step" id="rWho"></span>
           <h2 id="rTitle"></h2>
           <p id="rDesc"></p>
         </div>
@@ -462,7 +475,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
 
   function renderQuestion() {
     $("qStep").textContent = t("q") + " " + (node === "q1" ? 1 : 2) + " " + t("of") + " 2 · " + txt(skill.name);
-    $("qWho").textContent = performerName();
+    $("qWhoName").textContent = performerName();
     $("qText").textContent = skill[node];
     $("btnBack").hidden = node === "q1";
     renderTree();
@@ -474,7 +487,9 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     var name = t("levelNames")[level - 1];
     $("qCard").hidden = true; $("rCard").hidden = false;
     $("rBadge").textContent = level;
-    $("rWho").textContent = (redraw ? results[results.length - 1].performer : performerName()) + " · " + txt(skill.name);
+    $("rWhoName").textContent = redraw ? results[results.length - 1].performer : performerName();
+    $("rWho").textContent = txt(skill.name);
+    if (!redraw) pulse("rWhoPill");
     $("rTitle").textContent = t("levelWord") + " " + level + " · " + name;
     $("rDesc").textContent = skill.levels[level - 1];
     $("rAnswers").innerHTML = answers.map(function (a, i) {
@@ -506,6 +521,11 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       window.scrollTo({ top: window.scrollY + top - h - 12, behavior: reduce ? "auto" : "smooth" });
     }
+  }
+
+  // Brief ring around the child's name so the rater notices who is being rated.
+  function pulse(id) {
+    var el = $(id); el.classList.remove("pulse"); void el.offsetWidth; el.classList.add("pulse");
   }
 
   function resetQuestion() {
@@ -635,9 +655,10 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   $("btnYes").addEventListener("click", function () { answer(true); });
   $("btnNo").addEventListener("click", function () { answer(false); });
   $("btnBack").addEventListener("click", resetQuestion);
-  $("performer").addEventListener("input", function () { $("qWho").textContent = performerName(); });
+  $("performer").addEventListener("input", function () { $("qWhoName").textContent = performerName(); });
+  $("performer").addEventListener("change", function () { pulse("qWho"); });
   $("btnNext").addEventListener("click", function () {
-    counter++; $("performer").value = ""; resetQuestion(); $("performer").focus();
+    counter++; $("performer").value = ""; resetQuestion(); pulse("qWho"); $("performer").focus();
   });
   $("btnRedo").addEventListener("click", function () {
     var last = results.pop();
