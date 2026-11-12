@@ -5,7 +5,7 @@
 
 /* Let the full-bleed sections start right under the navbar */
 #quarto-content:has(.fh) { padding-top: 0; }
-main.content:has(.fh) { margin-top: 0; padding-top: 0; }
+main.content:has(.fh), #quarto-document-content:has(.fh) { margin-top: 0 !important; padding-top: 0 !important; }
 main.content:has(.fh) > section,
 main.content:has(.fh) .cell-output-display > section { margin: 0; }
 main.content:has(.fh) > #title-block-header { display: none; }
@@ -60,7 +60,7 @@ body.quarto-dark .fh{--ink:#D1E0E6; --muted:#A4C2CA; --paper:#071F31; --alt:#0B2
 .fh .hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
   background-image:linear-gradient(rgba(153,207,211,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(153,207,211,.07) 1px,transparent 1px);background-size:48px 48px;
   -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 85%);mask-image:linear-gradient(180deg,#000 0%,transparent 85%)}
-.fh .hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,5vw,72px);align-items:center;padding-block:clamp(48px,7vw,96px) clamp(40px,5vw,64px)}
+.fh .hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,5vw,72px);align-items:center;padding-block:clamp(48px,7vw,112px) clamp(40px,5vw,64px)}
 .fh .hero h1{color:#fff;font-size:clamp(2.3rem,1.4rem + 3.6vw,4.1rem);font-weight:800;letter-spacing:-.035em;line-height:1.03}
 .fh .hero h1 em{font-style:normal;color:var(--teal-id)}
 .fh .hero .eyebrow{color:var(--amber);display:inline-flex;align-items:center;gap:10px}
@@ -268,3 +268,8 @@ body.quarto-dark .fh{--ink:#D1E0E6; --muted:#A4C2CA; --paper:#071F31; --alt:#0B2
   .fh .start-grid{grid-template-columns:minmax(0,1fr)}
 }
 .fh .name-note{margin-top:28px;font-size:.88rem;color:var(--on-dark-muted);max-width:46rem}
+
+.fh details.research .refs{border-top:1px solid var(--line);padding-top:12px;font-size:.88rem}
+.fh details.research .refs-title{font-weight:700;color:var(--head);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.fh details.research .refs ul{list-style:none;padding-left:0;gap:6px}
+.fh details.research .refs li{padding-left:1.5em;text-indent:-1.5em}

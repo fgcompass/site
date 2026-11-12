@@ -33,7 +33,7 @@ website:
   open-graph: true
   announcement:
     content: "**New:** the FG-COMPASS user manual is now available. [Read it here](https://drfurtado.github.io/compass-manual/)."
-    position: below-navbar
+    position: above-navbar
     dismissable: true
 
   navbar:
@@ -52,13 +52,13 @@ website:
         text: Research
       - href: webapp.qmd
         text: Web app
+    right:
       - text: About
         menu:
           - href: furtado.qmd
             text: Ovande Furtado Jr.
           - href: gallagher.qmd
             text: Jere D. Gallagher
-    right:
       - text: "PT-BR"
         href: pt/index.html
         icon: translate
