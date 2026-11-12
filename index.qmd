@@ -115,7 +115,7 @@ lightbox: false
       </li>
     </ol>
 
-    <div class="fg-tree" id="fg-tree" data-cap4="Key feature seen, mature pattern confirmed: <strong>Level 4, Proficient</strong>" data-cap3="Key feature seen, mature pattern not confirmed: <strong>Level 3, Developing</strong>" data-cap2="Key feature not seen, early pattern not confirmed: <strong>Level 2, Emerging</strong>" data-cap1="Key feature not seen, early pattern confirmed: <strong>Level 1, Initial</strong>" data-pause="Pause" data-play="Play">
+    <div class="fg-tree" id="fg-tree" data-cap4="Key feature seen, proficient pattern confirmed: <strong>Level 4, Proficient</strong>" data-cap3="Key feature seen, proficient pattern not confirmed: <strong>Level 3, Developing</strong>" data-cap2="Key feature not seen, early pattern not confirmed: <strong>Level 2, Emerging</strong>" data-cap1="Key feature not seen, early pattern confirmed: <strong>Level 1, Initial</strong>" data-pause="Pause" data-play="Play">
       <div class="fg-tree-head">
         <h3>The decision tree in action</h3>
         <p>Every skill uses the same three-question tree. Each child follows one path: a key question, then one confirming question.</p>
@@ -129,7 +129,7 @@ lightbox: false
         <g class="e" id="e-r-4"><path d="M470 200 L495 252"/><text x="502" y="230" class="el">Yes</text></g>
         <g class="n" id="n-q1"><rect x="150" y="8" width="260" height="68" rx="14"/><text x="280" y="32" class="k">Question 1</text><text x="280" y="57">Key feature seen?</text></g>
         <g class="n" id="n-l"><rect x="20" y="132" width="220" height="68" rx="34"/><text x="130" y="150" class="k">Question 2</text><text x="130" y="169">Early pattern</text><text x="130" y="192">confirmed?</text></g>
-        <g class="n" id="n-r"><rect x="320" y="132" width="220" height="68" rx="34"/><text x="430" y="150" class="k">Question 2</text><text x="430" y="169">Mature pattern</text><text x="430" y="192">confirmed?</text></g>
+        <g class="n" id="n-r"><rect x="320" y="132" width="220" height="68" rx="34"/><text x="430" y="150" class="k">Question 2</text><text x="430" y="169">Proficient pattern</text><text x="430" y="192">confirmed?</text></g>
         <g class="n lv" id="n-1"><rect x="10" y="252" width="115" height="66" rx="12"/><text x="67" y="281" class="big">Level 1</text><text x="67" y="303" class="s">Initial</text></g>
         <g class="n lv" id="n-2"><rect x="140" y="252" width="115" height="66" rx="12"/><text x="197" y="281" class="big">Level 2</text><text x="197" y="303" class="s">Emerging</text></g>
         <g class="n lv" id="n-3"><rect x="305" y="252" width="115" height="66" rx="12"/><text x="362" y="281" class="big">Level 3</text><text x="362" y="303" class="s">Developing</text></g>
@@ -194,11 +194,11 @@ lightbox: false
   <div class="fg-wrap">
     <p class="fg-kicker">Reading the results</p>
     <h2 id="levels-title">What the four levels mean</h2>
-    <p class="fg-sub">Example: the overhand throw, from the first attempts to a mature throwing pattern.</p>
+    <p class="fg-sub">Example: the overhand throw, from the first attempts to a proficient throwing pattern.</p>
     <div class="fg-levels">
       <figure class="fg-level">
         <img src="images/ot-l1.png" alt="Illustration of a level 1 overhand throw" loading="lazy">
-        <figcaption><span class="fg-level-num">1</span><strong>Initial</strong> The key mature feature is missing and the early pattern is confirmed.<em>Throw: the trunk faces the target and there is no step forward.</em></figcaption>
+        <figcaption><span class="fg-level-num">1</span><strong>Initial</strong> The key proficient feature is missing and the early pattern is confirmed.<em>Throw: the trunk faces the target and there is no step forward.</em></figcaption>
       </figure>
       <figure class="fg-level">
         <img src="images/ot-l2.png" alt="Illustration of a level 2 overhand throw" loading="lazy">
@@ -206,11 +206,11 @@ lightbox: false
       </figure>
       <figure class="fg-level">
         <img src="images/ot-l3.png" alt="Illustration of a level 3 overhand throw" loading="lazy">
-        <figcaption><span class="fg-level-num">3</span><strong>Developing</strong> The key feature is present, but the mature pattern is not yet complete.<em>Throw: the trunk rotates, with a short step on the opposite foot.</em></figcaption>
+        <figcaption><span class="fg-level-num">3</span><strong>Developing</strong> The key feature is present, but the proficient pattern is not yet complete.<em>Throw: the trunk rotates, with a short step on the opposite foot.</em></figcaption>
       </figure>
       <figure class="fg-level">
         <img src="images/ot-l4.png" alt="Illustration of a level 4 overhand throw" loading="lazy">
-        <figcaption><span class="fg-level-num">4</span><strong>Proficient</strong> The key feature is present and the mature pattern is confirmed.<em>Throw: the trunk rotates, with a long step on the opposite foot (at least half the child's height).</em></figcaption>
+        <figcaption><span class="fg-level-num">4</span><strong>Proficient</strong> The key feature is present and the proficient pattern is confirmed.<em>Throw: the trunk rotates, with a long step on the opposite foot (at least half the child's height).</em></figcaption>
       </figure>
     </div>
   </div>
@@ -313,10 +313,10 @@ window.FG_DEMO = {
   low: { step: "Question 2 of 2", q: "Did the child fail to step forward?", yes: 1, no: 2 },
   result: "Result", level: "Level",
   levels: {
-    1: ["Initial",    "The key mature feature is missing and the early pattern is confirmed."],
+    1: ["Initial",    "The key proficient feature is missing and the early pattern is confirmed."],
     2: ["Emerging",   "The key feature is still missing, but the child has moved past the early pattern."],
-    3: ["Developing", "The key feature is present, but the mature pattern is not yet complete."],
-    4: ["Proficient", "The key feature is present and the mature pattern is confirmed."]
+    3: ["Developing", "The key feature is present, but the proficient pattern is not yet complete."],
+    4: ["Proficient", "The key feature is present and the proficient pattern is confirmed."]
   }
 };
 </script>
