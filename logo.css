@@ -29,7 +29,7 @@
       url("images/brand/fg-compass-stacked-dark.svg") center bottom 26px / 132px auto no-repeat,
       linear-gradient(180deg, #082B42 0%, #0E4963 70%, #155A63 100%);
     box-shadow: 0 0 0 1px rgba(153, 207, 211, .18), 0 22px 40px -16px rgba(0, 0, 0, .65);
-    transition: transform .25s ease, opacity .25s ease;
+    transition: transform .7s cubic-bezier(.22, 1, .36, 1), opacity .55s ease;
   }
   .navbar .navbar-brand.navbar-brand-logo::after {
     content: ""; position: absolute; left: 22px; right: 22px; bottom: 12px;
