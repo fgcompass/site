@@ -2,6 +2,7 @@
 pagetitle: "FG-COMPASS · Veja como uma criança se movimenta"
 description: "Uma avaliação observacional rápida e validada das habilidades motoras fundamentais de crianças de 5 a 10 anos."
 lang: pt-BR
+image: ../images/brand/open-graph.png
 page-layout: full
 toc: false
 lightbox: false

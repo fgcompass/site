@@ -24,7 +24,8 @@ quarto render pt     # Portuguese -> docs/pt/
 ## Landing page pieces
 
 - `styles.css`: landing-page layout and colours (light and dark), shared by both languages.
-- `theme.scss` / `theme-dark.scss`: Bootstrap theme (fonts: Lexend for headings, Inter for text).
+- `theme.scss` / `theme-dark.scss`: Bootstrap theme using the FG COMPASS brand kit colours and Inter for all text.
+- `images/brand/`: brand kit logos, favicons, app icons and the Open Graph image.
 - `fg-demo.js`: the "Try it" overhand-throw demo in the hero. Text comes from `window.FG_DEMO` in each `index.qmd`.
 - `fg-tree.js`: the animated decision tree in "How it works". Captions come from `data-cap1..4` on `#fg-tree`.
 

@@ -9,7 +9,8 @@ website:
   title: "FG-COMPASS"
   description: "Uma avaliação observacional rápida e validada das habilidades motoras fundamentais de crianças de 5 a 10 anos."
   page-navigation: true
-  favicon: ../images/logos/logo-bk-round.png
+  favicon: ../images/brand/favicon.svg
+  image: ../images/brand/open-graph.png
   open-graph: true
   announcement:
     content: "**Novidade:** o manual do usuário do FG-COMPASS já está disponível. [Leia aqui](https://drfurtado.github.io/compass-manual/)."
@@ -17,7 +18,7 @@ website:
     dismissable: true
 
   navbar:
-    logo: "../images/logos/logo-bk.png"
+    logo: "../images/brand/fg-compass-horizontal-dark.svg"
     logo-alt: "Logotipo do FG-COMPASS"
     logo-href: index.html
     title: false

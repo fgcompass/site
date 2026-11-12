@@ -1,8 +1,14 @@
-/* Navbar logo */
+/* Navbar logo (brand kit lockup for dark backgrounds; the navbar is dark in both modes) */
 .navbar-brand .navbar-logo,
 .navbar .navbar-logo {
-  max-height: 44px;
-  height: 44px;
+  max-height: 40px;
+  height: 40px;
   width: auto;
 }
-body.quarto-dark .navbar-logo { filter: invert(1); }
+@media (max-width: 575.98px) {
+  .navbar-brand .navbar-logo,
+  .navbar .navbar-logo {
+    max-height: 34px;
+    height: 34px;
+  }
+}

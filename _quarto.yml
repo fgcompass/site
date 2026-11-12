@@ -20,12 +20,14 @@ project:
     - images/ot-l*.png
     - images/dts/*.png
     - images/logos/*.png
+    - images/brand/*
 
 website:
   title: "FG-COMPASS"
   description: "A quick, research-validated observational assessment of fundamental movement skills for children aged 5 to 10."
   page-navigation: true
-  favicon: images/logos/logo-bk-round.png
+  favicon: images/brand/favicon.svg
+  image: images/brand/open-graph.png
   open-graph: true
   announcement:
     content: "**New:** the FG-COMPASS user manual is now available. [Read it here](https://drfurtado.github.io/compass-manual/)."
@@ -33,7 +35,7 @@ website:
     dismissable: true
 
   navbar:
-    logo: "images/logos/logo-bk.png"
+    logo: "images/brand/fg-compass-horizontal-dark.svg"
     logo-alt: "FG-COMPASS logo"
     title: false
     collapse-below: lg
