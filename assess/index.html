@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#172a3b" media="(prefers-color-scheme: dark)">
 <title>FG-COMPASS Rater</title>
 <meta name="description" content="Rate children's fundamental movement skills with the FG-COMPASS decision trees. Nothing is stored online.">
 <link rel="icon" href="../images/logos/logo-bk-round.png">
@@ -124,6 +126,67 @@ td.lvl span { display: inline-block; min-width: 1.8em; border-radius: .4rem; bac
 .note { font-size: .85rem; color: var(--muted); margin-top: 1rem; }
 .meta { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 1rem; }
 [hidden] { display: none !important; }
+button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.chip, .tab, .btn, .link, .lang { min-height: 44px; }
+.yn button { min-height: 64px; }
+#rCard:not([hidden]) { animation: pop .25s ease; }
+@keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+#qText { transition: opacity .15s ease; }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+
+/* ---- Phones ---- */
+@media (max-width: 640px) {
+  .wrap { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+  .bar { height: 54px; }
+  .brand img { height: 28px; }
+  .tab { flex: 1; text-align: center; padding: .55rem .5rem; }
+  main { padding: .9rem 0 calc(2rem + env(safe-area-inset-bottom)); }
+  /* Phone order: skills, child, question, then setup/instructions */
+  #rateView { display: flex; flex-direction: column; }
+  #skillPicker { order: 1; } .who-card { order: 2; } #qCard, #rCard { order: 3; } #protocol { order: 4; }
+  /* all ten skills in one swipeable row */
+  .skills { display: flex; gap: .45rem; margin: 0 -16px .7rem; padding: 0 16px 2px; overflow-x: auto;
+            scrollbar-width: none; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
+            mask-image: linear-gradient(90deg, transparent 0, #000 12px, #000 calc(100% - 28px), transparent 100%); }
+  .skills::-webkit-scrollbar { display: none; }
+  .skills > div, .chips { display: contents; }
+  .skills .section-label { flex: 0 0 auto; align-self: center; margin: 0 .1rem 0 .3rem; font-size: .66rem; writing-mode: horizontal-tb; }
+  .skills > div:first-child .section-label { margin-left: 0; }
+  .chip { flex: 0 0 auto; scroll-snap-align: start; padding: .35rem .85rem; }
+  .who-card label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .who-card input { padding: .55rem .75rem; }
+  .qhead { flex-direction: column-reverse; align-items: flex-start; gap: .1rem; }
+  .who { max-width: 100%; font-weight: 600; color: var(--ink); }
+  .card { padding: 1rem; border-radius: .9rem; }
+  .card.who-card { padding: .6rem; }
+  details.protocol { margin: .7rem 0 0; }
+  details.protocol summary { padding: .75rem 1rem; font-size: .95rem; }
+  .qcard { margin-top: .7rem; scroll-margin-top: 110px; }
+  .q { font-size: 1.2rem; margin: .1rem 0 .4rem; }
+  .tree { margin-top: .9rem; }
+  .hint { font-size: .85rem; margin-bottom: .9rem; }
+  .result { gap: .8rem; }
+  .badge { width: 60px; height: 60px; font-size: 1.9rem; border-radius: 14px; }
+  .result h2 { font-size: 1.2rem; }
+  .actions .btn { flex: 1 1 auto; }
+  .dist { grid-template-columns: repeat(2, 1fr); }
+  .meta { grid-template-columns: 1fr; }
+  /* All ratings as stacked rows instead of a wide table */
+  #allTable thead { display: none; }
+  #allTable tr { display: grid; grid-template-columns: 1fr auto; gap: .1rem .75rem; padding: .6rem .8rem; border-bottom: 1px solid var(--line); }
+  #allTable td { border: 0; padding: 0; white-space: normal; }
+  #allTable td:nth-child(1) { grid-column: 1; font-size: .78rem; color: var(--muted); }
+  #allTable td:nth-child(2) { grid-column: 1; font-weight: 600; }
+  #allTable td:nth-child(3) { grid-column: 1; font-size: .9rem; color: var(--muted); }
+  #allTable td:nth-child(4) { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 1.1rem; }
+  #allTable td:nth-child(5) { grid-column: 2; grid-row: 3; text-align: right; }
+  #allTable td:nth-child(5) .link { min-height: 0; padding: 0; font-size: .85rem; }
+}
+@media (max-width: 360px) {
+  .yn { gap: .5rem; }
+  .q { font-size: 1.15rem; }
+  .tree { font-size: .7rem; }
+}
 
 @media print {
   header .tabs, header .lang, .actions, .meta input, #rateView, .no-print { display: none !important; }
@@ -153,7 +216,7 @@ td.lvl span { display: inline-block; min-width: 1.8em; border-radius: .4rem; bac
   <section id="rateView" role="tabpanel" aria-labelledby="tabRate">
     <div class="skills" id="skillPicker"></div>
 
-    <div class="card">
+    <div class="card who-card">
       <div class="row">
         <div class="grow">
           <label for="performer" id="tPerformer"></label>
@@ -289,7 +352,7 @@ td.lvl span { display: inline-block; min-width: 1.8em; border-radius: .4rem; bac
     $("langBtn").textContent = t("langBtn"); $("langBtn").setAttribute("aria-label", t("langAria"));
     $("homeLink").href = lang === "pt" ? "../pt/index.html" : "../index.html";
     $("homeLink").title = t("homeTitle");
-    $("tPerformer").textContent = t("performer");
+    $("tPerformer").textContent = t("performer"); $("performer").placeholder = t("performer");
     $("tProtocol").textContent = t("protocol"); $("tSetup").textContent = t("setup");
     $("tSay").textContent = t("say"); $("tNotes").textContent = t("notes");
     $("tHint").textContent = t("hint") + (t("qLangNote") ? " " + t("qLangNote") : "");
@@ -367,7 +430,7 @@ td.lvl span { display: inline-block; min-width: 1.8em; border-radius: .4rem; bac
 
   function answer(yes) {
     answers.push({ q: skill[node], a: yes });
-    if (node === "q1") { node = yes ? "up" : "low"; renderQuestion(); return; }
+    if (node === "q1") { node = yes ? "up" : "low"; renderQuestion(); bringIntoView("qCard"); return; }
     var level = node === "up" ? (yes ? 4 : 3) : (yes ? 1 : 2);
     results.push({
       performer: performerName(), skill: skill.id, level: level,
@@ -375,6 +438,17 @@ td.lvl span { display: inline-block; min-width: 1.8em; border-radius: .4rem; bac
     });
     renderTabs(); renderPicker(); renderResults();
     showResult(level);
+    bringIntoView("rCard");
+  }
+
+  // On small screens, keep the active card in view below the sticky header.
+  function bringIntoView(id) {
+    var el = $(id), head = document.querySelector("header");
+    var top = el.getBoundingClientRect().top, h = head.getBoundingClientRect().height;
+    if (top < h + 8 || top > window.innerHeight * 0.45) {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: window.scrollY + top - h - 12, behavior: reduce ? "auto" : "smooth" });
+    }
   }
 
   function resetQuestion() {
@@ -412,7 +486,7 @@ td.lvl span { display: inline-block; min-width: 1.8em; border-radius: .4rem; bac
     html += "</tbody></table></div>";
 
     // All ratings
-    html += '<p class="section-label" style="margin-top:1.25rem">' + esc(t("allRatings")) + '</p><div class="tablewrap"><table><thead><tr><th>' +
+    html += '<p class="section-label" style="margin-top:1.25rem">' + esc(t("allRatings")) + '</p><div class="tablewrap"><table id="allTable"><thead><tr><th>' +
       [t("time"), t("child"), t("skill"), t("level"), ""].map(esc).join("</th><th>") + "</th></tr></thead><tbody>";
     results.slice().reverse().forEach(function (r) {
       var i = results.indexOf(r), s = SK.find(function (x) { return x.id === r.skill; });
@@ -451,6 +525,8 @@ td.lvl span { display: inline-block; min-width: 1.8em; border-radius: .4rem; bac
     var b = e.target.closest("[data-skill]"); if (!b) return;
     skill = SK.find(function (s) { return s.id === b.dataset.skill; });
     renderPicker(); renderProtocol(); resetQuestion();
+    b = $("skillPicker").querySelector('[data-skill="' + skill.id + '"]');
+    if (b && b.scrollIntoView) b.scrollIntoView({ block: "nearest", inline: "nearest" });
     var u = new URL(location.href); u.searchParams.set("skill", skill.id); history.replaceState(null, "", u);
   });
   $("btnYes").addEventListener("click", function () { answer(true); });
