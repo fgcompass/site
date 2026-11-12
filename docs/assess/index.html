@@ -3,9 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#103C53" media="(prefers-color-scheme: dark)">
-<title>FG-COMPASS Rater</title>
+<meta name="theme-color" content="#082B42">
+<title>FG-COMPASS Web App</title>
 <meta name="description" content="Rate children's fundamental movement skills with the FG-COMPASS decision trees. Nothing is stored online.">
 <link rel="icon" href="../images/brand/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../images/brand/favicon.ico" sizes="any">
@@ -35,21 +34,34 @@ button { font: inherit; cursor: pointer; }
 a { color: var(--teal-ink); }
 .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
 
-/* Header */
-header { background: var(--card); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
-.bar { display: flex; align-items: center; gap: .75rem; height: 60px; }
-.brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--navy); }
-.brand img { height: 34px; width: auto; }
-.brand span { font-family: "Inter", sans-serif; font-weight: 600; font-size: 1rem; }
-.brand small { display: block; font-family: "Inter", sans-serif; font-weight: 500; font-size: .72rem; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+/* Header: the site's deep navy bar, in both themes */
+header {
+  position: sticky; top: 0; z-index: 5; color: #D1E0E6;
+  background: radial-gradient(60% 140% at 100% 0%, rgba(46,199,188,.14), rgba(46,199,188,0) 70%), #082B42;
+  border-bottom: 1px solid rgba(153,207,211,.23);
+}
+.bar { display: flex; align-items: center; gap: .9rem; height: 72px; }
+.brand { display: flex; align-items: center; gap: .9rem; text-decoration: none; color: #fff; min-width: 0; }
+.brand img { height: 44px; width: auto; display: block; }
+.brand .app { display: flex; flex-direction: column; justify-content: center; padding-left: .9rem; border-left: 1px solid rgba(153,207,211,.3); line-height: 1.15; }
+.brand .app span { font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em; color: #fff; white-space: nowrap; }
+.brand small { display: block; font-weight: 700; font-size: .68rem; color: #F9A73E; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 2px; }
 .spacer { flex: 1; }
-.lang { border: 1px solid var(--line); background: none; color: var(--ink); border-radius: 999px; padding: .25rem .7rem; font-size: .85rem; font-weight: 600; }
+.lang { border: 1px solid rgba(153,207,211,.35); background: none; color: #D1E0E6; border-radius: 999px; padding: .25rem .8rem; font-size: .85rem; font-weight: 600; }
+.lang:hover { border-color: #2EC7BC; color: #2EC7BC; }
+.back { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: 0 .9rem; border-radius: 999px; background: rgba(46,199,188,.12); border: 1px solid rgba(46,199,188,.45); color: #fff; font-size: .88rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.back:hover { background: #2EC7BC; border-color: #2EC7BC; color: #082B42; }
+.back svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+@media (max-width: 640px) { .back { padding: 0 .7rem; } .back .full { display: none; } }
+@media (min-width: 641px) { .back .short { display: none; } }
 .tabs { display: flex; gap: .25rem; }
-.tab { border: 0; background: none; padding: .7rem .9rem; font-weight: 600; color: var(--muted); border-bottom: 3px solid transparent; }
-.tab[aria-selected="true"] { color: var(--teal-ink); border-color: var(--teal); }
-.count { display: inline-block; min-width: 1.4em; padding: 0 .35em; margin-left: .3rem; border-radius: 999px; background: var(--alt); font-size: .8rem; text-align: center; }
+.tab { border: 0; background: none; padding: .7rem 1rem; font-weight: 600; color: #A4C2CA; border-bottom: 3px solid transparent; }
+.tab:hover { color: #fff; }
+.tab[aria-selected="true"] { color: #fff; border-color: #2EC7BC; }
+.count { display: inline-block; min-width: 1.5em; padding: 0 .4em; margin-left: .4rem; border-radius: 999px; background: rgba(209,224,230,.16); color: #D1E0E6; font-size: .78rem; font-weight: 700; text-align: center; }
+.tab[aria-selected="true"] .count { background: #F9A73E; color: #082B42; }
 
-main { padding: 1.25rem 0 4rem; }
+main.wrap { padding-top: 2rem; padding-bottom: 4rem; }
 .section-label { text-transform: uppercase; letter-spacing: .1em; font-size: .75rem; font-weight: 600; color: var(--teal-ink); margin: 0 0 .5rem; }
 
 /* Skill picker */
@@ -180,7 +192,7 @@ td.lvl span { display: inline-block; min-width: 1.8em; border-radius: .4rem; bac
 button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 .chip, .tab, .btn, .link, .lang { min-height: 44px; }
 .yn button { min-height: 64px; }
-#rCard:not([hidden]) { animation: pop .25s ease; }
+.bt-res.show { animation: pop .25s ease; }
 @keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 #qText { transition: opacity .15s ease; }
 :focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
@@ -188,13 +200,16 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
 /* ---- Phones ---- */
 @media (max-width: 640px) {
   .wrap { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
-  .bar { height: 54px; }
-  .brand img { height: 28px; }
+  .bar { height: 60px; }
+  .brand img { height: 32px; }
+  .brand, .brand .app { gap: .6rem; }
+  .brand .app { padding-left: .6rem; }
+  .brand .app span { font-size: 1rem; }
   .tab { flex: 1; text-align: center; padding: .55rem .5rem; }
-  main { padding: .9rem 0 calc(2rem + env(safe-area-inset-bottom)); }
+  main.wrap { padding-top: 1.1rem; padding-bottom: calc(2rem + env(safe-area-inset-bottom)); }
   /* Phone order: skills, child, question, then setup/instructions */
   #rateView { display: flex; flex-direction: column; }
-  #skillPicker { order: 1; } .who-card { order: 2; } #qCard, #rCard { order: 3; } #protocol { order: 4; }
+  #skillPicker { order: 1; } .who-card { order: 2; } #btCard { order: 3; } #protocol { order: 4; }
   /* all ten skills in one swipeable row */
   .skills { display: flex; gap: .45rem; margin: 0 -16px .7rem; padding: 0 16px 2px; overflow-x: auto;
             scrollbar-width: none; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
@@ -240,23 +255,119 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
 }
 
 @media print {
-  header .tabs, header .lang, .actions, .meta input, #rateView, .no-print, dialog { display: none !important; }
+  header .tabs, header .lang, header .back, .actions, .meta input, #rateView, .no-print, dialog { display: none !important; }
+  header { position: static; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   #resultsView { display: block !important; }
   body { background: #fff; }
 }
+
+/* ===== Option B: whole decision tree at once (review prototype) ===== */
+.bt { padding: 1rem; }
+.bt-top { display: flex; justify-content: space-between; align-items: center; gap: .75rem; margin-bottom: .75rem; flex-wrap: wrap; }
+.bt-grid { --G: .5rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 var(--G); }
+.bt-low, .bt-up { align-self: stretch; }
+.bt-node { --np: .8rem; border: 1.5px solid var(--line); background: var(--alt); border-radius: .85rem; padding: var(--np) var(--np) .85rem; display: grid; grid-template-rows: auto 1fr auto; gap: .55rem; transition: opacity .2s ease, border-color .2s ease, background .2s ease; min-width: 0; }
+.bt-node .k { font-size: .66rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.bt-node p { margin: 0; font-size: .92rem; line-height: 1.35; color: var(--navy); font-weight: 600; }
+.bt-q1 { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr); }
+.bt-q1 p { font-size: 1.05rem; }
+.bt-low { grid-column: 1 / 3; } .bt-up { grid-column: 3 / 5; }
+/* button row spans the node's full outer width so each button sits exactly over its branch */
+.bt-yn { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--G); margin-inline: calc(-1 * var(--np) - 1.5px); }
+.bt-yn button { justify-self: center; width: calc(100% - 2 * var(--np)); }
+.bt-q1 .bt-yn button { width: min(calc(100% - 2 * var(--np)), 260px); }
+.bt-yn button { display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 .5rem; margin: 0; line-height: 1; border-radius: .7rem; font-weight: 700; font-size: 1rem; border: 1.5px solid var(--line); background: var(--card); color: var(--ink); text-align: center; }
+.bt-yn button:hover { border-color: var(--teal-ink); }
+.bt-yn button.picked { background: var(--teal-ink); border-color: var(--teal-ink); color: #fff; }
+.bt-node.active { border-color: var(--teal-ink); background: var(--card); box-shadow: 0 0 0 3px rgba(36,105,108,.14); }
+.bt-node.dim { opacity: .38; }
+.bt-node.dim button { pointer-events: none; }
+.bt-edges { grid-column: 1 / -1; height: 22px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 var(--G); }
+.bt-edges .st { position: relative; }
+.bt-edges .st.half { grid-column: span 2; }
+.bt-edges .st::before { content: ""; position: absolute; left: 50%; top: -.95rem; bottom: 0; width: 2px; margin-left: -1px; background: var(--line); border-radius: 2px; }
+.bt-edges .st.on::before { width: 3px; margin-left: -1.5px; background: var(--teal-ink); }
+.bt-leaf { border: 1.5px solid var(--line); background: var(--card); border-radius: .75rem; overflow: hidden; display: grid; grid-template-rows: auto auto; transition: opacity .2s ease, border-color .2s ease, transform .2s ease; min-width: 0; }
+.bt-leaf .im { background: #fff; aspect-ratio: 4 / 3; display: grid; place-items: center; border-bottom: 1px solid var(--line); cursor: zoom-in; padding: 0; border-width: 0 0 1px; width: 100%; }
+.bt-leaf .im img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.bt-leaf .im i { font-style: normal; font-size: .72rem; color: #7C919E; padding: .4rem; text-align: center; }
+.bt-leaf .nm { padding: .4rem .45rem .5rem; display: flex; align-items: center; gap: .4rem; min-width: 0; }
+.bt-leaf .nm b { flex: none; width: 22px; height: 22px; border-radius: 6px; display: grid; place-items: center; font-size: .8rem; background: var(--alt); color: var(--ink); }
+.bt-leaf .nm span { font-size: .78rem; font-weight: 700; color: var(--navy); line-height: 1.15; min-width: 0; }
+.bt-leaf.dim { opacity: .38; }
+.bt-leaf.hit { border-color: var(--amber); box-shadow: 0 0 0 3px rgba(249,167,62,.35); transform: translateY(-2px); opacity: 1; }
+.bt-leaf.hit .nm b { background: var(--amber); color: #082B42; }
+.bt-res { margin-top: .9rem; display: none; gap: .75rem; align-items: center; padding: .75rem .9rem; border-radius: .85rem; background: rgba(249,167,62,.14); border: 1.5px solid var(--amber); }
+.bt-res.show { display: flex; flex-wrap: wrap; }
+.bt-res .txt { flex: 1 1 220px; min-width: 0; }
+.bt-res h3 { margin: 0; font-size: 1.05rem; }
+.bt-res p { margin: .15rem 0 0; font-size: .88rem; color: var(--muted); }
+.bt-res .acts { display: flex; gap: .5rem; flex-wrap: wrap; }
+.bt-res .acts button { min-height: 40px; border-radius: .6rem; font-weight: 700; padding: .5rem .9rem; border: 1.5px solid var(--line); background: var(--card); color: var(--ink); }
+.bt-res .acts button.go { background: var(--teal-ink); border-color: var(--teal-ink); color: #fff; }
+@media (prefers-color-scheme: dark) { html .bt-yn button.picked, html .bt-res .acts button.go { color: #082B42; } }
+@media (max-width: 640px) {
+  .bt { padding: .8rem; }
+  .bt-grid { --G: .35rem; }
+  .bt-node { --np: .55rem; gap: .45rem; }
+  .bt-node p { font-size: .82rem; }
+  .bt-q1 p { font-size: .95rem; }
+  .bt-yn button { min-height: 44px; font-size: .92rem; }
+  .bt-leaf .nm { flex-direction: column; padding: .3rem .2rem .4rem; gap: .2rem; text-align: center; }
+  .bt-leaf .nm b { width: 18px; height: 18px; font-size: .7rem; }
+  .bt-leaf .nm span { font-size: .66rem; }
+}
+
+/* ---------- name or ID required before rating ---------- */
+.who-card .need { margin: .4rem 0 0; font-size: .85rem; font-weight: 600; color: var(--muted); }
+.who-card.missing .need { color: #B4541A; font-weight: 700; }
+.who-card.missing input { border-color: var(--amber); box-shadow: 0 0 0 3px rgba(249,167,62,.35); }
+.need-name #btCard:not(.touring) .bt-yn button { opacity: .45; cursor: not-allowed; }
+.bt-hint { display: flex; gap: .7rem; align-items: flex-start; margin: 0 0 .9rem; padding: .7rem .9rem; border-radius: .8rem;
+  background: rgba(249,167,62,.14); border: 1.5px solid var(--amber); color: var(--ink); animation: hintGlow 2.6s ease-in-out infinite; }
+.bt-hint svg { flex: none; width: 22px; height: 22px; margin-top: 1px; fill: none; stroke: #C9771A; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bt-hint p { margin: 0; font-size: .95rem; line-height: 1.4; }
+.bt-hint b { color: var(--navy); font-weight: 800; }
+@keyframes hintGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(249,167,62,.0), 0 0 10px rgba(249,167,62,.25); } 50% { box-shadow: 0 0 0 4px rgba(249,167,62,.22), 0 0 22px rgba(249,167,62,.55); } }
+@media (prefers-reduced-motion: reduce) { .bt-hint { animation: none; box-shadow: 0 0 14px rgba(249,167,62,.4); } }
+@media (prefers-color-scheme: dark) { html .bt-hint { background: rgba(249,167,62,.12); } html .bt-hint svg { stroke: #F9A73E; } html .bt-hint b { color: #fff; } }
+@media print { .bt-hint { animation: none; box-shadow: none; } }
+@media (prefers-color-scheme: dark) { html .who-card.missing .need { color: #F9A73E; } }
+/* ---------- guided tour ---------- */
+.bt-tourbtn { display: inline-flex; align-items: center; gap: .35rem; min-height: 36px; padding: .35rem .8rem; border-radius: 999px; border: 1.5px solid var(--line); background: var(--card); color: var(--teal-ink); font: 700 .82rem/1 "Inter", sans-serif; cursor: pointer; }
+.bt-tourbtn:hover { border-color: var(--teal-ink); }
+.bt-tourbtn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.bt-acts { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+.bt-practice { display: none; margin: 0 0 .75rem; padding: .5rem .8rem; border-radius: .7rem; background: rgba(46,199,188,.14); border: 1px dashed #2EC7BC; color: var(--navy); font-size: .85rem; font-weight: 600; }
+.touring .bt-practice { display: block; }
+.tour-hi { position: relative; z-index: 60; box-shadow: 0 0 0 4px #2EC7BC, 0 0 0 9999px rgba(8,43,66,.55) !important; border-radius: .85rem; opacity: 1 !important; }
+.tour-tip { position: absolute; z-index: 70; width: min(340px, calc(100vw - 32px)); background: #082B42; color: #fff; border-radius: 14px; padding: 1rem 1.05rem .9rem; box-shadow: 0 18px 40px rgba(0,0,0,.35); font-size: .92rem; line-height: 1.45; }
+.tour-tip::before { content: ""; position: absolute; left: var(--ax, 50%); width: 14px; height: 14px; background: #082B42; transform: translateX(-50%) rotate(45deg); }
+.tour-tip[data-side="below"]::before { top: -7px; } .tour-tip[data-side="above"]::before { bottom: -7px; }
+.tour-tip .tk { font: 800 .68rem/1 "Inter", sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #2EC7BC; margin-bottom: .45rem; display: flex; justify-content: space-between; }
+.tour-tip h4 { margin: 0 0 .3rem; font-size: 1.02rem; color: #fff; }
+.tour-tip p { margin: 0; color: rgba(255,255,255,.86); }
+.tour-tip .do { margin-top: .6rem; color: #F9A73E; font-weight: 700; font-size: .86rem; }
+.tour-tip .row { display: flex; justify-content: space-between; align-items: center; margin-top: .85rem; gap: .5rem; }
+.tour-tip .row button { min-height: 38px; border-radius: .6rem; padding: .4rem .9rem; font: 700 .86rem/1 "Inter", sans-serif; cursor: pointer; }
+.tour-tip .skip { background: transparent; border: 0; color: rgba(255,255,255,.7); padding-inline: 0 !important; text-decoration: underline; }
+.tour-tip .nx { background: #2EC7BC; color: #082B42; border: 0; }
+.tour-tip .dots { display: flex; gap: 5px; } .tour-tip .dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.3); }
+.tour-tip .dots i.on { background: #2EC7BC; }
+@media print { .tour-tip, .bt-tourbtn, .bt-practice { display: none !important; } }
 </style>
 </head>
 <body>
+
+
 <header>
   <div class="wrap bar">
     <a class="brand" href="../index.html" id="homeLink">
-      <picture>
-        <source srcset="../images/brand/fg-compass-horizontal-dark.svg" media="(prefers-color-scheme: dark)">
-        <img src="../images/brand/fg-compass-horizontal-light.svg" alt="FG-COMPASS">
-      </picture>
-      <span><small id="tAppSub">Web app · beta</small><span id="tAppName">Rater</span></span>
+      <img src="../images/brand/fg-compass-horizontal-dark.svg" alt="FG-COMPASS">
+      <span class="app"><small id="tAppSub">Beta</small><span id="tAppName">Web app</span></span>
     </a>
     <div class="spacer"></div>
+    <a class="back" href="../index.html" id="backLink"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><span class="full" id="tBackFull">Back to site</span><span class="short" id="tBackShort">Site</span></a>
     <button class="lang" id="langBtn" type="button" aria-label="Português">PT-BR</button>
   </div>
   <div class="wrap tabs" role="tablist">
@@ -274,7 +385,8 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       <div class="row">
         <div class="grow">
           <label for="performer" id="tPerformer"></label>
-          <input type="text" id="performer" autocomplete="off">
+          <input type="text" id="performer" autocomplete="off" required aria-describedby="tNeed">
+          <p class="need" id="tNeed"></p>
         </div>
       </div>
     </div>
@@ -288,45 +400,23 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       </div>
     </details>
 
-    <div class="card qcard" id="qCard" aria-live="polite">
-      <div class="qhead">
-        <span class="step" id="qStep"></span>
-        <span class="who" id="qWho"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><b id="qWhoName"></b></span>
+    <div class="card bt" id="btCard" aria-live="polite">
+      <div class="bt-top">
+        <span class="step" id="btStep"></span>
+        <span class="bt-acts"><button type="button" class="bt-tourbtn" id="btTour"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z"/></svg><span id="tTour"></span></button>
+        <span class="who" id="btWho"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><b id="btWhoName"></b></span></span>
       </div>
-      <p class="q" id="qText"></p>
-      <p class="hint" id="tHint"></p>
-      <div class="yn">
-        <button class="yes" type="button" id="btnYes"></button>
-        <button class="no" type="button" id="btnNo"></button>
-      </div>
-      <div class="qfoot">
-        <button class="link" type="button" id="btnBack" hidden></button>
-        <button class="cmp" type="button" id="btnCompare" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="8" height="7" rx="1.5"/><rect x="13" y="4" width="8" height="7" rx="1.5"/><rect x="3" y="13" width="8" height="7" rx="1.5"/><rect x="13" y="13" width="8" height="7" rx="1.5"/></svg><span id="tCompare"></span></button>
-      </div>
-      <div class="tree" aria-hidden="true" id="tree"></div>
-    </div>
-
-    <div class="card qcard" id="rCard" hidden aria-live="polite">
-      <div class="rtop">
-        <span class="who" id="rWhoPill"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><b id="rWhoName"></b></span>
-        <span class="step" id="rWho"></span>
-      </div>
-      <div class="result">
-        <div class="badge" id="rBadge"></div>
-        <div>
-          <h2 id="rTitle"></h2>
-          <p id="rDesc"></p>
-        </div>
-      </div>
-      <div class="answers" id="rAnswers"></div>
-      <button class="ex" id="rEx" type="button" hidden><img id="rImg" alt=""></button>
-      <div class="actions">
-        <button class="btn" type="button" id="btnNext"></button>
-        <button class="btn ghost" type="button" id="btnRedo"></button>
-        <button class="cmp" type="button" id="btnCompare2" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="8" height="7" rx="1.5"/><rect x="13" y="4" width="8" height="7" rx="1.5"/><rect x="3" y="13" width="8" height="7" rx="1.5"/><rect x="13" y="13" width="8" height="7" rx="1.5"/></svg><span id="tCompare2"></span></button>
+      <div class="bt-hint" role="note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+        <p><b id="tHintTitle"></b> <span id="tHint"></span></p></div>
+      <div class="bt-practice" id="btPractice"></div>
+      <div class="bt-grid" id="btGrid"></div>
+      <div class="bt-res" id="btRes">
+        <div class="lvl-b badge" id="btBadge" style="width:48px;height:48px;font-size:1.5rem;border-radius:12px"></div>
+        <div class="txt"><h3 id="btTitle"></h3><p id="btDesc"></p></div>
+        <div class="acts"><button type="button" id="btRedo"></button><button type="button" class="go" id="btNext"></button></div>
       </div>
     </div>
-  </section>
+</section>
 
   <!-- ============ RESULTS ============ -->
   <section id="resultsView" role="tabpanel" aria-labelledby="tabResults" hidden>
@@ -364,14 +454,14 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   var SK = window.FG_SKILLS;
   var T = {
     en: {
-      appName: "Rater", appSub: "Web app · beta", langBtn: "PT-BR", langAria: "Ver em português",
+      appName: "Web app", appSub: "Beta", langBtn: "PT-BR", langAria: "Ver em português",
       rate: "Rate", results: "Results", objControl: "Object control", locomotor: "Locomotor",
       performer: "Child (name or ID)", performerPh: "Performer",
       protocol: "Setup and instructions", setup: "Set up", say: "Say to the child", notes: "Notes for the rater",
-      q: "Question", of: "of", hint: "Answer Yes only if you saw it in at least 2 of the 3 valid trials.",
+      q: "Question", of: "of", hintTitle: "Watch 3 trials.", hint: "Answer Yes only if you saw the behavior in at least 2 of the 3 valid trials.",
       yes: "Yes", no: "No", back: "Back to question 1",
       levelWord: "Level", levelNames: ["Initial", "Emerging", "Developing", "Proficient"],
-      next: "Next child", redo: "Change answers", example: "Example illustration",
+      next: "Next child", redo: "Undo", tour: "Take the tour", practice: "Practice mode. Tap anything you like, nothing you do in the tour is recorded.", needName: "Enter the child's name or ID first. Rating unlocks once it is filled in.", needNameShort: "Each rating is saved under this name.", noName: "No name yet", example: "Example illustration",
       compare: "Compare levels", compareTitle: "What each level looks like", soon: "Illustration coming soon", yours: "This rating", close: "Close",
       resultsTitle: "Session results", observer: "Rater", location: "Class or location", date: "Date",
       csv: "Download CSV", print: "Print", clear: "Clear results",
@@ -380,17 +470,17 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       byChild: "By child", allRatings: "All ratings", child: "Child", skill: "Skill", level: "Level", time: "Time",
       remove: "Remove",
       privacy: "Nothing is saved online or in your browser. Results disappear when you close or reload this page, so download the CSV first if you need it.",
-      leave: "Your results will be lost.", homeTitle: "FG-COMPASS site", qLangNote: ""
+      leave: "Your results will be lost.", homeTitle: "FG-COMPASS site", backFull: "Back to site", backShort: "Site", qLangNote: ""
     },
     pt: {
-      appName: "Avaliador", appSub: "Aplicativo web · beta", langBtn: "EN", langAria: "View in English",
+      appName: "Aplicativo web", appSub: "Beta", langBtn: "EN", langAria: "View in English",
       rate: "Avaliar", results: "Resultados", objControl: "Controle de objetos", locomotor: "Locomoção",
       performer: "Criança (nome ou código)", performerPh: "Criança",
       protocol: "Montagem e instruções", setup: "Montagem", say: "Diga à criança", notes: "Observações para o avaliador",
-      q: "Pergunta", of: "de", hint: "Responda Sim apenas se observou o comportamento em pelo menos 2 das 3 tentativas válidas.",
+      q: "Pergunta", of: "de", hintTitle: "Observe 3 tentativas.", hint: "Responda Sim apenas se observou o comportamento em pelo menos 2 das 3 tentativas válidas.",
       yes: "Sim", no: "Não", back: "Voltar à pergunta 1",
       levelWord: "Nível", levelNames: ["Inicial", "Emergente", "Em desenvolvimento", "Proficiente"],
-      next: "Próxima criança", redo: "Alterar respostas", example: "Ilustração de exemplo",
+      next: "Próxima criança", redo: "Desfazer", tour: "Fazer o tour", practice: "Modo de prática. Nada do que você fizer no tour é registrado.", needName: "Digite primeiro o nome ou código da criança. A avaliação é liberada depois disso.", needNameShort: "Cada avaliação é salva com este nome.", noName: "Sem nome", example: "Ilustração de exemplo",
       compare: "Comparar níveis", compareTitle: "Como é cada nível", soon: "Ilustração em breve", yours: "Esta avaliação", close: "Fechar",
       resultsTitle: "Resultados da sessão", observer: "Avaliador", location: "Turma ou local", date: "Data",
       csv: "Baixar CSV", print: "Imprimir", clear: "Limpar resultados",
@@ -399,7 +489,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       byChild: "Por criança", allRatings: "Todas as avaliações", child: "Criança", skill: "Habilidade", level: "Nível", time: "Hora",
       remove: "Remover",
       privacy: "Nada é salvo on-line nem no navegador. Os resultados somem ao fechar ou recarregar a página; baixe o CSV antes, se precisar.",
-      leave: "Seus resultados serão perdidos.", homeTitle: "Site do FG-COMPASS",
+      leave: "Seus resultados serão perdidos.", homeTitle: "Site do FG-COMPASS", backFull: "Voltar ao site", backShort: "Site",
       qLangNote: "As perguntas e os protocolos estão em inglês até a publicação da versão oficial em português."
     }
   };
@@ -412,7 +502,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   var lang = PT_ENABLED && params.get("lang") === "pt" ? "pt" : "en";
   if (!PT_ENABLED) $("langBtn").hidden = true;
   var skill = SK.find(function (s) { return s.id === params.get("skill"); }) || SK[0];
-  var node = "q1", answers = [], results = [], counter = 1;
+  var results = [], counter = 1;
   var t = function (k) { return T[lang][k]; };
   var txt = function (v) { return typeof v === "string" ? v : (v[lang] || v.en); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
@@ -426,20 +516,22 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     $("langBtn").textContent = t("langBtn"); $("langBtn").setAttribute("aria-label", t("langAria"));
     $("homeLink").href = lang === "pt" ? "../pt/index.html" : "../index.html";
     $("homeLink").title = t("homeTitle");
+    $("backLink").href = $("homeLink").href;
+    $("tBackFull").textContent = t("backFull"); $("tBackShort").textContent = t("backShort");
     $("tPerformer").textContent = t("performer"); $("performer").placeholder = t("performer");
     $("tProtocol").textContent = t("protocol"); $("tSetup").textContent = t("setup");
     $("tSay").textContent = t("say"); $("tNotes").textContent = t("notes");
+    $("tHintTitle").textContent = t("hintTitle");
     $("tHint").textContent = t("hint") + (t("qLangNote") ? " " + t("qLangNote") : "");
-    $("btnYes").textContent = t("yes"); $("btnNo").textContent = t("no"); $("btnBack").textContent = "← " + t("back");
-    $("btnNext").textContent = t("next") + " →"; $("btnRedo").textContent = t("redo");
-    $("tCompare").textContent = t("compare"); $("tCompare2").textContent = t("compare");
+    $("btNext").textContent = t("next"); $("btRedo").textContent = t("redo");
+    $("tTour").textContent = t("tour"); $("btPractice").textContent = t("practice");
+    nameState();
     $("cmpClose").setAttribute("aria-label", t("close"));
     $("tResultsTitle").textContent = t("resultsTitle"); $("tObserver").textContent = t("observer");
     $("tLocation").textContent = t("location"); $("tDate").textContent = t("date");
     $("btnCsv").textContent = t("csv"); $("btnPrint").textContent = t("print"); $("btnClear").textContent = t("clear");
     $("tPrivacy").textContent = t("privacy");
     renderTabs(); renderPicker(); renderProtocol(); renderQuestion(); renderResults();
-    if (!$("rCard").hidden) showResult(lastLevel, true);
   }
 
   function renderTabs() {
@@ -467,66 +559,9 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     $("tProtocol").textContent = t("protocol") + " · " + txt(skill.name);
   }
 
-  function renderTree(level) {
-    var path = { q1: ["q1"], up: ["q1", "up"], low: ["q1", "low"] }[node] || [];
-    if (level) path = ["q1", level > 2 ? "up" : "low", "L" + level];
-    var on = function (k) { return path.indexOf(k) > -1 ? " on" : ""; };
-    var lw = t("levelWord");
-    $("tree").innerHTML =
-      '<div class="t1' + on("q1") + '">' + esc(t("q")) + ' 1</div>' +
-      '<div class="t2' + on("low") + '">' + esc(t("q")) + ' 2 · ' + esc(t("no")) + '</div>' +
-      '<div class="t2' + on("up") + '">' + esc(t("q")) + ' 2 · ' + esc(t("yes")) + '</div>' +
-      [1, 2, 3, 4].map(function (l) { return '<div class="lv' + on("L" + l) + '">' + lw + " " + l + "</div>"; }).join("");
-  }
-
   function renderQuestion() {
-    $("qStep").textContent = t("q") + " " + (node === "q1" ? 1 : 2) + " " + t("of") + " 2 · " + txt(skill.name);
-    $("qWhoName").textContent = performerName();
-    $("qText").textContent = skill[node];
-    $("btnBack").hidden = node === "q1";
-    renderTree();
-  }
-
-  var lastLevel = null;
-  function showResult(level, redraw) {
-    lastLevel = level;
-    var name = t("levelNames")[level - 1];
-    $("qCard").hidden = true; $("rCard").hidden = false;
-    $("rBadge").textContent = level;
-    $("rWhoName").textContent = redraw ? results[results.length - 1].performer : performerName();
-    $("rWho").textContent = txt(skill.name);
-    if (!redraw) pulse("rWhoPill");
-    $("rTitle").textContent = t("levelWord") + " " + level + " · " + name;
-    $("rDesc").textContent = skill.levels[level - 1];
-    $("rAnswers").innerHTML = answers.map(function (a, i) {
-      return "<div><span>" + (i + 1) + ". " + esc(a.q) + "</span><b>" + esc(a.a ? t("yes") : t("no")) + "</b></div>";
-    }).join("");
-    if (hasImg(skill, level)) { $("rEx").hidden = false; $("rImg").src = imgSrc(skill, level); $("rImg").alt = t("example") + ": " + t("levelWord") + " " + level; }
-    else $("rEx").hidden = true;
-    $("btnNext").focus();
-  }
-
-  function answer(yes) {
-    answers.push({ q: skill[node], a: yes });
-    if (node === "q1") { node = yes ? "up" : "low"; renderQuestion(); bringIntoView("qCard"); return; }
-    var level = node === "up" ? (yes ? 4 : 3) : (yes ? 1 : 2);
-    results.push({
-      performer: performerName(), skill: skill.id, level: level,
-      q1: answers[0].a, q2: answers[1].a, time: new Date()
-    });
-    renderTabs(); renderPicker(); renderResults();
-    showResult(level);
-    bringIntoView("rCard");
-  }
-
-  // On small screens, keep the active card in view below the sticky header.
-  function bringIntoView(id) {
-    var el = $(id), head = document.querySelector("header");
-    var top = el.getBoundingClientRect().top, h = head.getBoundingClientRect().height;
-    if (top < h + 8 || top > window.innerHeight * 0.45) {
-      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      window.scrollTo({ top: window.scrollY + top - h - 12, behavior: reduce ? "auto" : "smooth" });
-    }
+    if (!bt || bt.skill !== skill.id) bt = { q1: null, q2: null, level: null, skill: skill.id };
+    renderB();
   }
 
   // Brief ring around the child's name so the rater notices who is being rated.
@@ -534,10 +569,23 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     var el = $(id); el.classList.remove("pulse"); void el.offsetWidth; el.classList.add("pulse");
   }
 
-  function resetQuestion() {
-    node = "q1"; answers = [];
-    $("rCard").hidden = true; $("qCard").hidden = false;
-    renderQuestion();
+  /* ---------- a child's name or ID is required before rating ---------- */
+  function hasName() { return $("performer").value.trim() !== ""; }
+  function nameState(warn) {
+    var card = document.querySelector(".who-card"), ok = hasName();
+    document.body.classList.toggle("need-name", !ok);
+    if (ok || !warn) card.classList.remove("missing");
+    if (warn && !ok) card.classList.add("missing");
+    $("tNeed").textContent = ok ? t("needNameShort") : t("needName");
+  }
+  function needName() {
+    if (hasName() || tour) return false;
+    nameState(true);
+    var el = $("performer"), head = document.querySelector("header");
+    var top = el.getBoundingClientRect().top - head.getBoundingClientRect().height - 24;
+    if (top < 0 || top > window.innerHeight * .6) window.scrollBy({ top: top, behavior: "smooth" });
+    el.focus({ preventScroll: true });
+    return true;
   }
 
   /* ---------- results ---------- */
@@ -619,8 +667,8 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       var pic = hasImg(skill, l)
         ? '<img src="' + imgSrc(skill, l) + '" alt="' + esc(txt(skill.name) + ", " + lw + " " + l) + '" loading="lazy">'
         : "<span>" + esc(t("soon")) + "</span>";
-      var you = focusLevel === l && !$("rCard").hidden ? '<span class="you">' + esc(t("yours")) + "</span>" : "";
-      return '<figure class="slide' + (focusLevel === l && !$("rCard").hidden ? " cur" : "") + '" id="slide' + l + '"><div class="pic">' + pic +
+      var you = focusLevel === l && bt.level === l ? '<span class="you">' + esc(t("yours")) + "</span>" : "";
+      return '<figure class="slide' + (focusLevel === l && bt.level === l ? " cur" : "") + '" id="slide' + l + '"><div class="pic">' + pic +
         "</div><figcaption><strong>" + lw + " " + l + " · " + esc(names[l - 1]) + you + "</strong>" + esc(skill.levels[l - 1]) + "</figcaption></figure>";
     }).join("");
     opener = document.activeElement;
@@ -645,32 +693,80 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     var box = this, w = box.clientWidth; if (!w) return;
     markPill(Math.min(4, Math.round(box.scrollLeft / (w + 12)) + 1));
   }, { passive: true });
-  $("btnCompare").addEventListener("click", function () { openCompare(1); });
-  $("btnCompare2").addEventListener("click", function () { openCompare(lastLevel); });
-  $("rEx").addEventListener("click", function () { openCompare(lastLevel); });
 
+
+  /* ---------- Option B: whole tree at once ---------- */
+  var bt = { q1: null, q2: null, level: null };
+  function btLevel() { if (bt.q1 === null || bt.q2 === null) return null; return bt.q1 ? (bt.q2 ? 4 : 3) : (bt.q2 ? 1 : 2); }
+  function renderB() {
+    var lw = t("levelWord"), names = t("levelNames"), lv = btLevel();
+    $("btStep").textContent = txt(skill.name);
+    $("btWhoName").textContent = hasName() ? performerName() : t("noName");
+    var side = bt.q1 === null ? null : (bt.q1 ? "up" : "low");
+    function node(key, cls, label) {
+      var state = key === "q1" ? (bt.q1 === null ? "active" : "") :
+        (side === null ? "dim" : side === key ? (bt.q2 === null ? "active" : "") : "dim");
+      var val = key === "q1" ? bt.q1 : (side === key ? bt.q2 : null);
+      var btn = function (a) { return '<button type="button" data-k="' + key + '" data-a="' + (a ? 1 : 0) + '" class="' + (val === a ? "picked" : "") + '">' + esc(t(a ? "yes" : "no")) + '</button>'; };
+      var order = key === "low" ? [true, false] : [false, true];  /* each button sits over the branch it leads to */
+      return '<div class="bt-node ' + cls + ' ' + state + '"><span class="k">' + label + '</span><p>' + esc(skill[key]) + '</p>' +
+        '<div class="bt-yn">' + btn(order[0]) + btn(order[1]) + '</div></div>';
+    }
+    function edges(top) {
+      var st = function (on, half) { return '<span class="st' + (half ? " half" : "") + (on ? " on" : "") + '"></span>'; };
+      if (top) return '<div class="bt-edges" aria-hidden="true">' + st(bt.q1 === false, 1) + st(bt.q1 === true, 1) + '</div>';
+      return '<div class="bt-edges" aria-hidden="true">' + [1, 2, 3, 4].map(function (l) { return st(lv === l); }).join("") + '</div>';
+    }
+    var leaves = [1, 2, 3, 4].map(function (l) {
+      var under = l <= 2 ? "low" : "up";
+      var st = lv ? (lv === l ? "hit" : "dim") : (side && side !== under ? "dim" : "");
+      var im = hasImg(skill, l) ? '<img src="' + imgSrc(skill, l) + '" alt="' + esc(txt(skill.name) + ", " + lw + " " + l) + '" loading="lazy">' : "<i>No illustration yet</i>";
+      return '<div class="bt-leaf ' + st + '"><button type="button" class="im" data-cmp="' + l + '" aria-label="' + esc(lw + " " + l) + '">' + im + '</button>' +
+        '<div class="nm"><b>' + l + '</b><span>' + esc(names[l - 1]) + '</span></div></div>';
+    }).join("");
+    $("btGrid").innerHTML = node("q1", "bt-q1", t("q") + " 1") + edges(true) +
+      node("low", "bt-low", t("q") + " 2 · " + t("no")) + node("up", "bt-up", t("q") + " 2 · " + t("yes")) + edges(false) + leaves;
+    var r = $("btRes");
+    if (lv) {
+      r.classList.add("show"); $("btBadge").textContent = lv;
+      $("btTitle").textContent = lw + " " + lv + " · " + names[lv - 1]; $("btDesc").textContent = skill.levels[lv - 1];
+    } else r.classList.remove("show");
+  }
+  function resetB() { bt = { q1: null, q2: null, level: null, skill: skill.id }; renderB(); }
+  $("btGrid").addEventListener("click", function (e) {
+    var c = e.target.closest("[data-cmp]");
+    if (c) { if (typeof openCompare === "function") openCompare(+c.dataset.cmp); return; }
+    var b = e.target.closest("[data-k]"); if (!b) return;
+    if (needName()) return;
+    var yes = b.dataset.a === "1";
+    if (b.dataset.k === "q1") { bt.q1 = yes; bt.q2 = null; }
+    else { bt.q2 = yes; }
+    var lv = btLevel();
+    if (lv && bt.level === null) {
+      bt.level = lv;
+      results.push({ performer: performerName(), skill: skill.id, level: lv, q1: bt.q1, q2: bt.q2, time: new Date() });
+      renderTabs(); renderPicker(); renderResults();
+    } else if (lv && bt.level !== null && lv !== bt.level) {
+      bt.level = lv; var last = results[results.length - 1]; if (last) { last.level = lv; last.q1 = bt.q1; last.q2 = bt.q2; }
+      renderTabs(); renderPicker(); renderResults();
+    } else if (!lv && bt.level !== null) {
+      results.pop(); bt.level = null; renderTabs(); renderPicker(); renderResults();
+    }
+    renderB();
+  });
+  $("btRedo").addEventListener("click", function () { if (bt.level !== null) results.pop(); renderTabs(); renderPicker(); renderResults(); resetB(); });
+  $("btNext").addEventListener("click", function () { counter++; $("performer").value = ""; nameState(); resetB(); var el = $("performer"); el.scrollIntoView({ block: "center", behavior: "smooth" }); el.focus({ preventScroll: true }); });
   /* ---------- events ---------- */
   $("skillPicker").addEventListener("click", function (e) {
     var b = e.target.closest("[data-skill]"); if (!b) return;
     skill = SK.find(function (s) { return s.id === b.dataset.skill; });
-    renderPicker(); renderProtocol(); resetQuestion();
+    renderPicker(); renderProtocol(); resetB();
     b = $("skillPicker").querySelector('[data-skill="' + skill.id + '"]');
     if (b && b.scrollIntoView) b.scrollIntoView({ block: "nearest", inline: "nearest" });
     var u = new URL(location.href); u.searchParams.set("skill", skill.id); history.replaceState(null, "", u);
   });
-  $("btnYes").addEventListener("click", function () { answer(true); });
-  $("btnNo").addEventListener("click", function () { answer(false); });
-  $("btnBack").addEventListener("click", resetQuestion);
-  $("performer").addEventListener("input", function () { $("qWhoName").textContent = performerName(); });
-  $("performer").addEventListener("change", function () { pulse("qWho"); });
-  $("btnNext").addEventListener("click", function () {
-    counter++; $("performer").value = ""; resetQuestion(); pulse("qWho"); $("performer").focus();
-  });
-  $("btnRedo").addEventListener("click", function () {
-    var last = results.pop();
-    if (last) { $("performer").value = last.performer.indexOf(t("performerPh") + " ") === 0 ? "" : last.performer; }
-    renderTabs(); renderPicker(); renderResults(); resetQuestion();
-  });
+  $("performer").addEventListener("input", function () { $("btWhoName").textContent = hasName() ? performerName() : t("noName"); nameState(); });
+  $("performer").addEventListener("change", function () { if (hasName()) pulse("btWho"); });
   $("tabRate").addEventListener("click", function () { showTab("rate"); });
   $("tabResults").addEventListener("click", function () { showTab("results"); });
   $("resultsBody").addEventListener("click", function (e) {
@@ -693,6 +789,89 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   });
 
   var d = new Date(); $("date").value = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  /* ---------- guided tour ---------- */
+  var tour = null, tip = null;
+  var TOUR = [
+    { el: function () { return document.querySelector("#btCard .bt-hint"); },
+      h: "Watch 3 trials first", p: "Have the child perform the skill three times and watch all three before you answer. Tap Yes only if you saw the behavior in at least 2 of the 3 valid trials." },
+    { el: function () { return document.querySelector("#btGrid .bt-q1"); }, wait: function () { return bt.q1 !== null; },
+      h: "Start with Question 1", p: "Watch the child perform the skill, then answer the first question. Each button sits over the branch it leads to.", d: "Tap Yes or No to try it." },
+    { el: function () { return document.querySelector("#btGrid .bt-node.active") || document.querySelector("#btGrid .bt-low, #btGrid .bt-up"); }, wait: function () { return btLevel() !== null; },
+      h: "Your answer opens one branch", p: "The other side fades out, so only one question is left. Answer it the same way.", d: "Tap Yes or No on the highlighted question." },
+    { el: function () { return document.querySelector("#btGrid .bt-leaf.hit"); },
+      h: "That's the level", p: "The line shows the path you took. All four level drawings stay visible, so you can check your call at a glance. Tapping a drawing opens it larger to compare levels side by side." },
+    { el: function () { return $("btRes"); },
+      h: "Saved for this child", p: "The rating goes on the list straight away. Undo clears it if you misclicked. Next child resets the tree for the next performer." },
+    { el: function () { return $("performer"); },
+      h: "Name each child first", p: "Type the child's name or ID before you rate. The Yes and No buttons stay locked until you do, so every rating is saved under the right child." },
+    { el: function () { return $("tabResults"); },
+      h: "Everything collects here", p: "The Results tab lists every rating, ready to download as a spreadsheet or print. Nothing is sent anywhere, it stays on this device." }
+  ];
+  function tourStart() {
+    if (tour) return;
+    tour = { i: 0, n: results.length, c: counter, perf: $("performer").value };
+    try { localStorage.setItem("fgc-tour-b", "1"); } catch (e) {}
+    $("btCard").classList.add("touring");
+    tip = document.createElement("div"); tip.className = "tour-tip"; tip.setAttribute("role", "dialog"); tip.setAttribute("aria-live", "polite");
+    document.body.appendChild(tip);
+    tip.addEventListener("click", function (e) {
+      if (e.target.closest(".skip")) tourEnd(); else if (e.target.closest(".nx")) tourGo(tour.i + 1);
+    });
+    bt = { q1: null, q2: null, level: null, skill: skill.id }; _renderB();
+    tourGo(0);
+  }
+  function tourGo(i) {
+    if (i >= TOUR.length) return tourEnd();
+    tour.i = i; tourDraw(true);
+  }
+  function tourDraw(scroll) {
+    if (!tour || !tip) return;
+    var st = TOUR[tour.i];
+    document.querySelectorAll(".tour-hi").forEach(function (x) { x.classList.remove("tour-hi"); });
+    var el = st.el(); if (!el) return;
+    el.classList.add("tour-hi");
+    var waiting = st.wait && !st.wait(), last = tour.i === TOUR.length - 1;
+    tip.innerHTML = '<div class="tk"><span>Quick tour</span><span>' + (tour.i + 1) + " of " + TOUR.length + "</span></div><h4>" + st.h + "</h4><p>" + st.p + "</p>" +
+      (waiting ? '<div class="do">' + st.d + "</div>" : "") +
+      '<div class="row"><button type="button" class="skip">' + (last ? "Close" : "Skip tour") + '</button><span class="dots">' +
+      TOUR.map(function (_, k) { return '<i class="' + (k === tour.i ? "on" : "") + '"></i>'; }).join("") + "</span>" +
+      (waiting ? "<span></span>" : '<button type="button" class="nx">' + (last ? "Start rating" : "Next") + "</button>") + "</div>";
+    if (scroll && el.scrollIntoView) el.scrollIntoView({ block: "center", behavior: "smooth" });
+    tourPlace(); setTimeout(tourPlace, 450);
+  }
+  function tourPlace() {
+    if (!tour) return;
+    var el = document.querySelector(".tour-hi"); if (!el) return;
+    var r = el.getBoundingClientRect(), tw = tip.offsetWidth, th = tip.offsetHeight, vw = document.documentElement.clientWidth;
+    var below = r.bottom + th + 18 < window.innerHeight || r.top < th + 18;
+    var left = Math.min(Math.max(16, r.left + r.width / 2 - tw / 2), vw - tw - 16);
+    tip.dataset.side = below ? "below" : "above";
+    tip.style.left = (left + scrollX) + "px";
+    tip.style.top = ((below ? r.bottom + 14 : r.top - th - 14) + scrollY) + "px";
+    tip.style.setProperty("--ax", Math.min(Math.max(18, r.left + r.width / 2 - left), tw - 18) + "px");
+  }
+  function tourEnd() {
+    if (!tour) return;
+    results.length = tour.n; counter = tour.c; $("performer").value = tour.perf;
+    document.querySelectorAll(".tour-hi").forEach(function (x) { x.classList.remove("tour-hi"); });
+    tip.remove(); tip = null; tour = null;
+    $("btCard").classList.remove("touring");
+    renderTabs(); renderPicker(); renderResults(); resetB(); nameState();
+    $("performer").focus();
+  }
+  var _renderB = renderB;
+  renderB = function () {
+    _renderB();
+    if (!tour) return;
+    var st = TOUR[tour.i];
+    if (st.wait && st.wait()) { tourGo(tour.i + 1); return; }
+    if (tour.i === 2 && bt.q1 === null) { tourGo(1); return; }
+    tourDraw(false);
+  };
+  $("btTour").addEventListener("click", tourStart);
+  window.addEventListener("resize", tourPlace);
+  document.addEventListener("keydown", function (e) { if (tour && e.key === "Escape") tourEnd(); });
+  (function () { var seen = "1"; try { seen = localStorage.getItem("fgc-tour-b"); } catch (e) {} if (!seen) setTimeout(tourStart, 600); })();
   applyLang();
 })();
 </script>

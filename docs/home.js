@@ -45,7 +45,7 @@
   var AUD={
     pe:{h:"Check a whole class in a regular lesson.",p:"Two quick questions per skill keep the pace of a normal class. Rate every child on the same 1–4 scale and see who needs help with what.",
         u:[["Screen a class","See each child's level on all 10 skills."],["Plan the next step","The level tells you which part of the pattern to teach next."],["Show progress","Rate again later in the year and compare."]],
-        n:[["Open the Rater","assess/index.html"],["Print the decision trees","static/files/fgcompass-decision-trees-v2.2.pdf"]]},
+        n:[["Open the web app","assess/index.html"],["Print the decision trees","static/files/fgcompass-decision-trees-v2.2.pdf"]]},
     cl:{h:"Spot movement delays early and plan support.",p:"Clear levels for each skill help you see where a child is stuck and explain it to families in plain words.",
         u:[["Find the gaps","A profile across 10 skills shows which ones lag behind."],["Target support","Each level names the feature that is missing."],["Share with families","Initial, Emerging, Developing and Proficient are easy to explain."]],
         n:[["Read the manual","https://fgcompass.github.io/manual/"],["See the four levels","#levels"]]},
