@@ -36,13 +36,17 @@ a { color: var(--teal-ink); }
 
 /* Header: the site's deep navy bar, in both themes */
 header {
-  position: sticky; top: 0; z-index: 5; color: #D1E0E6;
+  position: sticky; top: 0; z-index: 5; color: #D1E0E6; transition: transform .25s ease;
   background: radial-gradient(60% 140% at 100% 0%, rgba(46,199,188,.14), rgba(46,199,188,0) 70%), #082B42;
   border-bottom: 1px solid rgba(153,207,211,.23);
 }
-.bar { display: flex; align-items: center; gap: .9rem; height: 72px; }
+.bar { display: flex; align-items: center; gap: .75rem; height: 64px; }
+header.away { transform: translateY(-100%); }
+@media (max-width: 359px) { .bar { gap: .35rem !important; } .brand img { height: 19px !important; } .tab { padding: 0 .55rem !important; } .back { width: 36px !important; } }
+.brand { flex-shrink: 0; }
+@media (prefers-reduced-motion: reduce) { header { transition: none; } }
 .brand { display: flex; align-items: center; gap: .9rem; text-decoration: none; color: #fff; min-width: 0; }
-.brand img { height: 44px; width: auto; display: block; }
+.brand img { height: 38px; width: auto; display: block; }
 .brand .app { display: flex; flex-direction: column; justify-content: center; padding-left: .9rem; border-left: 1px solid rgba(153,207,211,.3); line-height: 1.15; }
 .brand .app span { font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em; color: #fff; white-space: nowrap; }
 .brand small { display: block; font-weight: 700; font-size: .68rem; color: #F9A73E; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 2px; }
@@ -52,14 +56,15 @@ header {
 .back { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: 0 .9rem; border-radius: 999px; background: rgba(46,199,188,.12); border: 1px solid rgba(46,199,188,.45); color: #fff; font-size: .88rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
 .back:hover { background: #2EC7BC; border-color: #2EC7BC; color: #082B42; }
 .back svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; flex: none; }
-@media (max-width: 640px) { .back { padding: 0 .7rem; } .back .full { display: none; } }
+@media (max-width: 640px) { .back { padding: 0; width: 40px; min-height: 40px; justify-content: center; } .back .full, .back .short { display: none; } }
 @media (min-width: 641px) { .back .short { display: none; } }
-.tabs { display: flex; gap: .25rem; }
-.tab { border: 0; background: none; padding: .7rem 1rem; font-weight: 600; color: #A4C2CA; border-bottom: 3px solid transparent; }
+/* Rate / Results as a compact segmented control inside the bar */
+.tabs { display: flex; gap: 2px; padding: 3px; border-radius: 999px; background: rgba(209,224,230,.1); border: 1px solid rgba(153,207,211,.22); }
+.tab { border: 0; background: none; min-height: 38px !important; padding: 0 .95rem; border-radius: 999px; font-weight: 700; font-size: .9rem; color: #A4C2CA; display: inline-flex; align-items: center; white-space: nowrap; }
 .tab:hover { color: #fff; }
-.tab[aria-selected="true"] { color: #fff; border-color: #2EC7BC; }
+.tab[aria-selected="true"] { color: #082B42; background: #2EC7BC; }
 .count { display: inline-block; min-width: 1.5em; padding: 0 .4em; margin-left: .4rem; border-radius: 999px; background: rgba(209,224,230,.16); color: #D1E0E6; font-size: .78rem; font-weight: 700; text-align: center; }
-.tab[aria-selected="true"] .count { background: #F9A73E; color: #082B42; }
+.tab[aria-selected="true"] .count { background: #082B42; color: #F9A73E; }
 
 main.wrap { padding-top: 2rem; padding-bottom: 4rem; }
 .section-label { text-transform: uppercase; letter-spacing: .1em; font-size: .75rem; font-weight: 600; color: var(--teal-ink); margin: 0 0 .5rem; }
@@ -200,12 +205,14 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
 /* ---- Phones ---- */
 @media (max-width: 640px) {
   .wrap { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
-  .bar { height: 60px; }
-  .brand img { height: 32px; }
+  .bar { height: 56px; gap: .5rem; }
+  .brand img { height: 24px; }
+  .brand .app { display: none; }
+  .tab { padding: 0 .7rem; font-size: .85rem; min-height: 36px !important; }
+  .count { margin-left: .3rem; }
   .brand, .brand .app { gap: .6rem; }
   .brand .app { padding-left: .6rem; }
   .brand .app span { font-size: 1rem; }
-  .tab { flex: 1; text-align: center; padding: .55rem .5rem; }
   main.wrap { padding-top: 1.1rem; padding-bottom: calc(2rem + env(safe-area-inset-bottom)); }
   /* Phone order: skills, child, question, then setup/instructions */
   #rateView { display: flex; flex-direction: column; }
@@ -367,12 +374,12 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       <span class="app"><small id="tAppSub">Beta</small><span id="tAppName">Web app</span></span>
     </a>
     <div class="spacer"></div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tabRate" aria-selected="true" aria-controls="rateView" type="button"></button>
+      <button class="tab" role="tab" id="tabResults" aria-selected="false" aria-controls="resultsView" type="button"></button>
+    </div>
     <a class="back" href="../index.html" id="backLink"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><span class="full" id="tBackFull">Back to site</span><span class="short" id="tBackShort">Site</span></a>
     <button class="lang" id="langBtn" type="button" aria-label="Português">PT-BR</button>
-  </div>
-  <div class="wrap tabs" role="tablist">
-    <button class="tab" role="tab" id="tabRate" aria-selected="true" aria-controls="rateView" type="button"></button>
-    <button class="tab" role="tab" id="tabResults" aria-selected="false" aria-controls="resultsView" type="button"></button>
   </div>
 </header>
 
@@ -517,7 +524,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     $("homeLink").href = lang === "pt" ? "../pt/index.html" : "../index.html";
     $("homeLink").title = t("homeTitle");
     $("backLink").href = $("homeLink").href;
-    $("tBackFull").textContent = t("backFull"); $("tBackShort").textContent = t("backShort");
+    $("tBackFull").textContent = t("backFull"); $("tBackShort").textContent = t("backShort"); $("backLink").setAttribute("aria-label", t("backFull")); $("backLink").title = t("backFull");
     $("tPerformer").textContent = t("performer"); $("performer").placeholder = t("performer");
     $("tProtocol").textContent = t("protocol"); $("tSetup").textContent = t("setup");
     $("tSay").textContent = t("say"); $("tNotes").textContent = t("notes");
@@ -872,6 +879,16 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   window.addEventListener("resize", tourPlace);
   document.addEventListener("keydown", function (e) { if (tour && e.key === "Escape") tourEnd(); });
   (function () { var seen = "1"; try { seen = localStorage.getItem("fgc-tour-b"); } catch (e) {} if (!seen) setTimeout(tourStart, 600); })();
+  /* header slides away while scrolling down and comes back on any scroll up */
+  (function () {
+    var head = document.querySelector("header"), lastY = window.scrollY;
+    window.addEventListener("scroll", function () {
+      var y = window.scrollY;
+      if (tour || y < 80 || y < lastY - 4 || document.activeElement === $("performer")) head.classList.remove("away");
+      else if (y > lastY + 4) head.classList.add("away");
+      lastY = y;
+    }, { passive: true });
+  })();
   applyLang();
 })();
 </script>
