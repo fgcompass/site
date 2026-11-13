@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#082B42">
+<title>Class list and QR labels · FG-COMPASS Web App</title>
+<meta name="description" content="Turn a class list into printable QR labels for the FG-COMPASS web app. Everything stays on this device.">
+<link rel="icon" href="../images/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../images/brand/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../images/brand/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root {
+  --navy: #10364C; --teal: #398D90; --teal-ink: #24696C; --amber: #F9A73E;
+  --ink: #172A38; --muted: #4A5F6E; --paper: #F5F8F9; --alt: #E8F1F2; --card: #fff; --line: #D6E2E6;
+  --shadow: 0 8px 24px rgba(16,54,76,.08);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --navy: #FFFFFF; --teal: #2EC7BC; --teal-ink: #2EC7BC; --amber: #F9A73E;
+    --ink: #D1E0E6; --muted: #A4C2CA; --paper: #071F31; --alt: #0B2E45; --card: #103C53; --line: #1E4A62;
+    --shadow: 0 8px 24px rgba(0,0,0,.3);
+  }
+  html .btn { color: #082B42; }
+  html .btn.ghost { color: var(--teal-ink); }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font: 16px/1.5 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; }
+h1, h2, h3 { font-weight: 800; letter-spacing: -.02em; color: var(--navy); }
+button { font: inherit; cursor: pointer; }
+a { color: var(--teal-ink); }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 max(16px, env(safe-area-inset-left)); }
+header { position: sticky; top: 0; z-index: 5; color: #D1E0E6;
+  background: radial-gradient(60% 140% at 100% 0%, rgba(46,199,188,.14), rgba(46,199,188,0) 70%), #082B42;
+  border-bottom: 1px solid rgba(153,207,211,.23); }
+.bar { display: flex; align-items: center; gap: .75rem; height: 60px; }
+.brand { display: flex; align-items: center; gap: .9rem; text-decoration: none; color: #fff; min-width: 0; }
+.brand img { height: 32px; width: auto; display: block; }
+.brand .app { padding-left: .9rem; border-left: 1px solid rgba(153,207,211,.3); font-weight: 800; font-size: 1.05rem; color: #fff; white-space: nowrap; }
+.spacer { flex: 1; }
+.back { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: 0 .9rem; border-radius: 999px; background: rgba(46,199,188,.12); border: 1px solid rgba(46,199,188,.45); color: #fff; font-size: .88rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.back:hover { background: #2EC7BC; color: #082B42; }
+.back svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 640px) { .brand img { height: 22px; } .brand .app { font-size: .95rem; padding-left: .6rem; } .brand { gap: .6rem; } }
+main.wrap { padding-top: 1.75rem; padding-bottom: 4rem; }
+h1 { margin: 0 0 .4rem; font-size: clamp(1.5rem, 4vw, 2rem); }
+.lead { margin: 0 0 1.5rem; color: var(--muted); max-width: 62ch; }
+.steps { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 0 0 1.5rem; padding: 0; list-style: none; counter-reset: s; }
+.steps li { counter-increment: s; background: var(--card); border: 1px solid var(--line); border-radius: .9rem; padding: .8rem .9rem; font-size: .92rem; }
+.steps li::before { content: counter(s); display: inline-grid; place-items: center; width: 24px; height: 24px; margin-right: .45rem; border-radius: 50%; background: var(--amber); color: #082B42; font-weight: 800; font-size: .8rem; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 1rem; padding: 1.25rem; box-shadow: var(--shadow); margin-bottom: 1rem; }
+.card h2 { margin: 0 0 .75rem; font-size: 1.15rem; }
+.row { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+label { display: block; font-size: .85rem; font-weight: 600; color: var(--muted); margin-bottom: .3rem; }
+input[type=text], textarea, select { width: 100%; padding: .65rem .8rem; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); color: var(--ink); font: inherit; }
+textarea { min-height: 120px; resize: vertical; }
+.grid2 { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: .9rem; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; min-height: 44px; border: 2px solid var(--teal-ink); background: var(--teal-ink); color: #fff; padding: .55rem 1.05rem; border-radius: .7rem; font-weight: 700; text-decoration: none; }
+.btn.ghost { background: transparent; color: var(--teal-ink); }
+.btn.warn { background: transparent; border-color: var(--line); color: var(--muted); }
+.btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.or { margin: 1rem 0 .4rem; font-size: .85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.hint { font-size: .85rem; color: var(--muted); margin: .5rem 0 0; }
+.msg { margin: .75rem 0 0; padding: .6rem .8rem; border-radius: .6rem; font-weight: 600; font-size: .92rem; }
+.msg.ok { background: rgba(46,199,188,.14); border: 1px solid var(--teal); }
+.msg.bad { background: rgba(249,167,62,.16); border: 1px solid var(--amber); }
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: .8rem; margin-top: .75rem; }
+table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+th, td { padding: .5rem .7rem; text-align: left; border-bottom: 1px solid var(--line); }
+th { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); background: var(--alt); }
+td .x { border: 0; background: none; color: var(--muted); font-size: 1.2rem; line-height: 1; width: 36px; height: 36px; border-radius: 50%; }
+td .x:hover { background: var(--alt); color: var(--ink); }
+.count { font-weight: 700; color: var(--teal-ink); }
+.seg { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: var(--alt); border: 1px solid var(--line); }
+.seg button { border: 0; background: none; min-height: 38px; padding: 0 .9rem; border-radius: 999px; font-weight: 700; font-size: .88rem; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--teal-ink); color: #fff; }
+@media (prefers-color-scheme: dark) { html .seg button[aria-pressed="true"] { color: #082B42; } }
+.empty { text-align: center; color: var(--muted); padding: 1.5rem 1rem; }
+[hidden] { display: none !important; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+
+/* Label sheet: what gets printed */
+.sheet { --cols: 3; display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: 8px; margin-top: 1rem; }
+.lbl { background: #fff; color: #10364C; border: 1px dashed #B9C9CF; border-radius: 8px; padding: 10px 8px 8px; text-align: center; break-inside: avoid; page-break-inside: avoid; display: grid; justify-items: center; align-content: start; gap: 4px; }
+.lbl .qr { width: 100%; max-width: 150px; aspect-ratio: 1; }
+.lbl .qr svg { width: 100%; height: 100%; display: block; }
+.lbl b { font-size: 1rem; line-height: 1.2; word-break: break-word; }
+.lbl small { font-size: .72rem; color: #4A5F6E; line-height: 1.25; }
+.sheet.big { --cols: 2; }
+.sheet.big .lbl .qr { max-width: 210px; }
+.sheet.big .lbl b { font-size: 1.25rem; }
+@media (max-width: 520px) { .sheet { --cols: 2; } .sheet.big { --cols: 1; } }
+@media print {
+  @page { margin: 10mm; }
+  body { background: #fff; }
+  header, .no-print, .steps, h1, .lead { display: none !important; }
+  main.wrap { padding: 0; max-width: none; }
+  .card.labels { border: 0; box-shadow: none; padding: 0; margin: 0; background: #fff; }
+  .sheet { --cols: 3 !important; gap: 4mm; margin: 0; }
+  .sheet.big { --cols: 2 !important; }
+  .lbl { border-color: #999; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="index.html"><img src="../images/brand/fg-compass-horizontal-dark.svg" alt="FG-COMPASS"><span class="app">Class list</span></a>
+    <div class="spacer"></div>
+    <a class="back" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Back to web app</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Class list and QR labels</h1>
+  <p class="lead">Give each child a QR label. When it's a child's turn, tap <b>Scan</b> in the web app and point the camera at their label. Their name fills in, so you can rate straight away. Nothing is uploaded. The list stays on this device.</p>
+  <ol class="steps">
+    <li>Make a class list with a column for each child's name or ID. Rater and location columns are optional.</li>
+    <li>Upload it here, or paste the names.</li>
+    <li>Print the labels and give one to each child, or stick them on a sheet.</li>
+    <li>In the web app, tap <b>Scan</b> for each child in line.</li>
+  </ol>
+
+  <section class="card no-print">
+    <h2>1. Add your class list</h2>
+    <div class="row">
+      <button class="btn" type="button" id="btnFile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M5 21h14"/></svg>Upload CSV</button>
+      <input type="file" id="file" accept=".csv,text/csv,text/plain" hidden>
+      <button class="btn ghost" type="button" id="btnTemplate">Download template</button>
+    </div>
+    <p class="hint">Columns: <b>child</b> (name or ID), plus optional <b>rater</b> and <b>location</b>. A spreadsheet saved as CSV works.</p>
+    <p class="or">or paste names</p>
+    <label for="paste" class="sr">One child per line</label>
+    <textarea id="paste" placeholder="One child per line, for example:&#10;Ana Souza&#10;Ben Lee&#10;ID-0042"></textarea>
+    <div class="grid2">
+      <div><label for="defRater">Rater (used where the list has none)</label><input type="text" id="defRater" autocomplete="off"></div>
+      <div><label for="defLoc">Class or location (used where the list has none)</label><input type="text" id="defLoc" autocomplete="off"></div>
+    </div>
+    <div class="row" style="margin-top:.9rem"><button class="btn" type="button" id="btnPaste">Add pasted names</button></div>
+    <p class="msg" id="msg" hidden role="status"></p>
+  </section>
+
+  <section class="card no-print" id="listCard">
+    <div class="row" style="justify-content:space-between">
+      <h2 style="margin:0">2. Check the list <span class="count" id="count"></span></h2>
+      <button class="btn warn" type="button" id="btnClear">Clear list</button>
+    </div>
+    <div id="list"></div>
+  </section>
+
+  <section class="card labels" id="labelsCard">
+    <div class="row no-print" style="justify-content:space-between;margin-bottom:.25rem">
+      <h2 style="margin:0">3. Print the labels</h2>
+      <div class="row">
+        <div class="seg" role="group" aria-label="Label size"><button type="button" data-size="small" aria-pressed="true">3 per row</button><button type="button" data-size="big" aria-pressed="false">2 per row</button></div>
+        <button class="btn" type="button" id="btnPrint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M8 14h8v7H8z"/></svg>Print labels</button>
+      </div>
+    </div>
+    <div class="sheet" id="sheet"></div>
+  </section>
+</main>
+
+<script src="vendor/qrcode.js"></script>
+<script src="roster.js"></script>
+<script>
+(function () {
+  "use strict";
+  var R = window.FG_ROSTER, $ = function (id) { return document.getElementById(id); };
+  var list = R.load();
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+
+  function say(text, ok) { var m = $("msg"); m.hidden = false; m.textContent = text; m.className = "msg " + (ok ? "ok" : "bad"); }
+  function defaults(rows) {
+    var r = $("defRater").value.trim(), l = $("defLoc").value.trim();
+    return rows.map(function (x) { return { c: x.c, r: x.r || r, l: x.l || l }; });
+  }
+  function add(rows) {
+    var seen = {}, n = 0;
+    list.forEach(function (x) { seen[x.c.toLowerCase()] = 1; });
+    defaults(rows).forEach(function (x) { var k = x.c.toLowerCase(); if (!seen[k]) { seen[k] = 1; list.push(x); n++; } });
+    R.save(list); render();
+    return n;
+  }
+  function render() {
+    $("count").textContent = list.length ? "· " + list.length + (list.length === 1 ? " child" : " children") : "";
+    $("btnClear").hidden = !list.length;
+    $("labelsCard").hidden = !list.length;
+    if (!list.length) { $("list").innerHTML = '<p class="empty">No children yet. Upload a CSV or paste names above.</p>'; $("sheet").innerHTML = ""; return; }
+    $("list").innerHTML = '<div class="tablewrap"><table><thead><tr><th>#</th><th>Child</th><th>Rater</th><th>Location</th><th></th></tr></thead><tbody>' +
+      list.map(function (x, i) {
+        return "<tr><td>" + (i + 1) + "</td><td>" + esc(x.c) + "</td><td>" + esc(x.r || "–") + "</td><td>" + esc(x.l || "–") +
+          '</td><td><button class="x" type="button" data-i="' + i + '" aria-label="Remove ' + esc(x.c) + '">&times;</button></td></tr>';
+      }).join("") + "</tbody></table></div>";
+    $("sheet").innerHTML = list.map(function (x) {
+      var meta = [x.r, x.l].filter(Boolean).join(" · ");
+      return '<div class="lbl"><div class="qr">' + R.svg(R.encode(x)) + "</div><b>" + esc(x.c) + "</b>" + (meta ? "<small>" + esc(meta) + "</small>" : "") + "</div>";
+    }).join("");
+  }
+
+  $("btnFile").addEventListener("click", function () { $("file").value = ""; $("file").click(); });
+  $("file").addEventListener("change", function () {
+    var f = this.files && this.files[0]; if (!f) return;
+    var rd = new FileReader();
+    rd.onload = function () {
+      var rows = R.parse(String(rd.result));
+      if (!rows.length) { say("No names found in that file. Check that it has a column for the child's name or ID.", false); return; }
+      var n = add(rows);
+      say(n ? "Added " + n + (n === 1 ? " child" : " children") + " from " + f.name + "." : "Everyone in that file is already on the list.", true);
+    };
+    rd.readAsText(f);
+  });
+  $("btnPaste").addEventListener("click", function () {
+    var rows = $("paste").value.split(/\r?\n/).map(function (s) { return s.trim(); }).filter(Boolean).map(function (c) { return { c: c.slice(0, 80) }; });
+    if (!rows.length) { say("Paste at least one name first.", false); return; }
+    var n = add(rows); $("paste").value = "";
+    say(n ? "Added " + n + (n === 1 ? " child." : " children.") : "Those names are already on the list.", true);
+  });
+  $("list").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-i]"); if (!b) return;
+    list.splice(+b.dataset.i, 1); R.save(list); render();
+  });
+  $("btnClear").addEventListener("click", function () {
+    if (!window.confirm("Remove all " + list.length + " children from this list? Printed labels keep working.")) return;
+    list = []; R.save(list); render(); $("msg").hidden = true;
+  });
+  $("btnTemplate").addEventListener("click", function () {
+    var blob = new Blob(["﻿child,rater,location\nAna Souza,Ms. Lee,Room 4\nBen Costa,Ms. Lee,Room 4\nID-0042,Ms. Lee,Room 4\n"], { type: "text/csv;charset=utf-8" });
+    var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "fgcompass-class-list.csv";
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+  document.querySelectorAll("[data-size]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("[data-size]").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      $("sheet").classList.toggle("big", b.dataset.size === "big");
+    });
+  });
+  $("btnPrint").addEventListener("click", function () { window.print(); });
+  render();
+})();
+</script>
+</body>
+</html>

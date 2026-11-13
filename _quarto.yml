@@ -17,6 +17,7 @@ project:
     - fg-tree.js
     - assess/*
     - assess/img/*.jpg
+    - assess/vendor/*
     - static/files/*.pdf
     - images/ot-l*.png
     - images/home/*.png

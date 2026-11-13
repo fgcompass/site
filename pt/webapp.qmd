@@ -13,6 +13,7 @@ O Avaliador FG-COMPASS guia você pela árvore de decisão de cada habilidade: r
 - **As 10 habilidades**, cinco de locomoção e cinco de controle de objetos, com as árvores de decisão v2.2.
 - **Montagem e instruções** de cada habilidade: o que preparar, o que dizer à criança e observações para o avaliador.
 - **Resultados da sessão**: uma tabela de níveis por criança e habilidade, que pode ser baixada em CSV ou impressa.
+- **Lista da turma e etiquetas QR**: envie a lista da turma, imprima uma etiqueta QR para cada criança e toque em Ler no aplicativo para preencher o nome da criança sem digitar. Digitar continua funcionando. [Criar etiquetas](../assess/roster.html)
 - **Por enquanto, somente em inglês.** A versão em português será adicionada com a redação validada das árvores de decisão.
 
 ## Privacidade
