@@ -17,7 +17,7 @@ O Avaliador FG-COMPASS guia você pela árvore de decisão de cada habilidade: r
 
 ## Privacidade
 
-Nada é salvo on-line nem no navegador. Os resultados somem ao fechar ou recarregar a página; baixe o CSV antes, se precisar. Por isso o Avaliador é ideal para ensino e prática: os alunos podem avaliar colegas ou vídeos sem criar contas nem armazenar dados das crianças.
+Nada é enviado on-line. As avaliações ficam só no navegador do aparelho usado, então recarregar ou fechar a aba não as apaga. Elas são removidas ao tocar em Limpar resultados ou automaticamente depois de 7 dias. O aplicativo avisa antes de você sair com avaliações que ainda não foram baixadas. Baixe o CSV para ter uma cópia e abra esse CSV de novo para continuar depois ou em outro aparelho. Por isso o Avaliador é ideal para ensino e prática: os alunos podem avaliar colegas ou vídeos sem criar contas, e nenhum dado das crianças sai do aparelho.
 
 ::: {.callout-note appearance="simple"}
 Este é um protótipo para ensino e prática. Para coleta de dados de pesquisa, siga os protocolos de teste e as fichas de registro da página [Downloads](download.qmd).
