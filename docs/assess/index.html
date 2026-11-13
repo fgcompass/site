@@ -379,6 +379,30 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
 .tour-tip .dots { display: flex; gap: 5px; } .tour-tip .dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.3); }
 .tour-tip .dots i.on { background: #2EC7BC; }
 @media print { .tour-tip, .bt-tourbtn, .bt-practice { display: none !important; } }
+/* ---------- unsaved results, leave guard, kept-on-device notice ---------- */
+.unsaved { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem .9rem; margin: 0 0 1rem; padding: .75rem .9rem; border-radius: .85rem;
+  background: rgba(249,167,62,.14); border: 1.5px solid var(--amber); }
+.unsaved svg { flex: none; width: 22px; height: 22px; fill: none; stroke: #C9771A; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.unsaved p { flex: 1 1 200px; margin: 0; font-weight: 600; font-size: .95rem; }
+.unsaved .btn { min-height: 40px; padding: .45rem .9rem; }
+.unsaved.ok { background: rgba(46,199,188,.12); border-color: var(--teal); }
+.unsaved.ok svg { stroke: var(--teal-ink); }
+.tab .count.due { background: #F9A73E; color: #082B42; }
+dialog#leaveDlg { border: 0; padding: 0; background: transparent; max-width: min(420px, calc(100vw - 32px)); }
+dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
+.leave { background: var(--card); color: var(--ink); border-radius: 1rem; padding: 1.25rem; box-shadow: 0 18px 40px rgba(0,0,0,.3); }
+.leave h2 { margin: 0 0 .4rem; font-size: 1.2rem; }
+.leave p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.leave .acts { display: grid; gap: .5rem; }
+.leave .acts .btn { width: 100%; }
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); transform: translate(-50%, 20px); z-index: 80; opacity: 0; pointer-events: none;
+  max-width: calc(100vw - 32px); padding: .7rem 1rem; border-radius: .8rem; background: #082B42; color: #fff; font-weight: 600; font-size: .92rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3); transition: opacity .2s ease, transform .2s ease; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+@media (max-width: 640px) { .toast { bottom: calc(84px + env(safe-area-inset-bottom)); } }
+@media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
+@media (prefers-color-scheme: dark) { html .unsaved svg { stroke: #F9A73E; } html .unsaved.ok svg { stroke: #2EC7BC; } }
+@media print { .unsaved, .toast { display: none !important; } }
 </style>
 </head>
 <body>
@@ -449,12 +473,19 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       <div><label for="location" id="tLocation"></label><input type="text" id="location" autocomplete="off"></div>
       <div><label for="date" id="tDate"></label><input type="date" id="date"></div>
     </div>
+    <div class="unsaved" id="unsavedBar" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+      <p id="unsavedTxt" aria-live="polite"></p>
+      <button class="btn" type="button" id="btnCsvTop"></button>
+    </div>
     <div id="resultsBody"></div>
     <div class="actions" id="resultsActions">
       <button class="btn" type="button" id="btnCsv"></button>
       <button class="btn ghost" type="button" id="btnPrint"></button>
       <button class="btn warn" type="button" id="btnClear"></button>
     </div>
+    <div class="actions"><button class="btn ghost" type="button" id="btnOpen"></button>
+      <input type="file" id="openFile" accept=".csv,text/csv" hidden></div>
     <p class="note" id="tPrivacy"></p>
   </section>
 </main>
@@ -469,6 +500,19 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     <div class="slides" id="cmpSlides"></div>
   </div>
 </dialog>
+
+<dialog id="leaveDlg" aria-labelledby="leaveTitle">
+  <div class="leave">
+    <h2 id="leaveTitle"></h2>
+    <p id="leaveBody"></p>
+    <div class="acts">
+      <button class="btn" type="button" id="leaveDl"></button>
+      <button class="btn ghost" type="button" id="leaveStay"></button>
+      <button class="btn warn" type="button" id="leaveGo"></button>
+    </div>
+  </div>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="skills.js"></script>
 <script>
@@ -492,7 +536,12 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       empty: "No ratings yet. Rate a child and the result will show up here.",
       byChild: "By child", allRatings: "All ratings", child: "Child", skill: "Skill", level: "Level", time: "Time",
       remove: "Remove",
-      privacy: "Nothing is saved online or in your browser. Results disappear when you close or reload this page, so download the CSV first if you need it.",
+      privacy: "Nothing is sent online. Ratings are kept only in this browser on this device, so a refresh or a closed tab won't lose them. They are removed when you tap Clear results, or after 7 days. Download the CSV to keep a copy, and use Open a saved CSV to pick up a session later or on another device.",
+      notSaved1: "1 rating isn't downloaded yet.", notSavedN: "{n} ratings aren't downloaded yet.", allSaved: "All ratings are downloaded.",
+      leaveTitle: "Download your results first?", leaveBody: "You have {r} not downloaded yet. They stay on this device for 7 days, but download the CSV now so you have a copy.", one: "1 rating", many: "{n} ratings",
+      leaveDl: "Download CSV", leaveStay: "Stay here", leaveGo: "Leave anyway",
+      restored: "Restored {n} ratings saved on this device.", downloaded: "CSV downloaded. You can leave safely.",
+      open: "Open a saved CSV", openOk: "Added {n} ratings from the file.", openNone: "No new ratings in that file.", openBad: "That file doesn't look like an FG-COMPASS results CSV.",
       leave: "Your results will be lost.", homeTitle: "FG-COMPASS site", backFull: "Back to site", backShort: "Site", qLangNote: ""
     },
     pt: {
@@ -511,7 +560,12 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       empty: "Nenhuma avaliação ainda. Avalie uma criança e o resultado aparecerá aqui.",
       byChild: "Por criança", allRatings: "Todas as avaliações", child: "Criança", skill: "Habilidade", level: "Nível", time: "Hora",
       remove: "Remover",
-      privacy: "Nada é salvo on-line nem no navegador. Os resultados somem ao fechar ou recarregar a página; baixe o CSV antes, se precisar.",
+      privacy: "Nada é enviado on-line. As avaliações ficam só neste navegador, neste aparelho, então recarregar ou fechar a aba não as apaga. Elas são removidas ao tocar em Limpar resultados ou depois de 7 dias. Baixe o CSV para ter uma cópia e use Abrir um CSV salvo para continuar depois ou em outro aparelho.",
+      notSaved1: "1 avaliação ainda não foi baixada.", notSavedN: "{n} avaliações ainda não foram baixadas.", allSaved: "Todas as avaliações foram baixadas.",
+      leaveTitle: "Baixar os resultados antes?", leaveBody: "Você tem {r} sem baixar. Elas ficam neste aparelho por 7 dias, mas baixe o CSV agora para ter uma cópia.", one: "1 avaliação", many: "{n} avaliações",
+      leaveDl: "Baixar CSV", leaveStay: "Ficar aqui", leaveGo: "Sair mesmo assim",
+      restored: "{n} avaliações salvas neste aparelho foram restauradas.", downloaded: "CSV baixado. Você já pode sair.",
+      open: "Abrir um CSV salvo", openOk: "{n} avaliações adicionadas do arquivo.", openNone: "Nenhuma avaliação nova no arquivo.", openBad: "Este arquivo não parece um CSV de resultados do FG-COMPASS.",
       leave: "Seus resultados serão perdidos.", homeTitle: "Site do FG-COMPASS", backFull: "Voltar ao site", backShort: "Site",
       qLangNote: "As perguntas e os protocolos estão em inglês até a publicação da versão oficial em português."
     }
@@ -526,6 +580,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   if (!PT_ENABLED) $("langBtn").hidden = true;
   var skill = SK.find(function (s) { return s.id === params.get("skill"); }) || SK[0];
   var results = [], counter = 1;
+  var KEY = "fgc-rater-session", KEEP_MS = 7 * 24 * 3600 * 1000, ready = false, leaving = false;
   var t = function (k) { return T[lang][k]; };
   var txt = function (v) { return typeof v === "string" ? v : (v[lang] || v.en); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
@@ -555,12 +610,15 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     $("tLocation").textContent = t("location"); $("tDate").textContent = t("date");
     $("btnCsv").textContent = t("csv"); $("btnPrint").textContent = t("print"); $("btnClear").textContent = t("clear");
     $("tPrivacy").textContent = t("privacy");
+    $("btnCsvTop").textContent = t("csv"); $("btnOpen").textContent = t("open");
+    $("leaveTitle").textContent = t("leaveTitle"); $("leaveDl").textContent = t("leaveDl");
+    $("leaveStay").textContent = t("leaveStay"); $("leaveGo").textContent = t("leaveGo");
     renderTabs(); renderPicker(); renderProtocol(); renderQuestion(); renderResults();
   }
 
   function renderTabs() {
     $("tabRate").innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4h6v3H9z"/><path d="M15 5h3v16H6V5h3"/><path d="M9 14l2 2 4-4"/></svg><span>' + esc(t("rate")) + "</span>";
-    $("tabResults").innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg><span>' + esc(t("results")) + '</span><span class="count">' + results.length + "</span>";
+    $("tabResults").innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg><span>' + esc(t("results")) + '</span><span class="count' + (unsaved() ? " due" : "") + '">' + results.length + "</span>";
   }
 
   function renderPicker() {
@@ -613,7 +671,12 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
 
   /* ---------- results ---------- */
   function renderResults() {
-    var body = $("resultsBody");
+    var body = $("resultsBody"), n = unsaved();
+    store();
+    $("unsavedBar").hidden = !results.length;
+    $("unsavedBar").classList.toggle("ok", !n);
+    $("btnCsvTop").hidden = !n;
+    $("unsavedTxt").textContent = n ? (n === 1 ? t("notSaved1") : t("notSavedN").replace("{n}", n)) : t("allSaved");
     $("resultsActions").hidden = !results.length;
     if (!results.length) { body.innerHTML = '<div class="empty card">' + esc(t("empty")) + "</div>"; return; }
     var counts = [0, 0, 0, 0];
@@ -665,6 +728,8 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     a.download = "fgcompass-results" + ($("date").value ? "-" + $("date").value : "") + ".csv";
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    results.forEach(function (r) { r.x = true; });
+    renderTabs(); renderResults();
   }
 
   function showTab(which) {
@@ -770,7 +835,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       results.push({ performer: performerName(), skill: skill.id, level: lv, q1: bt.q1, q2: bt.q2, time: new Date() });
       renderTabs(); renderPicker(); renderResults();
     } else if (lv && bt.level !== null && lv !== bt.level) {
-      bt.level = lv; var last = results[results.length - 1]; if (last) { last.level = lv; last.q1 = bt.q1; last.q2 = bt.q2; }
+      bt.level = lv; var last = results[results.length - 1]; if (last) { last.level = lv; last.q1 = bt.q1; last.q2 = bt.q2; last.x = false; }
       renderTabs(); renderPicker(); renderResults();
     } else if (!lv && bt.level !== null) {
       results.pop(); bt.level = null; renderTabs(); renderPicker(); renderResults();
@@ -797,7 +862,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
   $("btnCsv").addEventListener("click", csv);
   $("btnPrint").addEventListener("click", function () { window.print(); });
   $("btnClear").addEventListener("click", function () {
-    if (window.confirm(t("clearConfirm"))) { results = []; counter = 1; renderTabs(); renderPicker(); renderResults(); }
+    if (window.confirm(t("clearConfirm"))) { results = []; counter = 1; renderTabs(); renderPicker(); renderResults(); try { localStorage.removeItem(KEY); } catch (e) {} }
   });
   $("langBtn").addEventListener("click", function () {
     lang = lang === "en" ? "pt" : "en";
@@ -806,7 +871,7 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
     applyLang();
   });
   window.addEventListener("beforeunload", function (e) {
-    if (results.length) { e.preventDefault(); e.returnValue = t("leave"); }
+    if (unsaved() && !leaving) { e.preventDefault(); e.returnValue = t("leave"); return t("leave"); }
   });
 
   var d = new Date(); $("date").value = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
@@ -907,7 +972,103 @@ button, .chip, .tab { -webkit-tap-highlight-color: transparent; touch-action: ma
       lastY = y;
     }, { passive: true });
   })();
+  /* ---------- keep ratings on this device (no server, no database) ---------- */
+  function unsaved() { return results.filter(function (r) { return !r.x; }).length; }
+  function store() {
+    if (tour || !ready) return;
+    try {
+      if (!results.length && !$("observer").value && !$("location").value) { localStorage.removeItem(KEY); return; }
+      localStorage.setItem(KEY, JSON.stringify({ v: 1, at: Date.now(), counter: counter, skill: skill.id,
+        observer: $("observer").value, location: $("location").value, date: $("date").value, performer: $("performer").value,
+        results: results.map(function (r) { return { p: r.performer, s: r.skill, l: r.level, q1: r.q1, q2: r.q2, t: r.time.toISOString(), x: !!r.x }; }) }));
+    } catch (e) {}
+  }
+  function restore() {
+    var d; try { d = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { d = null; }
+    if (!d || d.v !== 1) return 0;
+    if (Date.now() - d.at > KEEP_MS) { try { localStorage.removeItem(KEY); } catch (e) {} return 0; }
+    results = (d.results || []).filter(function (r) { return SK.some(function (s) { return s.id === r.s; }); }).map(function (r) {
+      return { performer: r.p, skill: r.s, level: r.l, q1: r.q1, q2: r.q2, time: new Date(r.t), x: r.x };
+    });
+    counter = d.counter || 1;
+    ["observer", "location", "date", "performer"].forEach(function (k) { if (d[k]) $(k).value = d[k]; });
+    if (!params.get("skill")) { var s = SK.find(function (x) { return x.id === d.skill; }); if (s) skill = s; }
+    return results.length;
+  }
+  var toastTimer;
+  function toast(msg) {
+    var el = $("toast"); el.textContent = msg; el.classList.add("show");
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { el.classList.remove("show"); }, 3800);
+  }
+  ["observer", "location", "date", "performer"].forEach(function (k) { $(k).addEventListener("input", store); $(k).addEventListener("change", store); });
+  $("skillPicker").addEventListener("change", store);
+  $("btnCsvTop").addEventListener("click", csv);
+
+  /* leaving the app with ratings that are not downloaded */
+  var leaveDlg = $("leaveDlg"), leaveTo = null;
+  function guard(e) {
+    var n = unsaved(); if (!n) return;
+    e.preventDefault(); leaveTo = this.href;
+    $("leaveBody").textContent = t("leaveBody").replace("{r}", n === 1 ? t("one") : t("many").replace("{n}", n));
+    if (leaveDlg.showModal) leaveDlg.showModal(); else leaveDlg.setAttribute("open", "");
+    $("leaveDl").focus();
+  }
+  function closeLeave() { if (leaveDlg.close) leaveDlg.close(); else leaveDlg.removeAttribute("open"); }
+  $("homeLink").addEventListener("click", guard); $("backLink").addEventListener("click", guard);
+  $("leaveStay").addEventListener("click", closeLeave);
+  leaveDlg.addEventListener("click", function (e) { if (e.target === leaveDlg) closeLeave(); });
+  $("leaveDl").addEventListener("click", function () { csv(); closeLeave(); toast(t("downloaded")); });
+  $("leaveGo").addEventListener("click", function () { leaving = true; closeLeave(); if (leaveTo) location.href = leaveTo; });
+
+  /* open a CSV this app downloaded earlier and add its ratings back */
+  function parseCsv(text) {
+    var rows = [], row = [], f = "", q = false, i, c;
+    text = text.replace(/^﻿/, "");
+    for (i = 0; i < text.length; i++) {
+      c = text[i];
+      if (q) { if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+      else if (c === '"') q = true;
+      else if (c === ",") { row.push(f); f = ""; }
+      else if (c === "\n" || c === "\r") { if (c === "\r" && text[i + 1] === "\n") i++; row.push(f); rows.push(row); row = []; f = ""; }
+      else f += c;
+    }
+    if (f || row.length) { row.push(f); rows.push(row); }
+    return rows.filter(function (r) { return r.join("").trim() !== ""; });
+  }
+  $("btnOpen").addEventListener("click", function () { $("openFile").value = ""; $("openFile").click(); });
+  $("openFile").addEventListener("change", function () {
+    var file = this.files && this.files[0]; if (!file) return;
+    var rd = new FileReader();
+    rd.onload = function () {
+      var rows = parseCsv(String(rd.result)), h = rows.shift() || [], col = function (k) { return h.indexOf(k); };
+      var P = col("performer"), S = col("skill"), L = col("level");
+      if (P < 0 || S < 0 || L < 0) { toast(t("openBad")); return; }
+      var seen = {}, added = 0, first = rows[0] || [];
+      results.forEach(function (r) { seen[r.performer + "|" + r.skill + "|" + r.time.toISOString()] = 1; });
+      rows.forEach(function (r) {
+        var lv = parseInt(r[L], 10), sk = r[S], tm = new Date(r[col("time")] || Date.now());
+        if (!r[P] || !(lv >= 1 && lv <= 4) || !SK.some(function (s) { return s.id === sk; })) return;
+        if (isNaN(tm)) tm = new Date();
+        var key = r[P] + "|" + sk + "|" + tm.toISOString(); if (seen[key]) return; seen[key] = 1;
+        results.push({ performer: r[P], skill: sk, level: lv, q1: r[col("q1_answer")] === "YES", q2: r[col("q2_answer")] === "YES", time: tm, x: true });
+        added++;
+      });
+      results.sort(function (a, b) { return a.time - b.time; });
+      [["observer", "observer"], ["location", "location"], ["date", "date"]].forEach(function (m) {
+        var k = col(m[0]); if (k > -1 && first[k] && !$(m[1]).value.trim()) $(m[1]).value = first[k];
+      });
+      if (col("date") > -1 && first[col("date")] && !results.length) $("date").value = first[col("date")];
+      renderTabs(); renderPicker(); renderResults();
+      toast(added ? t("openOk").replace("{n}", added) : t("openNone"));
+    };
+    rd.onerror = function () { toast(t("openBad")); };
+    rd.readAsText(file);
+  });
+
+  var restoredN = restore();
+  ready = true;
   applyLang();
+  if (restoredN) setTimeout(function () { toast(t("restored").replace("{n}", restoredN)); }, 300);
 })();
 </script>
 </body>

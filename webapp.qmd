@@ -16,7 +16,7 @@ The FG-COMPASS web app walks you through the decision tree for each skill: answe
 
 ## Privacy
 
-Nothing is saved online or in your browser. Results disappear when you close or reload the page, so download the CSV first if you need it. That makes the web app a good fit for teaching and practice: students can rate classmates or videos without creating accounts or storing children's data.
+Nothing is sent online. Ratings are kept only in the browser on the device you use, so a refresh or a closed tab doesn't lose them. They are removed when you tap Clear results, or automatically after 7 days. The app warns you before you leave with ratings you haven't downloaded. Download the CSV to keep a copy, and open that CSV again to pick up a session later or on another device. That makes the web app a good fit for teaching and practice: students can rate classmates or videos without creating accounts, and no children's data leaves their device.
 
 ::: {.callout-note appearance="simple"}
 This is a prototype for teaching and practice. For research data collection, follow the testing protocols and record forms on the [Download](download.qmd) page.
