@@ -403,6 +403,12 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
 @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
 @media (prefers-color-scheme: dark) { html .unsaved svg { stroke: #F9A73E; } html .unsaved.ok svg { stroke: #2EC7BC; } }
 @media print { .unsaved, .toast { display: none !important; } }
+dialog#askDlg { border: 0; padding: 0; background: transparent; max-width: min(420px, calc(100vw - 32px)); }
+dialog#askDlg::backdrop { background: rgba(10,20,30,.55); }
+.leave .what { margin: -.4rem 0 1rem; padding: .6rem .8rem; border-radius: .6rem; background: var(--alt); color: var(--ink); font-weight: 600; font-size: .92rem; }
+.leave .warnline { color: #B4541A; font-weight: 700; }
+.btn.danger { background: #B4541A; border-color: #B4541A; color: #fff; }
+@media (prefers-color-scheme: dark) { html .leave .warnline { color: #F9A73E; } html .btn.danger { background: #E07A3F; border-color: #E07A3F; color: #082B42; } }
 </style>
 </head>
 <body>
@@ -512,6 +518,18 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
     </div>
   </div>
 </dialog>
+<dialog id="askDlg" aria-labelledby="askTitle">
+  <div class="leave">
+    <h2 id="askTitle"></h2>
+    <p class="what" id="askWhat" hidden></p>
+    <p id="askBody"></p>
+    <div class="acts">
+      <button class="btn" type="button" id="askDl" hidden></button>
+      <button class="btn danger" type="button" id="askYes"></button>
+      <button class="btn ghost" type="button" id="askNo"></button>
+    </div>
+  </div>
+</dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="skills.js"></script>
@@ -533,6 +551,9 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
       resultsTitle: "Session results", observer: "Rater", location: "Class or location", date: "Date",
       csv: "Download CSV", print: "Print", clear: "Clear results",
       clearConfirm: "Clear all results from this session?",
+      delTitle: "Remove this rating?", delBody: "This can't be undone.", delYes: "Remove rating",
+      clearTitle: "Clear all results?", clearBody: "{r} and the rater and class details will be deleted from this device. This can't be undone.",
+      clearUnsaved: "{r} not downloaded yet.", clearYes: "Clear everything", cancel: "Cancel", removed: "Rating removed.", cleared: "Results cleared.",
       empty: "No ratings yet. Rate a child and the result will show up here.",
       byChild: "By child", allRatings: "All ratings", child: "Child", skill: "Skill", level: "Level", time: "Time",
       remove: "Remove",
@@ -557,6 +578,9 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
       resultsTitle: "Resultados da sessão", observer: "Avaliador", location: "Turma ou local", date: "Data",
       csv: "Baixar CSV", print: "Imprimir", clear: "Limpar resultados",
       clearConfirm: "Apagar todos os resultados desta sessão?",
+      delTitle: "Remover esta avaliação?", delBody: "Não é possível desfazer.", delYes: "Remover avaliação",
+      clearTitle: "Apagar todos os resultados?", clearBody: "{r} e os dados de avaliador e turma serão apagados deste aparelho. Não é possível desfazer.",
+      clearUnsaved: "{r} ainda sem baixar.", clearYes: "Apagar tudo", cancel: "Cancelar", removed: "Avaliação removida.", cleared: "Resultados apagados.",
       empty: "Nenhuma avaliação ainda. Avalie uma criança e o resultado aparecerá aqui.",
       byChild: "Por criança", allRatings: "Todas as avaliações", child: "Criança", skill: "Habilidade", level: "Nível", time: "Hora",
       remove: "Remover",
@@ -857,12 +881,43 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
   $("tabResults").addEventListener("click", function () { showTab("results"); });
   $("resultsBody").addEventListener("click", function (e) {
     var b = e.target.closest("[data-del]"); if (!b) return;
-    results.splice(+b.dataset.del, 1); renderTabs(); renderPicker(); renderResults();
+    var i = +b.dataset.del, r = results[i], s = SK.find(function (x) { return x.id === r.skill; });
+    ask({ title: t("delTitle"), what: r.performer + " · " + txt(s.name) + " · " + t("levelWord") + " " + r.level + " (" + t("levelNames")[r.level - 1] + ")",
+      body: t("delBody"), yes: t("delYes") }, function () {
+      if (results[i] !== r) return;
+      results.splice(i, 1); renderTabs(); renderPicker(); renderResults(); toast(t("removed"));
+    });
   });
   $("btnCsv").addEventListener("click", csv);
   $("btnPrint").addEventListener("click", function () { window.print(); });
   $("btnClear").addEventListener("click", function () {
-    if (window.confirm(t("clearConfirm"))) { results = []; counter = 1; renderTabs(); renderPicker(); renderResults(); try { localStorage.removeItem(KEY); } catch (e) {} }
+    var n = results.length, u = unsaved(), cnt = function (k) { return k === 1 ? t("one") : t("many").replace("{n}", k); };
+    ask({ title: t("clearTitle"), body: t("clearBody").replace("{r}", cnt(n)), yes: t("clearYes"),
+      warn: u ? t("clearUnsaved").replace("{r}", cnt(u)) : "", dl: !!u }, function () {
+      results = []; counter = 1; $("observer").value = ""; $("location").value = "";
+      renderTabs(); renderPicker(); renderResults(); try { localStorage.removeItem(KEY); } catch (e) {}
+      toast(t("cleared"));
+    });
+  });
+  /* confirmation sheet for anything that deletes ratings */
+  var askDlg = $("askDlg"), askFn = null;
+  function ask(o, fn) {
+    askFn = fn;
+    $("askTitle").textContent = o.title;
+    $("askWhat").hidden = !o.what; $("askWhat").textContent = o.what || "";
+    $("askBody").innerHTML = (o.warn ? '<span class="warnline">' + esc(o.warn) + "</span> " : "") + esc(o.body);
+    $("askYes").textContent = o.yes; $("askNo").textContent = t("cancel");
+    $("askDl").hidden = !o.dl; $("askDl").textContent = t("leaveDl");
+    if (askDlg.showModal) askDlg.showModal(); else askDlg.setAttribute("open", "");
+    $("askNo").focus();
+  }
+  function closeAsk() { askFn = null; if (askDlg.close) askDlg.close(); else askDlg.removeAttribute("open"); }
+  $("askNo").addEventListener("click", closeAsk);
+  askDlg.addEventListener("click", function (e) { if (e.target === askDlg) closeAsk(); });
+  $("askYes").addEventListener("click", function () { var f = askFn; closeAsk(); if (f) f(); });
+  $("askDl").addEventListener("click", function () {
+    csv(); $("askDl").hidden = true;
+    $("askBody").textContent = t("clearBody").replace("{r}", results.length === 1 ? t("one") : t("many").replace("{n}", results.length)); toast(t("downloaded").split(".")[0] + ".");
   });
   $("langBtn").addEventListener("click", function () {
     lang = lang === "en" ? "pt" : "en";
