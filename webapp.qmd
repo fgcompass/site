@@ -12,6 +12,7 @@ The FG-COMPASS web app walks you through the decision tree for each skill: answe
 - **All 10 skills**, five locomotor and five object control, using the v2.2 decision trees.
 - **Setup and instructions** for each skill: what to set up, what to say to the child and notes for the rater.
 - **Session results**: a table of levels by child and skill, which you can download as a CSV file or print.
+- **Class list and QR labels**: upload a class list, print a QR label for each child, then tap Scan in the app to fill in the child's name instead of typing it. Typing still works. [Make labels](assess/roster.html)
 - **English** for now. A Portuguese version will follow, using the validated Portuguese wording of the decision trees.
 
 ## Privacy

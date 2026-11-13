@@ -403,6 +403,31 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
 @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
 @media (prefers-color-scheme: dark) { html .unsaved svg { stroke: #F9A73E; } html .unsaved.ok svg { stroke: #2EC7BC; } }
 @media print { .unsaved, .toast { display: none !important; } }
+/* ---------- scan a child's QR label ---------- */
+.inrow { display: flex; gap: .45rem; align-items: stretch; }
+.inrow input { flex: 1 1 auto; min-width: 0; }
+.scanbtn { flex: none; display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: 0 .85rem; border-radius: .6rem;
+  border: 1.5px solid var(--teal-ink); background: var(--teal-ink); color: #fff; font-weight: 700; font-size: .92rem; }
+.scanbtn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+@media (prefers-color-scheme: dark) { html .scanbtn { color: #082B42; } }
+@media (max-width: 640px) { .scanbtn { padding: 0 .6rem; } .scanbtn span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } }
+dialog#scanDlg { border: 0; padding: 0; background: transparent; width: min(480px, calc(100vw - 24px)); max-width: none; }
+dialog#scanDlg::backdrop { background: rgba(5,15,25,.8); }
+.scan { background: #082B42; color: #fff; border-radius: 1rem; padding: 1rem; box-shadow: 0 18px 40px rgba(0,0,0,.4); }
+.scan-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: .75rem; }
+.scan-head h2 { margin: 0; font-size: 1.1rem; color: #fff; }
+.scan .x { background: rgba(255,255,255,.12); color: #fff; }
+.cam { position: relative; aspect-ratio: 1; border-radius: .8rem; overflow: hidden; background: #000; }
+.cam video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.aim { position: absolute; inset: 16%; border-radius: 1rem; box-shadow: 0 0 0 9999px rgba(0,0,0,.35); border: 3px solid #2EC7BC; }
+.aim.hit { border-color: #F9A73E; }
+.scan-msg { margin: .75rem 0 0; font-size: .92rem; color: #D1E0E6; min-height: 1.4em; }
+dialog#askDlg { border: 0; padding: 0; background: transparent; max-width: min(420px, calc(100vw - 32px)); }
+dialog#askDlg::backdrop { background: rgba(10,20,30,.55); }
+.leave .what { margin: -.4rem 0 1rem; padding: .6rem .8rem; border-radius: .6rem; background: var(--alt); color: var(--ink); font-weight: 600; font-size: .92rem; }
+.leave .warnline { color: #B4541A; font-weight: 700; }
+.btn.danger { background: #B4541A; border-color: #B4541A; color: #fff; }
+@media (prefers-color-scheme: dark) { html .leave .warnline { color: #F9A73E; } html .btn.danger { background: #E07A3F; border-color: #E07A3F; color: #082B42; } }
 </style>
 </head>
 <body>
@@ -432,7 +457,11 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
         <div class="skillf"><label class="lbl" for="skillPicker" id="tSkill"></label><select id="skillPicker" class="skbtn"></select></div>
         <div class="grow">
           <label for="performer" id="tPerformer"></label>
-          <input type="text" id="performer" autocomplete="off" required aria-describedby="tNeed">
+          <div class="inrow">
+            <input type="text" id="performer" autocomplete="off" required aria-describedby="tNeed" list="rosterNames">
+            <button type="button" class="scanbtn" id="btnScan" aria-label="Scan a child's QR label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12h8"/></svg><span id="tScan">Scan</span></button>
+          </div>
+          <datalist id="rosterNames"></datalist>
         </div>
       </div>
       <p class="need" id="tNeed"></p>
@@ -485,6 +514,7 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
       <button class="btn warn" type="button" id="btnClear"></button>
     </div>
     <div class="actions"><button class="btn ghost" type="button" id="btnOpen"></button>
+      <a class="btn ghost" href="roster.html" id="rosterLink"></a>
       <input type="file" id="openFile" accept=".csv,text/csv" hidden></div>
     <p class="note" id="tPrivacy"></p>
   </section>
@@ -512,9 +542,29 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
     </div>
   </div>
 </dialog>
+<dialog id="askDlg" aria-labelledby="askTitle">
+  <div class="leave">
+    <h2 id="askTitle"></h2>
+    <p class="what" id="askWhat" hidden></p>
+    <p id="askBody"></p>
+    <div class="acts">
+      <button class="btn" type="button" id="askDl" hidden></button>
+      <button class="btn danger" type="button" id="askYes"></button>
+      <button class="btn ghost" type="button" id="askNo"></button>
+    </div>
+  </div>
+</dialog>
+<dialog id="scanDlg" aria-labelledby="scanTitle">
+  <div class="scan">
+    <div class="scan-head"><h2 id="scanTitle"></h2><button class="x" type="button" id="scanClose" aria-label="Close">&times;</button></div>
+    <div class="cam"><video id="scanVideo" playsinline muted></video><div class="aim" aria-hidden="true"></div></div>
+    <p class="scan-msg" id="scanMsg" role="status"></p>
+  </div>
+</dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="skills.js"></script>
+<script src="roster.js"></script>
 <script>
 (function () {
   "use strict";
@@ -533,6 +583,12 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
       resultsTitle: "Session results", observer: "Rater", location: "Class or location", date: "Date",
       csv: "Download CSV", print: "Print", clear: "Clear results",
       clearConfirm: "Clear all results from this session?",
+      scan: "Scan", scanTitle: "Scan a child's label", scanAim: "Point the camera at the QR label.", scanStart: "Starting the camera…",
+      scanNoCam: "The camera isn't available here. Allow camera access, or type the name instead.", scanBad: "That code isn't an FG-COMPASS label.",
+      scanReady: "Ready to rate {c}.", roster: "Class list and QR labels",
+      delTitle: "Remove this rating?", delBody: "This can't be undone.", delYes: "Remove rating",
+      clearTitle: "Clear all results?", clearBody: "{r} and the rater and class details will be deleted from this device. This can't be undone.",
+      clearUnsaved: "{r} not downloaded yet.", clearYes: "Clear everything", cancel: "Cancel", removed: "Rating removed.", cleared: "Results cleared.",
       empty: "No ratings yet. Rate a child and the result will show up here.",
       byChild: "By child", allRatings: "All ratings", child: "Child", skill: "Skill", level: "Level", time: "Time",
       remove: "Remove",
@@ -557,6 +613,12 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
       resultsTitle: "Resultados da sessão", observer: "Avaliador", location: "Turma ou local", date: "Data",
       csv: "Baixar CSV", print: "Imprimir", clear: "Limpar resultados",
       clearConfirm: "Apagar todos os resultados desta sessão?",
+      scan: "Ler", scanTitle: "Ler a etiqueta da criança", scanAim: "Aponte a câmera para a etiqueta QR.", scanStart: "Abrindo a câmera…",
+      scanNoCam: "A câmera não está disponível aqui. Permita o acesso à câmera ou digite o nome.", scanBad: "Este código não é uma etiqueta do FG-COMPASS.",
+      scanReady: "Pronto para avaliar {c}.", roster: "Lista da turma e etiquetas QR",
+      delTitle: "Remover esta avaliação?", delBody: "Não é possível desfazer.", delYes: "Remover avaliação",
+      clearTitle: "Apagar todos os resultados?", clearBody: "{r} e os dados de avaliador e turma serão apagados deste aparelho. Não é possível desfazer.",
+      clearUnsaved: "{r} ainda sem baixar.", clearYes: "Apagar tudo", cancel: "Cancelar", removed: "Avaliação removida.", cleared: "Resultados apagados.",
       empty: "Nenhuma avaliação ainda. Avalie uma criança e o resultado aparecerá aqui.",
       byChild: "Por criança", allRatings: "Todas as avaliações", child: "Criança", skill: "Habilidade", level: "Nível", time: "Hora",
       remove: "Remover",
@@ -611,6 +673,7 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
     $("btnCsv").textContent = t("csv"); $("btnPrint").textContent = t("print"); $("btnClear").textContent = t("clear");
     $("tPrivacy").textContent = t("privacy");
     $("btnCsvTop").textContent = t("csv"); $("btnOpen").textContent = t("open");
+    $("tScan").textContent = t("scan"); $("scanTitle").textContent = t("scanTitle"); $("rosterLink").textContent = t("roster");
     $("leaveTitle").textContent = t("leaveTitle"); $("leaveDl").textContent = t("leaveDl");
     $("leaveStay").textContent = t("leaveStay"); $("leaveGo").textContent = t("leaveGo");
     renderTabs(); renderPicker(); renderProtocol(); renderQuestion(); renderResults();
@@ -857,12 +920,43 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
   $("tabResults").addEventListener("click", function () { showTab("results"); });
   $("resultsBody").addEventListener("click", function (e) {
     var b = e.target.closest("[data-del]"); if (!b) return;
-    results.splice(+b.dataset.del, 1); renderTabs(); renderPicker(); renderResults();
+    var i = +b.dataset.del, r = results[i], s = SK.find(function (x) { return x.id === r.skill; });
+    ask({ title: t("delTitle"), what: r.performer + " · " + txt(s.name) + " · " + t("levelWord") + " " + r.level + " (" + t("levelNames")[r.level - 1] + ")",
+      body: t("delBody"), yes: t("delYes") }, function () {
+      if (results[i] !== r) return;
+      results.splice(i, 1); renderTabs(); renderPicker(); renderResults(); toast(t("removed"));
+    });
   });
   $("btnCsv").addEventListener("click", csv);
   $("btnPrint").addEventListener("click", function () { window.print(); });
   $("btnClear").addEventListener("click", function () {
-    if (window.confirm(t("clearConfirm"))) { results = []; counter = 1; renderTabs(); renderPicker(); renderResults(); try { localStorage.removeItem(KEY); } catch (e) {} }
+    var n = results.length, u = unsaved(), cnt = function (k) { return k === 1 ? t("one") : t("many").replace("{n}", k); };
+    ask({ title: t("clearTitle"), body: t("clearBody").replace("{r}", cnt(n)), yes: t("clearYes"),
+      warn: u ? t("clearUnsaved").replace("{r}", cnt(u)) : "", dl: !!u }, function () {
+      results = []; counter = 1; $("observer").value = ""; $("location").value = "";
+      renderTabs(); renderPicker(); renderResults(); try { localStorage.removeItem(KEY); } catch (e) {}
+      toast(t("cleared"));
+    });
+  });
+  /* confirmation sheet for anything that deletes ratings */
+  var askDlg = $("askDlg"), askFn = null;
+  function ask(o, fn) {
+    askFn = fn;
+    $("askTitle").textContent = o.title;
+    $("askWhat").hidden = !o.what; $("askWhat").textContent = o.what || "";
+    $("askBody").innerHTML = (o.warn ? '<span class="warnline">' + esc(o.warn) + "</span> " : "") + esc(o.body);
+    $("askYes").textContent = o.yes; $("askNo").textContent = t("cancel");
+    $("askDl").hidden = !o.dl; $("askDl").textContent = t("leaveDl");
+    if (askDlg.showModal) askDlg.showModal(); else askDlg.setAttribute("open", "");
+    $("askNo").focus();
+  }
+  function closeAsk() { askFn = null; if (askDlg.close) askDlg.close(); else askDlg.removeAttribute("open"); }
+  $("askNo").addEventListener("click", closeAsk);
+  askDlg.addEventListener("click", function (e) { if (e.target === askDlg) closeAsk(); });
+  $("askYes").addEventListener("click", function () { var f = askFn; closeAsk(); if (f) f(); });
+  $("askDl").addEventListener("click", function () {
+    csv(); $("askDl").hidden = true;
+    $("askBody").textContent = t("clearBody").replace("{r}", results.length === 1 ? t("one") : t("many").replace("{n}", results.length)); toast(t("downloaded").split(".")[0] + ".");
   });
   $("langBtn").addEventListener("click", function () {
     lang = lang === "en" ? "pt" : "en";
@@ -1065,7 +1159,83 @@ dialog#leaveDlg::backdrop { background: rgba(10,20,30,.55); }
     rd.readAsText(file);
   });
 
+  /* ---------- class list: name suggestions and QR scanning ---------- */
+  function fillRoster() {
+    var R = window.FG_ROSTER; if (!R) return;
+    $("rosterNames").innerHTML = R.load().map(function (x) { return '<option value="' + esc(x.c) + '">'; }).join("");
+  }
+  // Puts a child (from a scan or the class list) into the app exactly as if typed.
+  function useChild(x) {
+    if (tour) tourEnd();
+    if (bt.level !== null) { counter++; resetB(); }        // previous child is done: start fresh
+    else if (bt.q1 !== null) resetB();                     // half-answered tree belonged to someone else
+    $("performer").value = x.c;
+    if (x.r) $("observer").value = x.r;
+    if (x.l) $("location").value = x.l;
+    $("btWhoName").textContent = performerName(); nameState(); store(); pulse("btWho");
+    toast(t("scanReady").replace("{c}", x.c));
+  }
+  $("performer").addEventListener("change", function () {
+    var R = window.FG_ROSTER, v = this.value.trim(); if (!R || !v) return;
+    var x = R.load().filter(function (y) { return y.c === v; })[0];
+    if (x) { if (x.r && !$("observer").value.trim()) $("observer").value = x.r; if (x.l && !$("location").value.trim()) $("location").value = x.l; store(); }
+  });
+  var scanDlg = $("scanDlg"), stream = null, raf = 0, canvas = document.createElement("canvas"), ctx2 = canvas.getContext("2d", { willReadFrequently: true });
+  function loadJsQR() {
+    return new Promise(function (ok, bad) {
+      if (window.jsQR) return ok();
+      var sc = document.createElement("script"); sc.src = "vendor/jsQR.js"; sc.onload = ok; sc.onerror = bad; document.head.appendChild(sc);
+    });
+  }
+  function stopScan() {
+    cancelAnimationFrame(raf); raf = 0;
+    if (stream) { stream.getTracks().forEach(function (tr) { tr.stop(); }); stream = null; }
+    $("scanVideo").srcObject = null;
+  }
+  function closeScan() { stopScan(); if (scanDlg.open) { if (scanDlg.close) scanDlg.close(); else scanDlg.removeAttribute("open"); } }
+  function openScan() {
+    $("scanMsg").textContent = t("scanStart"); document.querySelector(".aim").classList.remove("hit");
+    if (scanDlg.showModal) scanDlg.showModal(); else scanDlg.setAttribute("open", "");
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { $("scanMsg").textContent = t("scanNoCam"); return; }
+    Promise.all([loadJsQR(), navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: "environment" }, width: { ideal: 1280 }, height: { ideal: 720 } }, audio: false })])
+      .then(function (res) {
+        stream = res[1];
+        if (!scanDlg.open) return stopScan();
+        var v = $("scanVideo"); v.srcObject = stream; v.setAttribute("playsinline", ""); return v.play();
+      })
+      .then(function () { if (stream) { $("scanMsg").textContent = t("scanAim"); tick(); } })
+      .catch(function () { stopScan(); $("scanMsg").textContent = t("scanNoCam"); });
+  }
+  var lastBad = "";
+  function tick() {
+    var v = $("scanVideo");
+    if (!stream) return;
+    if (v.readyState >= 2 && v.videoWidth) {
+      var w = Math.min(640, v.videoWidth), h = Math.round(v.videoHeight * w / v.videoWidth);
+      canvas.width = w; canvas.height = h; ctx2.drawImage(v, 0, 0, w, h);
+      var code = window.jsQR(ctx2.getImageData(0, 0, w, h).data, w, h, { inversionAttempts: "dontInvert" });
+      if (code && code.data) {
+        var x = window.FG_ROSTER.decode(code.data);
+        if (x) {
+          document.querySelector(".aim").classList.add("hit");
+          if (navigator.vibrate) try { navigator.vibrate(60); } catch (e) {}
+          closeScan(); useChild(x); return;
+        }
+        if (code.data !== lastBad) { lastBad = code.data; $("scanMsg").textContent = t("scanBad"); }
+      }
+    }
+    raf = requestAnimationFrame(tick);
+  }
+  $("btnScan").addEventListener("click", openScan);
+  $("scanClose").addEventListener("click", closeScan);
+  scanDlg.addEventListener("close", stopScan);
+  scanDlg.addEventListener("click", function (e) { if (e.target === scanDlg) closeScan(); });
+  document.addEventListener("visibilitychange", function () { if (document.hidden) closeScan(); });
+  window.addEventListener("storage", function (e) { if (e.key === "fgc-roster") fillRoster(); });
+  window.FG_TEST_SCAN = function (text) { var x = window.FG_ROSTER.decode(text); if (x) useChild(x); return x; };  // for automated checks
+
   var restoredN = restore();
+  fillRoster();
   ready = true;
   applyLang();
   if (restoredN) setTimeout(function () { toast(t("restored").replace("{n}", restoredN)); }, 300);
